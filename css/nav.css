@@ -1,13 +1,56 @@
+.profile-abstract{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  gap: 5px;
+}
+.avatar img {
+  position: relative;
+  top: 6.5px;
+}
+.profile-abstract:hover{
+  color:  rgb(96, 0, 128);
+  border: 1.5px solid;
+  padding: 2px 7px;
+  border-radius: 2px;
+  transition: .3s;
+}
+.menu-icon{
+  color:  rgb(96, 0, 128);
+  border: 1.5px solid;
+  padding: 1px 5px;
+  border-radius: 2px;
+  display: flex;
+}
+
+
 .side-nav{
-  background-color: rgb(10, 206, 223); 
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: rgb(161, 221, 229); 
+  border-right: 1.5px solid  rgb(96, 0, 128);
   bottom: 0;
   top: 0;
   position: fixed;
-  padding-top: 105px;
+  padding-top: 100px;
   width: 170px;
 
 }
-.side-nav div{
-  margin-bottom: 20px;
+.side-nav a{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  margin-left: 2px;
+  margin-right: 2px;
   padding: 10px;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+.side-nav > a:hover{
+  background-color: rgba(240, 234, 234, 0.831);
 }
