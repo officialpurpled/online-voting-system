@@ -1,55 +1,7 @@
-.form-container{
+main{
   display: flex;
-  flex-direction: column;
-  row-gap: 15px
-  ;
-  padding: 25px 15px;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-
-  background-color: rgba(255, 255, 255, 0.648);
-  border-radius: 10px;
-
-  margin-top: 50px;
-  min-width: 300px;
-  max-width: 400px;
-  flex: 1 1 auto;
-}
-.title{
-  font-weight: 600;
-}
-.form{
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-  align-items: center;
-  width: 95%;
-  margin-top: 10px;
-}
-.form label{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: black;
-}
-label > input{
-  width: 60%;
-  border: rgb(96, 0, 128) 1.5px solid;
-  border-radius: 5px;
-  padding: 5px;
-  outline: none;
-}
-button{
-  width: 200px;
-  padding: 10px 1px;
-  border-radius: 20px;
-  border: none;
-  background-color: rgb(96, 0, 128);
-  color: white;
-  font-weight: 600;
-  margin-top: 10px;
-}
-.terms{
-  color: black;
-  margin-top: 5px;
+  height: 100vh;
+  margin: 0;
 }

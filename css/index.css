@@ -1,5 +1,5 @@
 .intro{
-  margin-top: 50px;
+  /* margin-top: 50px; */
   background-color: white;
   padding: 5px;
   display: flex;
@@ -31,8 +31,8 @@
 }
 .startBtn{
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  justify-content: space-around;
+  width: 100%;
   column-gap: 10px;
 }
 .getStart, .logIn{
@@ -63,4 +63,11 @@
   font-weight: 700;
   margin-top: 5px;
   margin-bottom: 9px;
+}
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
 }

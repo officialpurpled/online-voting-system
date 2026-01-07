@@ -1,4 +1,4 @@
-import { getFromStorage, saveToStorage } from "../data/users.js";
+import { getFromStorage } from "../data/users.js";
 
 let userinfor= document.querySelector('.userinfor');
 
@@ -10,40 +10,37 @@ const users = getFromStorage('users');
 
 // const userId = currentUser.userId
 
-users.forEach(user => {
-  if (user.userId == currentUser.userId) {
-    user.session.lastLogin = currentUser.session.lastLogin
+// users.forEach(user => {
+//   if (user.userId == currentUser.userId) {
+//     user.session.lastLogin = currentUser.session.lastLogin
 
-    saveToStorage(users);
-  }
-});
+//     saveToStorage(users);
+//   }
+// });
 
 function renderProfileData() {
   userimg.src = currentUser.image.photo || "../images/avatar.jpg";
   userinfor.innerHTML = `
     <div class="biodata">
-      <h3>BIO DATA</h3>
+      <span class="label">BIO DATA</span>
       <div>
         Name: <p> ${currentUser.username}</p>
+      </div>
+      <div>
+        Email: <p> ${currentUser.email}</p>
       </div>
       <div>
         Reg/Matric: <p> ${currentUser.matric}</p>
       </div>
       <div>
-        UserId:<p>  ${currentUser.userId}</p>
+        User ID:<p>  ${currentUser.userId}</p>
       </div>
       <div>
-        Already Voted: <p> ${currentUser.status.voted}</p>
-      </div>
-      <div>
-        Registration Date: <p> ${currentUser.session.regDate}</p>
-      </div>
-      <div>
-        Last Login: <p> ${currentUser.session.lastLogin}</p>
+        Vote count:<p>  ${currentUser.vote}</p>
       </div>
     </div>
     <div class="stddata">
-      <h3>STUDENTSHIP DATA</h3>
+      <span class="label">STUDENTSHIP DATA</span>
       <div>
         Faculty: <p>${currentUser.faculty}</p>
       </div>
@@ -53,6 +50,12 @@ function renderProfileData() {
       <div>
         Current Level: <p> ${currentUser.level}</p>
       </div>
+
+      <button> 
+        <a href="dashboard.html">
+          Back to dashboard 
+        </a>
+      </button>
     </div>
   `
 }

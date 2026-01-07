@@ -3,253 +3,384 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/nav.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
+  <title>
+    Dashboard
+  </title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
   <header>
-    <nav>
-      <div class="left-nav">
-        <img src="../images/logo.png" alt="Logo" width="50%">
-      </div>
-      <div class="right-nav">
-        <div class="profile-abstract">
-          
-          <div class="avatar"> 
-            <img src="../images/icons/user.svg" >
-          </div>
-          <div style="display: flex; flex-direction: column;">
-            <p>user.username</p>
-            <p>user.userId</p>
-          </div>
-        </div>
-        <div class="menu-icon">
-          <img src="../images/icons/menu-nav.svg" alt="">
-        </div>
-      </div>
-    </nav>
-  </header>
-  <section>
-    <div class="side-nav">
-        <a>
-          <img src="../images/icons/home.svg" alt="">
-          Dashboard
-        </a>
-
-        <a href="profile.html">
-          <img src="../images/icons/settings.svg" alt="">
-          My Profile
-        </a> 
-
-        <a href="../index.html">
-          <img src="../images/icons/help.svg" alt="">
-          Log Out
-        </a> 
+    <div class="left-section">
+      <img src="../images/logo.png" alt="Logo" width="50%">
     </div>
-    <main>
-      <div class="campSection">
-        <div class="campHead">Departmental Voting Campaign</div>
-        <div class="campBody"> 
+    <div class="right-section">
+      <div class="profile-abstract">
+        <div class="avatar"> 
+          <img src="../images/icons/user.svg" >
+        </div>
+        
+        <div style="display: flex; flex-direction: column;">
+          <p>user.username</p>
+          <p>user.userId</p>
+        </div>
+      </div>
+      <div class="menu-icon">
+        <img src="../images/icons/menu-nav.svg" alt="">
+      </div>
+    </div>
+  </header>
 
-          <div class="election-card">
-            <div class="icon">
-              <img src="../images/avatar.jpg" alt="">
-            </div>
-            <div class="details">
-              <div class="position"> 
-                <b>POST :</b> President 
-              </div>
-              <!-- <div class="candidate-list"> -->
-                <select name="candidate" id="candidates">
-                  <option selected disabled>         
-                    Select a candidate
-                  </option>
-                  <option value="">         
-                    Candidate a
-                  </option>
-                  <option value="">         
-                    Candidate b
-                  </option>
-                  <option value="candidate">         
-                    candidate c
-                  </option> 
-                </select>
-              <!-- </div> -->
-              <button class="vote"> 
-                VOTE 
-              </button>
-            </div>
+  <nav>
+    <a href="#">
+      <img src="../images/icons/home.svg" alt="">
+      Dashboard
+    </a>
+    
+    <a href="#">
+      <img src="../images/icons/home.svg" alt=""> 
+      View Result
+    </a>
+
+    <a href="profile.html">
+      <img src="../images/icons/settings.svg" alt="">
+      My Profile
+    </a> 
+
+    <a href="../index.html">
+      <img src="../images/icons/help.svg" alt="">
+      Log Out
+    </a> 
+  </nav>
+
+  <main>
+    <div class="campSection">
+      <div class="campHead">
+        Departmental Voting Campaign
+      </div>
+      <div class="campBody"> 
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
           </div>
-          <!-- no available campaign  -->
-          <div class="election-card">
-            <div class="icon">
-              <img src="../images/avatar.jpg" alt="">
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> President 
             </div>
-            <div class="details">
-              <div class="position"> 
-                <b>POST :</b> ICT Director 
-              </div>
-              <!-- <div class="candidate-list"> -->
-                <select name="candidate" id="candidates">
-                  <option selected disabled>         
-                    Select a candidate
-                  </option>
-                  <option value="">         
-                    Candidate a
-                  </option>
-                  <option value="">         
-                    Candidate b
-                  </option>
-                  <option value="candidate">         
-                    candidate c
-                  </option> 
-                </select>
-              <!-- </div> -->
-              <button class="vote"> 
-                VOTE 
-              </button>
+            <!-- <div class="candidate-list"> -->
+            <select name="candidate" id="candidates">
+              <option selected disabled>         
+                Select a candidate
+              </option>
+              <option value="">         
+                Candidate a
+              </option>
+              <option value="">         
+                Candidate b
+              </option>
+              <option value="candidate">         
+                candidate c
+              </option> 
+            </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
+        </div>
+        <!-- no available campaign  -->
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> ICT Director 
             </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
+        </div>
+
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> President 
+            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
+        </div>
+        <!-- no available campaign  -->
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> ICT Director 
+            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
+        </div>
+
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> President 
+            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
+        </div>
+        <!-- no available campaign  -->
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> ICT Director 
+            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
           </div>
         </div>
       </div>
-      <div class="campSection">
-        <div class="campHead">Faculty Voting Campaign</div>
-        <div class="campBody"> 
+    </div>
 
-          <div class="election-card">
-            <div class="icon">
-              <img src="../images/avatar.jpg" alt="">
-            </div>
-            <div class="details">
-              <div class="position"> 
-                <b>POST :</b> President 
-              </div>
-              <!-- <div class="candidate-list"> -->
-                <select name="candidate" id="candidates">
-                  <option selected disabled>         
-                    Select a candidate
-                  </option>
-                  <option value="">         
-                    Candidate a
-                  </option>
-                  <option value="">         
-                    Candidate b
-                  </option>
-                  <option value="candidate">         
-                    candidate c
-                  </option> 
-                </select>
-              <!-- </div> -->
-              <button class="vote"> 
-                VOTE 
-              </button>
-            </div>
-          </div>
-          <!-- no available campaign  -->
-          <div class="election-card">
-            <div class="icon">
-              <img src="../images/avatar.jpg" alt="">
-            </div>
-            <div class="details">
-              <div class="position"> 
-                <b>POST :</b> President 
-              </div>
-              <!-- <div class="candidate-list"> -->
-                <select name="candidate" id="candidates">
-                  <option selected disabled>         
-                    Select a candidate
-                  </option>
-                  <option value="">         
-                    Candidate a
-                  </option>
-                  <option value="">         
-                    Candidate b
-                  </option>
-                  <option value="candidate">         
-                    candidate c
-                  </option> 
-                </select>
-              <!-- </div> -->
-              <button class="vote"> 
-                VOTE 
-              </button>
-            </div>
-          </div>
+    <div class="campSection">
+      <div class="campHead">Faculty Voting Campaign</div>
+      <div class="campBody"> 
 
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> President 
+            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div class="campSection">
-        <div class="campHead">Student Union Voting Campaign</div>
-        <div class="campBody"> 
-
-          <div class="election-card">
-            <div class="icon">
-              <img src="../images/avatar.jpg" alt="">
-            </div>
-            <div class="details">
-              <div class="position"> 
-                <b>POST :</b> President 
-              </div>
-              <!-- <div class="candidate-list"> -->
-                <select name="candidate" id="candidates">
-                  <option selected disabled>         
-                    Select a candidate
-                  </option>
-                  <option value="">         
-                    Candidate a
-                  </option>
-                  <option value="">         
-                    Candidate b
-                  </option>
-                  <option value="candidate">         
-                    candidate c
-                  </option> 
-                </select>
-              <!-- </div> -->
-              <button class="vote"> 
-                VOTE 
-              </button>
-            </div>
+        <!-- no available campaign  -->
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
           </div>
-          <!-- no available campaign  -->
-
-          <div class="election-card">
-            <div class="icon">
-              <img src="../images/avatar.jpg" alt="">
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> President 
             </div>
-            <div class="details">
-              <div class="position"> 
-                <b>POST :</b> President 
-              </div>
-              <!-- <div class="candidate-list"> -->
-                <select name="candidate" id="candidates">
-                  <option selected disabled>         
-                    Select a candidate
-                  </option>
-                  <option value="">
-                    Candidate A
-                  </option>
-                  <option value=""> 
-                    Candidate B
-                  </option>
-                  <option value="candidate">
-                    Candidate C
-                  </option> 
-                </select>
-              <!-- </div> -->
-              <button class="vote"> 
-                VOTE 
-              </button>
-            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
           </div>
-
         </div>
+
       </div>
-    </main>
-  </section>
+    </div>
+
+    <div class="campSection">
+      <div class="campHead">Student Union Voting Campaign</div>
+      <div class="campBody"> 
+
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> President 
+            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">         
+                  Candidate a
+                </option>
+                <option value="">         
+                  Candidate b
+                </option>
+                <option value="candidate">         
+                  candidate c
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
+        </div>
+        <!-- no available campaign  -->
+
+        <div class="election-card">
+          <div class="icon">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="details">
+            <div class="position"> 
+              <b>POST :</b> President 
+            </div>
+            <!-- <div class="candidate-list"> -->
+              <select name="candidate" id="candidates">
+                <option selected disabled>         
+                  Select a candidate
+                </option>
+                <option value="">
+                  Candidate A
+                </option>
+                <option value=""> 
+                  Candidate B
+                </option>
+                <option value="candidate">
+                  Candidate C
+                </option> 
+              </select>
+            <!-- </div> -->
+            <button class="vote"> 
+              VOTE 
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+  </footer>
 
   <script src="../script/vote.js" type="module"></script>
 </body>

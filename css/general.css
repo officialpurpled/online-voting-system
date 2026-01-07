@@ -10,18 +10,21 @@ body{
   rgb(161, 221, 229)
   ;
   color: rgb(96, 0, 128);
+  height: 100vh;
 }
 
 main{
-  margin-top: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 120px;
+  margin-left: 190px;
+  /* margin-right: 10px; */
+  margin-bottom: 50px;
 }
+ 
 a{
   text-decoration: none;
   color:  rgb(96, 0, 128);
 }
+
 footer{
   background-color:  rgb(96, 0, 128);
   color: white;
@@ -32,9 +35,11 @@ footer{
   text-align: center;
   z-index: 1000;
 }
+
 footer > div{
   padding: 10px;
 }
+
 /* @keyframes{
   footer{
 

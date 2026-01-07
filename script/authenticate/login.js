@@ -66,5 +66,5 @@ loginBtn.addEventListener('click',()=>{
   .then(data => console.log('Response: ', data.message))
   .catch(err => console.log('Error:', err))
 
-// login()
+login()
 });

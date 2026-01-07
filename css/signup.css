@@ -74,3 +74,8 @@ button{
 .ruler p{
   margin: 0 2px;
 }
+main{
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+}

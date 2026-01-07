@@ -1,0 +1,9 @@
+/* for tablet device */
+@media (max-width: 1000px) and  (min-width: 550px){
+ 
+} 
+
+/* for mobile device */
+@media (max-width: 550px){
+
+}

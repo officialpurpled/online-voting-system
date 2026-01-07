@@ -6,68 +6,105 @@
   <title>Profile</title>
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/profile.css">
-  <link rel="stylesheet" href="../css/login.css">
+  <!-- <link rel="stylesheet" href="../css/mediaquery.css"> -->
 </head>
 <body>
   <header>
-    <nav>
-      <div class="left-nav">
-        <img src="../images/logo.png" alt="Logo" width="50%">
+    <div class="left-section">
+      <img src="../images/logo.png" alt="Logo" width="50%">
+    </div>
+    <div class="right-section">
+      <a href="dashboard.html">
+       <img src="../images/icons/home.svg" alt=""> 
+       Dashboard
+      </a>
+      <a href="#">
+        <img src="../images/icons/home.svg" alt=""> 
+        View Result
+      </a>
+      <a href="#">
+        <img src="../images/icons/home.svg" alt=""> 
+        Logout
+      </a>
+
+      <div class="display menu-icon">
+        <img src="../images/icons/menu-nav.svg" alt="">
       </div>
-      <div class="right-nav">
-        <div>
-          Home
-        </div>
-        <div>
-          Vote
-        </div>
-        <div>
-          Profile
-        </div>
-        <div>
-          Logout
-        </div>
-      </div>
-    </nav>
+    </div>
   </header>
+
+  <nav>
+    <a href="dashboard.html">
+      <img src="../images/icons/home.svg" alt="">
+      Dashboard
+    </a>
+    
+    <a href="#">
+      <img src="../images/icons/home.svg" alt=""> 
+      View Result
+    </a>
+
+    <a href="#">
+      <img src="../images/icons/settings.svg" alt="">
+      My Profile
+    </a> 
+
+    <a href="../index.html">
+      <img src="../images/icons/help.svg" alt="">
+      Log Out
+    </a> 
+  </nav>
+
   <main>
     <div class="container">
-      <div class="userimg">
-        <img src="../images/avatar.jpg" alt="avatar">
-        <p>edit photo</p>
-      </div>
-      <div class="userinfor">
-        <div class="biodata">
-          <h3>BIO DATA</h3>
-          <div>
-            Name: <p> ${currentUser.username}</p>
+      <div class="container-wrapper">
+        <div class="userimg">
+          <img src="../images/avatar.jpg" alt="avatar">
+          <p>edit photo</p>
+        </div>
+        <div class="userinfor">
+          <div class="biodata">
+            <span class="label">BIO DATA</span>
+            <div>
+              Name: <p> ${currentUser.username}</p>
+            </div>
+            <div>
+              Email: <p> ${currentUser.email}</p>
+            </div>
+            <div>
+              Reg/Matric: <p> ${currentUser.matric}</p>
+            </div>
+            <div>
+              User ID:<p>  ${currentUser.userId}</p>
+            </div>
+            <div>
+              Vote count:<p>  ${currentUser.vote}</p>
+            </div>
           </div>
-          <div>
-            Reg/Matric: <p> ${currentUser.matric}</p>
-          </div>
-          <div>
-            UserId:<p>  ${currentUser.userId}</p>
+  
+          <div class="stddata">
+            <span class="label">STUDENTSHIP DATA</span>
+            <div>
+              Faculty: <p>currentUser.faculty</p>
+            </div>
+            <div>
+              Department: <p>currentUser.department</p>
+            </div>
+            <div>
+              Current Level: <p> currentUser.level</p>
+            </div>
+  
+            <button> 
+              <a href="dashboard.html">
+                Back to dashboard 
+              </a>
+            </button>
+  
           </div>
         </div>
-        <div class="stddata">
-          <h3>STUDENTSHIP DATA</h3>
-          <div>
-            Faculty: <p>currentUser.faculty</p>
-          </div>
-          <div>
-            Department: <p>currentUser.department</p>
-          </div>
-          <div>
-            Current Level: <p> currentUser.level</p>
-          </div>
-        </div>
       </div>
-      <button class="login"> 
-        <a href="home.html" style="color: white;">
-          CLICK TO VOTE 
-        </a>
-      </button>
     </div>
   </main>
     <!-- <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script> -->
