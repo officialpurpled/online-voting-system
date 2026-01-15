@@ -1,3 +1,20 @@
+:root{
+  --color-primary: #116530; /* green primary */
+  --color-secondary: #34D399; /* soft green */
+  --color-accent: #F97316; /* warm accent */
+  --color-bg: #F6FEF6; /* off-white */
+  --color-surface: #FFFFFF;
+  --color-text: #0A0A0A;
+  --color-muted: #6B7280;
+  --color-danger: #DC2626; /* destructive */
+  --focus-ring: rgba(16,185,129,0.18);
+  --table-header-bg: rgba(17,24,39,0.04);
+  --muted-bg: #F1F5F9;
+  --radius-lg: 10px;
+  --shadow-sm: 0 2px 6px rgba(10,10,10,0.06);
+  --shadow-md: 0 8px 24px rgba(10,10,10,0.08);
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -5,13 +22,10 @@
 
 body{
   box-sizing: border-box;
-  background-color: 
-  /* rgba(0, 0, 255, 0.402) */
-  rgb(161, 221, 229)
-  ;
-  color: rgb(96, 0, 128);
-  height: 100vh;
-}
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+} 
 
 main{
   margin-top: 120px;
@@ -22,12 +36,18 @@ main{
  
 a{
   text-decoration: none;
-  color:  rgb(96, 0, 128);
+  color: var(--color-primary);
+}
+
+.active,
+.active:hover{
+  background-color: var(--color-primary);
+  color: var(--color-surface);
 }
 
 footer{
-  background-color:  rgb(96, 0, 128);
-  color: white;
+  background-color:  var(--color-primary);
+  color: var(--color-surface);
   bottom: 0;
   left: 0;
   right: 0;

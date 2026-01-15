@@ -13,12 +13,13 @@
 
 }
 .introHead{
- border-bottom: 1.5px solid rgb(96, 0, 128);
+ border-bottom: 1.5px solid var(--color-primary);
  padding: 12px 5px;
  width: 100%;
  text-align: center;
  font-family: Arial Black;
-}
+ color: var(--color-text);
+} 
 .introBody{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 550;
@@ -43,21 +44,21 @@
   font-weight: 600;
 }
 .getStart{
-  color: white;
-  background-color:  rgb(96, 0, 128);
+  color: var(--color-surface);
+  background-color: var(--color-primary);
   border: none;
 }
 .getStart a{
-  color: white;
+  color: var(--color-surface);
 }
 .logIn{
-  color:  rgb(96, 0, 128);
-  background-color: white;
-  border:  rgb(96, 0, 128) 2px solid;
+  color:  var(--color-primary);
+  background-color: var(--color-surface);
+  border:  var(--color-primary) 2px solid;
 }
 .logIn a{
-  color:  rgb(96, 0, 128);
-}
+  color:  var(--color-primary);
+} 
 .callCare{
   font-family: Calibri;
   font-weight: 700;

@@ -8,13 +8,12 @@ header{
   z-index: 999;
   padding: 15px;
 
-  border-bottom: 1.5px solid rgb(96, 0, 128);
+  border-bottom: 1px solid rgba(17,85,48,0.12);
   border-radius: 5px;
 
-  background-color: 
-  /* rgba(0, 0, 255, 0.402) */
-  rgb(161, 221, 229)
-  ;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+
 }
 
 header{
@@ -44,8 +43,16 @@ header{
 }
 
 .right-section > a{
+  color: var(--color-surface);
   display: flex;
   align-items: center;
   gap: 5px;
   justify-content: center;
+}
+.right-section > a:hover{
+  /* text-decoration: wavy underline; */
+  border: 1.5px solid var(--color-secondary);
+  padding: 4px 7px;
+  border-radius: 2px;
+  transition: .3s;
 }

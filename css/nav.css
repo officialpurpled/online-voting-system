@@ -8,35 +8,35 @@
 .avatar img {
   position: relative;
   top: 6.5px;
+  /* color: white; */
 }
 .profile-abstract:hover{
-  color:  rgb(96, 0, 128);
-  border: 1.5px solid;
+  border: 1.5px solid var(--color-secondary);
   padding: 2px 7px;
   border-radius: 2px;
   transition: .3s;
 }
 .menu-icon{
-  color:  rgb(96, 0, 128);
-  border: 1.5px solid;
+  color:  var(--color-primary);
+  border: 1.5px solid var(--color-secondary);
   padding: 1px 5px;
   border-radius: 2px;
   display: flex;
-}
+} 
 
 nav{
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background-color: rgb(161, 221, 229); 
-  border-right: 1.5px solid  rgb(96, 0, 128);
+  background-color: var(--color-surface);
+  border-right: 1.5px solid var(--color-secondary);
   bottom: 0;
   top: 0;
   position: fixed;
   padding-top: 120px;
   width: 190px;
   z-index: 998;
-}
+} 
 nav a{
   display: flex;
   align-items: center;

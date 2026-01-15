@@ -25,16 +25,17 @@
 
 /* Election Card  */
   .election-card{
-    border-top: 1.5px solid  rgb(96, 0, 128);
-    border-radius: 10px;
-    box-shadow: 3px 3px 7px rgb(98, 95, 95);
-    background-color: white;
+    border-top: 4px solid  var(--color-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-surface);
+    transition: transform .18s ease, box-shadow .18s ease;
     
     max-width: 200px;
     min-width: 150px;
     
-    overflow: hidden;
-  }
+    /* overflow: hidden; */
+  } 
 
 .icon{
   border-radius: 12px;
@@ -53,24 +54,31 @@
 #candidates{
   margin: 0 3px;
   height: 30px;
-  color:  rgb(96, 0, 128);
+  color:  var(--color-primary);
   background-color: transparent;
-  border: 1.3px solid  rgb(96, 0, 128);
+  border: 1.5px solid  var(--color-secondary);
   border-radius: 10px;
 
   outline: none;
 }
 option{
-  background-color:  rgb(96, 0, 128);
-  color: white;
+  background-color:  var(--color-secondary);
+  color: var(--color-surface);
 }
 
 button{
-  color: white;
-  background-color:  rgb(96, 0, 128);
+  color: var(--color-surface);
+  background-color:  var(--color-primary);
   border: solid 0px;
   padding: 10px 0px;
   cursor: pointer;
   font-weight: 700;
+} 
+.vote{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 

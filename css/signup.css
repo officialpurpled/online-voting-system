@@ -9,7 +9,7 @@
 
   background-color: rgba(255, 255, 255, 0.648);
   border-radius: 10px;
-  border: 1px solid rgb(96, 0, 128);
+  border: 1px solid var(--color-secondary);
 
   margin-top: 50px;
   margin-bottom: 40px;
@@ -33,11 +33,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgb(96, 0, 128);
+  color: var(--color-primary);
 }
 label input{
   width: 60%;
-  border: rgb(96, 0, 128) 1.5px solid;
+  border: var(--color-secondary) 1.5px solid;
   border-radius: 5px;
   padding: 5px;
   outline: none;
@@ -47,15 +47,15 @@ button{
   padding: 10px 1px;
   border-radius: 20px;
   border: none;
-  background-color: rgb(96, 0, 128);
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
   font-weight: 600;
   margin-top: 10px;
 }
 .terms{
-  color: rgb(96, 0, 128);
+  color: var(--color-primary);
   margin-top: 5px;
-}
+} 
 
 .ruler{
   width: 100%;

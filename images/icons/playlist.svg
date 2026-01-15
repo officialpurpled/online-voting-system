@@ -1,3 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill:var(--color-primary)" width="24" height="24">
 <path d="M3 10h14v2H3v-2zm0-4h14v2H3V6zm0 8h9v2H3v-2zm15-2v5.17L20.17 15 21 15.83l-4 4-4-4 .83-.83L16 17.17V12h2z"/>
 </svg>

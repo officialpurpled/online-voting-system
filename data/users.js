@@ -1,6 +1,6 @@
 const testUser = [];
 
-fetch('http://localhost:8000/users')
+fetch('http://localhost:3030/users')
   .then((response)=>{
     if (!response.ok) {
       console.log('Bad response')

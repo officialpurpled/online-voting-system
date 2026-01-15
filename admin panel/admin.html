@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="../css/general.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header>
+    <div class="left-section">
+      <img src="../images/logo.png" alt="Logo" width="50%">
+    </div>
+    <div class="right-section">
+      <div class="admin-role" id="adminRole">Role: <b>Super Admin</b></div>
+      <button id="exportBtn" class="btn--primary">Export CSV</button>
+      <button id="exportJsonBtn" class="btn--primary">Export JSON</button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" role="navigation" aria-label="Admin navigation">
+      <nav>
+        <a href="#overview" class="active">Overview</a>
+        <a href="#voters">Voters</a>
+        <a href="#elections">Elections</a>
+        <a href="#results">Results</a>
+        <a href="#logs">Audit Logs</a>
+        <a href="#settings">Settings</a>
+      </nav>
+    </aside>
+
+    <main role="main" style="padding:18px;">
+      <section id="overview">
+        <h2>Overview</h2>
+        <div class="kpi-row" id="kpiRow">
+          <div class="kpi-card">
+            <h3>Active Elections</h3>
+            <p id="kpiElections">—</p>
+          </div>
+          <div class="kpi-card">
+            <h3>Registered Voters</h3>
+            <p id="kpiVoters">—</p>
+          </div>
+          <div class="kpi-card">
+            <h3>Turnout</h3>
+            <p id="kpiTurnout">—</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="voters" hidden>
+        <h2>Voters Management</h2>
+        <div class="filter-row">
+          <input id="searchVoter" placeholder="Search by name or id" aria-label="Search voters">
+          <select id="filterStatus" aria-label="Filter status">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="suspended">Suspended</option>
+          </select>
+          <button id="bulkActivate" class="btn--primary">Activate Selected</button>
+          <button id="bulkExport" class="btn--primary">Export Selected</button>
+        </div>
+
+        <table class="admin-table" aria-label="Voters table" id="votersTable">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="selectAll"></th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Matric/ID</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- populated by script -->
+          </tbody>
+        </table>
+      </section>
+
+      <section id="elections" hidden>
+        <h2>Elections</h2>
+        <div id="electionList">(placeholder for election management)</div>
+      </section>
+
+      <section id="results" hidden>
+        <h2>Results</h2>
+        <div id="resultsArea">(placeholder for charts and exports)</div>
+      </section>
+
+      <section id="logs" hidden>
+        <h2>Audit Logs</h2>
+        <div id="logsArea">(placeholder for logs)</div>
+      </section>
+
+      <section id="settings" hidden>
+        <h2>Settings & Roles</h2>
+        <div id="settingsArea">(assign sub-admins, RBAC)</div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Confirm modal -->
+  <div class="modal" id="confirmModal" role="dialog" aria-hidden="true" aria-labelledby="confirmTitle">
+    <div class="panel">
+      <h3 id="confirmTitle">Confirm action</h3>
+      <p id="confirmMessage">Are you sure?</p>
+      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+        <button id="confirmCancel" class="btn--primary">Cancel</button>
+        <button id="confirmOk" class="btn--danger">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin-api.js" type="module"></script>
+  <script src="admin.js" type="module"></script>
+</body>
+</html>
