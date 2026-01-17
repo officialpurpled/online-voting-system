@@ -6,7 +6,55 @@ import {userIdGen} from '../utils/idGen.js'
 const today = 'january 1'
 // dayjs().format('ddd M, MMM YYYY (hh:mm A)');
 
-console.log(today);
+
+let facultiesData = null;
+
+// Load the JSON data
+fetch('../data/deptFac.json')
+  .then(res => res.json())
+  .then(data => {
+    facultiesData = data;
+    
+    // Populate faculty dropdown
+    const facultySelect = document.querySelector('#faculty');
+    data.faculties.forEach((faculty) => {
+      const option = document.createElement('option');
+      option.value = faculty.name; // Use the actual faculty name
+      option.textContent = faculty.name;
+      facultySelect.appendChild(option);
+    });
+    
+    // Load departments for the first faculty (if any)
+    if (data.faculties.length > 0) {
+      loadDepartments(data.faculties[0].name);
+    }
+  })
+  .catch(_err => console.log('Error loading faculty list', _err));
+
+// Function to load departments based on selected faculty name
+function loadDepartments(facultyName) {
+  const departmentSelect = document.querySelector('#department');
+  departmentSelect.innerHTML = ''; // Clear existing options
+  
+  if (facultiesData) {
+    // Find the faculty by name
+    const faculty = facultiesData.faculties.find(f => f.name === facultyName);
+    
+    if (faculty) {
+      faculty.departments.forEach(department => {
+        const option = document.createElement('option');
+        option.value = department;
+        option.textContent = department;
+        departmentSelect.appendChild(option);
+      });
+    }
+  }
+}
+
+// Listen for faculty selection changes
+document.querySelector('#faculty').addEventListener('change', (e) => {
+  loadDepartments(e.target.value);
+});
 
 
 const signinBtn = document.querySelector('.signup')
@@ -56,9 +104,9 @@ function signup() {
   const email = document.querySelector('.email').value;
   const matric = document.querySelector('.matric').value.toUpperCase();
   const password = document.querySelector('.password').value.trim();
-  const faculty = document.querySelector('.faculty').value;
-  const department = document.querySelector('.department').value;
-  const level = document.querySelector('.level').value;
+  const faculty = document.querySelector('#faculty').value;
+  const department = document.querySelector('#department').value;
+  const level = document.querySelector('#level').value;
   const radio = document.querySelector('.radio');
   
   let newuser = {

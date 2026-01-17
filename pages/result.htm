@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Dashboard
+  </title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+      .tempBody {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 35px;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="left-section">
+      <img src="../images/logo.png" alt="Logo" width="50%">
+    </div>
+    <div class="right-section">
+      <div class="profile-abstract">
+        <div class="avatar"> 
+          <img src="../images/icons/user.svg" >
+        </div>
+
+        <div style="display: flex; flex-direction: column;" id="ab-user-info">
+          <p>${user.username}</p>
+          <p>${user.studentId}</p>
+        </div>
+      </div>
+      <div class="menu-icon">
+        <img src="../images/icons/menu-nav.svg" alt="">
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="dashboard.html">
+      <img src="../images/icons/home.svg" alt="Dashboard">
+      Dashboard
+    </a>
+    
+    <a href="#" class="active">
+      <img src="../images/icons/history.svg" alt="View results">
+      View Result
+    </a>
+
+    <a href="profile.html">
+      <img src="../images/icons/user.svg" alt="Profile">
+      My Profile
+    </a> 
+
+    <a href="../index.html">
+      <img src="../images/icons/arr-back.svg" alt="Log out">
+      Log Out
+    </a> 
+  </nav>
+
+  <main>
+    
+    <div class="campSection">
+      <div class="campHead">DEPARTMENTAL RESULT</div>
+
+      <div class="tempBody candidate">
+        <div>
+          candidate 1 : voteCount
+        </div>
+        candidate : voteCount        
+      </div>
+
+      <!-- <div class="campBody" id="general" style="display: none;">  -->
+      <!-- </div> -->
+    </div>
+
+    <div class="campSection">
+      <div class="campHead">FACULTY RESULT</div>
+
+      <div class="tempBody candidate">
+        <div>
+          candidate 1 : voteCount
+        </div>
+        candidate : voteCount        
+      </div>
+
+      <!-- <div class="campBody" id="general" style="display: none;">  -->
+      <!-- </div> -->
+    </div>
+
+    <div class="campSection">
+      <div class="campHead">SUG RESULT</div>
+
+      <div class="tempBody candidate">
+        <div>
+          candidate 1 : voteCount
+        </div>
+        candidate : voteCount        
+      </div>
+
+      <!-- <div class="campBody" id="general" style="display: none;">  -->
+      <!-- </div> -->
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+  <!-- <script src="../script/dashboard.js" type="module"></script> -->
+</body>
+</html>

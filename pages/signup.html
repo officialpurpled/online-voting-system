@@ -37,13 +37,21 @@
           <input type="text" id="regMatricNo" class="matric">
         </label>
         <label> Faculty:
-          <input type="text" id="faculty" class="faculty">
+          <select name="faculty" id="faculty">
+          </select>
         </label>
         <label> Department:
-          <input type="text" id="department" class="department">
+          <select name="department" id="department">
+          </select>
         </label>
         <label> Current Level:
-          <input type="tel" id="level" class="level" maxlength="3">
+          <select name="level" id="level">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+          </select>
         </label>
         <label>
           Password:
@@ -66,7 +74,7 @@
           <input type="file" class="photo" accept="image/*">
         </label>
         <div id="message" style="display: none;"></div>
-        <button class="signup">SIGN UP</button>
+        <button class="signup" type="submit">SIGN UP</button>
       </div>
       <div class="terms">
         <input type="radio" class="radio">
@@ -87,7 +95,7 @@
     </div>
   </main>
 
-  <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script>
+  <!-- <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script> -->
   <script src="../script/authenticate/signup.js" type="module"></script>
 </body>
 </html>

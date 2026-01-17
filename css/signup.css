@@ -35,12 +35,15 @@
   align-items: center;
   color: var(--color-primary);
 }
-label input{
+label input,select{
   width: 60%;
   border: var(--color-secondary) 1.5px solid;
   border-radius: 5px;
   padding: 5px;
   outline: none;
+}
+label select {
+  width: 63%;
 }
 button{
   width: 200px;

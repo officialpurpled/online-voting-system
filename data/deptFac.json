@@ -1,0 +1,107 @@
+{
+  "university": "Olabisi Onabanjo University",
+  "faculties": [
+    {
+      "name": "Faculty of Arts",
+      "departments": [
+        "English",
+        "History and Diplomatic Studies",
+        "Performing Arts",
+        "Religious Studies",
+        "Yoruba"
+      ]
+    },
+    {
+      "name": "Faculty of Education",
+      "departments": [
+        "Educational Foundations and Counselling",
+        "Educational Management and Business Studies",
+        "Arts and Social Sciences Education",
+        "Science and Technology Education",
+        "Physical and Health Education"
+      ]
+    },
+    {
+      "name": "Faculty of Law",
+      "departments": [
+        "Public Law",
+        "Private Law",
+        "Jurisprudence and International Law"
+      ]
+    },
+    {
+      "name": "Faculty of Science",
+      "departments": [
+        "Physics",
+        "Chemistry",
+        "Mathematics",
+        "Computer Science",
+        "Plant Science",
+        "Zoology"
+      ]
+    },
+    {
+      "name": "Faculty of Social Sciences",
+      "departments": [
+        "Economics",
+        "Political Science",
+        "Psychology",
+        "Sociology"
+      ]
+    },
+    {
+      "name": "Faculty of Basic Medical Sciences",
+      "departments": [
+        "Anatomy",
+        "Physiology",
+        "Biochemistry"
+      ]
+    },
+    {
+      "name": "Faculty of Clinical Sciences",
+      "departments": [
+        "Medicine",
+        "Surgery",
+        "Paediatrics",
+        "Obstetrics and Gynaecology",
+        "Community Medicine"
+      ]
+    },
+    {
+      "name": "Faculty of Pharmacy",
+      "departments": [
+        "Pharmacology",
+        "Pharmaceutics",
+        "Pharmaceutical Chemistry",
+        "Pharmacognosy"
+      ]
+    },
+    {
+      "name": "Faculty of Engineering and Environmental Studies",
+      "departments": [
+        "Civil Engineering",
+        "Electrical/Electronics Engineering",
+        "Mechanical Engineering",
+        "Architecture",
+        "Urban and Regional Planning"
+      ]
+    },
+    {
+      "name": "Faculty of Agricultural Production and Renewable Resources",
+      "departments": [
+        "Crop Production",
+        "Animal Production",
+        "Fisheries",
+        "Forestry and Wildlife"
+      ]
+    },
+    {
+      "name": "Faculty of Agricultural Management and Rural Development",
+      "departments": [
+        "Agricultural Economics",
+        "Agricultural Extension and Rural Sociology",
+        "Home Science and Hospitality Management"
+      ]
+    }
+  ]
+}
