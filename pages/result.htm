@@ -3,18 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    Dashboard
-  </title>
+  <title>Election Results</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <style>
-      .tempBody {
+      main {
+        padding: 20px;
+      }
+
+      .results-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .election-section {
+        background-color: var(--color-surface);
+        border-radius: var(--radius-lg);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .section-title {
+        font-size: 1.8em;
+        color: var(--color-primary);
+        margin-bottom: 25px;
+        border-bottom: 3px solid var(--color-accent);
+        padding-bottom: 15px;
         text-align: center;
-        margin-top: 10px;
-        margin-bottom: 35px;
+      }
+
+      .candidate-card {
+        background: linear-gradient(135deg, var(--color-bg) 0%, var(--muted-bg) 100%);
+        border-left: 5px solid var(--color-secondary);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        transition: transform 0.2s ease;
+      }
+
+      .candidate-card:hover {
+        transform: translateX(5px);
+      }
+
+      .candidate-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .candidate-name {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var(--color-text);
+      }
+
+      .vote-count {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: var(--color-primary);
+        background-color: rgba(17, 101, 48, 0.1);
+        padding: 5px 15px;
+        border-radius: 20px;
+      }
+
+      .progress-container {
+        width: 100%;
+        background-color: var(--muted-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        height: 24px;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 8px;
+        color: white;
+        font-size: 0.85em;
+        font-weight: bold;
+        transition: width 0.3s ease;
+      }
+
+      .percentage {
+        margin-top: 8px;
+        text-align: right;
+        font-size: 0.95em;
+        color: var(--color-muted);
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: var(--color-muted);
+        font-size: 1.1em;
+      }
+
+      .stats-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .stat-box {
+        background-color: var(--color-bg);
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        border-top: 3px solid var(--color-secondary);
+      }
+
+      .stat-label {
+        color: var(--color-muted);
+        font-size: 0.9em;
+        margin-bottom: 8px;
+      }
+
+      .stat-value {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: var(--color-primary);
       }
     </style>
 </head>
@@ -63,52 +178,140 @@
   </nav>
 
   <main>
-    
-    <div class="campSection">
-      <div class="campHead">DEPARTMENTAL RESULT</div>
-
-      <div class="tempBody candidate">
-        <div>
-          candidate 1 : voteCount
+    <div class="results-container">
+      <!-- Departmental Election Results -->
+      <div class="election-section">
+        <div class="section-title">📋 Departmental Election Results</div>
+        
+        <div id="departmental-results" class="results-list">
+          <!-- Results will be populated here -->
         </div>
-        candidate : voteCount        
+
+        <div class="stats-summary" id="dept-stats" style="display: none;">
+          <div class="stat-box">
+            <div class="stat-label">Total Votes</div>
+            <div class="stat-value" id="dept-total-votes">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Candidates</div>
+            <div class="stat-value" id="dept-candidates">0</div>
+          </div>
+        </div>
       </div>
 
-      <!-- <div class="campBody" id="general" style="display: none;">  -->
-      <!-- </div> -->
-    </div>
-
-    <div class="campSection">
-      <div class="campHead">FACULTY RESULT</div>
-
-      <div class="tempBody candidate">
-        <div>
-          candidate 1 : voteCount
+      <!-- Faculty Election Results -->
+      <div class="election-section">
+        <div class="section-title">🏛️ Faculty Election Results</div>
+        
+        <div id="faculty-results" class="results-list">
+          <!-- Results will be populated here -->
         </div>
-        candidate : voteCount        
+
+        <div class="stats-summary" id="faculty-stats" style="display: none;">
+          <div class="stat-box">
+            <div class="stat-label">Total Votes</div>
+            <div class="stat-value" id="faculty-total-votes">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Candidates</div>
+            <div class="stat-value" id="faculty-candidates">0</div>
+          </div>
+        </div>
       </div>
 
-      <!-- <div class="campBody" id="general" style="display: none;">  -->
-      <!-- </div> -->
-    </div>
-
-    <div class="campSection">
-      <div class="campHead">SUG RESULT</div>
-
-      <div class="tempBody candidate">
-        <div>
-          candidate 1 : voteCount
+      <!-- Student Union (SUG) Election Results -->
+      <div class="election-section">
+        <div class="section-title">⭐ Student Union (SUG) Election Results</div>
+        
+        <div id="sug-results" class="results-list">
+          <!-- Results will be populated here -->
         </div>
-        candidate : voteCount        
-      </div>
 
-      <!-- <div class="campBody" id="general" style="display: none;">  -->
-      <!-- </div> -->
+        <div class="stats-summary" id="sug-stats" style="display: none;">
+          <div class="stat-box">
+            <div class="stat-label">Total Votes</div>
+            <div class="stat-value" id="sug-total-votes">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Candidates</div>
+            <div class="stat-value" id="sug-candidates">0</div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
   <footer>
   </footer>
-  <!-- <script src="../script/dashboard.js" type="module"></script> -->
+
+  <script>
+    // Sample election data
+    const electionData = {
+      departmental: [
+        { name: "Chioma Okafor", votes: 245, position: "President" },
+        { name: "Emeka Nwosu", votes: 189, position: "President" },
+        { name: "Zainab Adeyemi", votes: 156, position: "President" },
+        { name: "David Obi", votes: 112, position: "President" }
+      ],
+      faculty: [
+        { name: "Dr. Patricia Eze", votes: 312, position: "Dean Representative" },
+        { name: "Prof. Amara Mbatha", votes: 278, position: "Dean Representative" },
+        { name: "Dr. Kwame Asante", votes: 195, position: "Dean Representative" }
+      ],
+      sug: [
+        { name: "Tunde Akinlade", votes: 523, position: "President" },
+        { name: "Victoria Nnamdi", votes: 487, position: "President" },
+        { name: "Chidi Ezekwu", votes: 412, position: "President" },
+        { name: "Amina Olufemi", votes: 356, position: "President" }
+      ]
+    };
+
+    // Function to render results
+    function renderResults(containerId, statsId, candidates) {
+      const container = document.getElementById(containerId);
+      const statsBox = document.getElementById(statsId);
+      
+      if (!candidates || candidates.length === 0) {
+        container.innerHTML = '<div class="no-results">No results available yet</div>';
+        return;
+      }
+
+      // Calculate totals
+      const totalVotes = candidates.reduce((sum, c) => sum + c.votes, 0);
+      
+      // Sort candidates by votes (descending)
+      const sorted = [...candidates].sort((a, b) => b.votes - a.votes);
+      
+      // Render Candidate Cards
+      container.innerHTML = sorted.map(candidate => {
+        const percentage = ((candidate.votes / totalVotes) * 100).toFixed(1);
+        return `
+          <div class="candidate-card">
+            <div class="candidate-info">
+              <div class="candidate-name">${candidate.name}</div>
+              <div class="vote-count">${candidate.votes} votes</div>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar" style="width: ${percentage}%">${percentage}%</div>
+            </div>
+            <div class="percentage">${percentage}% of total votes</div>
+          </div>
+        `;
+      }).join('');
+
+      // Update statistics
+      statsBox.style.display = 'grid';
+      const deptPrefix = containerId.split('-')[0];
+      document.getElementById(deptPrefix + '-total-votes').textContent = totalVotes;
+      document.getElementById(deptPrefix + '-candidates').textContent = candidates.length;
+    }
+
+    // Render all results when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      renderResults('departmental-results', 'dept-stats', electionData.departmental);
+      renderResults('faculty-results', 'faculty-stats', electionData.faculty);
+      renderResults('sug-results', 'sug-stats', electionData.sug);
+    });
+  </script>
 </body>
 </html>
