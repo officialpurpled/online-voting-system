@@ -9,136 +9,9 @@
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/result.css">
+  <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
-<!-- <style>
-  nav{
-    display: none;
-  }
-  main{
-    margin: 110px 5px;
-  }
-  main > div{
-    background-color: rgba(237, 235, 235, 0.913);
-    margin-bottom: 10px;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: inset 1px -1px 10px rgb(60, 165, 18);
-  }
-  section{
-    display: flex;
-    flex-direction: column;
-
-    flex-shrink: 1;
-    flex-grow: 0;
-    flex-basis: auto;
-
-  }
-  .presidential-candid{
-    display: flex; 
-    flex-shrink: 1;
-    flex-grow: 0;
-    flex-basis: auto;
-    /* 
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-
-    */
-    flex: 1 1 auto; 
-    width: 100%;
-    margin-bottom: 5px;
-    border: 1px solid black;
-  }
-  
-  
-  .pres1,
-  .pres2 {
-    width: 100%;
-
-    /* flex-shrink: 1;
-    flex-grow: 0;
-    flex-basis: auto; */
-
-    background-color: rgba(217, 233, 217, 0.925);
-    display: flex;
-    flex-direction: column;
-    /* grid-template-columns: 1.8fr 3fr; */
-    border-radius: 4px;
-    gap: 3px;
-    border: solid green 1px;
-
-    padding: 3px;
-
-    height: auto;
-    /* align-items: stretch; */
-    
-    margin-bottom: 5px;
-  }
-  #avatar{
-    width: 100%;
-    height: auto;
-    object-fit: fill;
-    border-radius: 4px;
-    /* border: 1px solid green;
-    object-position: center;
-
-    flex-shrink: 1;
-    flex-grow: 1;
-    flex-basis: auto; */
-  }
-  #candidate-stat{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    height: auto;
-  }
-  #candidate-info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: space-evenly; */
-    width: 100%;
-    background-color: white;
-    border-radius: 4px;
-    border: 1px solid green;
-
-    text-align: center;
-  }
-  .candName{
-    font-weight: 600;
-  }
-  .candNname{
-    background-color: rgba(22, 155, 4, 0.881);
-    color: white;
-    border-radius: 10px;
-    padding: 2px 5px;
-  }
-  .candPost{
-    font-weight: 800;
-    font-style: oblique
-  }
-  #candidate-data{
-    height: 100%;
-    /* border: 1px solid black;
-    background-color: aqua; */
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .vote{
-    font-size: xx-large;
-    font-weight: 1000;
-    color: green;
-  }
-
-</style> -->
-<body>
+ <body>
   <header>
     <div class="left-section">
       <img src="../images/logo.png" alt="Logo" width="50%">
@@ -181,6 +54,7 @@
       Log Out
     </a> 
   </nav>
+
   <main id="results">
     <div class="departmental result"> 
       DEPARTMENTAL RESULT TAB
@@ -199,8 +73,8 @@
                <p class="candPost">PRESIDENT</p>
             </div>
             <div class="candidate-data">
-              <p class="vote">56</p>
-              <p class="name">VOTES</p>            
+              <p class="vCount">56</p>
+              <p class="unit">VOTES</p>            
             </div>
           </div>
         </div>
@@ -217,7 +91,61 @@
               <p class="candPost">PRESIDENT</p>
             </div>
             <div class="candidate-data">
-              <p class="vote">156</p>
+              <p class="vCount">156</p>
+              <p class="unit">VOTES</p>            
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumbnail">
+            <img src="../images/avatar.jpg" alt="" id="avatar">
+            <span>tag</span>
+          </div>
+          <div class="candidate-stat">
+            <div class="candidate-info">
+              <p class="candName">OLUWAFERANMI BENJANMIN</p>
+              <p class="candNname">COMR. FERANMI</p>
+              <p class="candPost">PRESIDENT</p>
+            </div>
+            <div class="candidate-data">
+              <p class="vCount">156</p>
+              <p class="unit">VOTES</p>            
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumbnail">
+            <img src="../images/avatar.jpg" alt="" id="avatar">
+            <span>tag</span>
+          </div>
+          <div class="candidate-stat">
+            <div class="candidate-info">
+              <p class="candName">OLUWADILARE OLALEKAN</p>
+               <p class="candNname">COMR. PURPLE DREY</p>
+               <p class="candPost">PRESIDENT</p>
+            </div>
+            <div class="candidate-data">
+              <p class="vCount">56</p>
+              <p class="unit">VOTES</p>            
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumbnail">
+            <img src="../images/avatar.jpg" alt="" id="avatar">
+            <span>tag</span>
+          </div>
+          <div class="candidate-stat">
+            <div class="candidate-info">
+              <p class="candName">OLUWALO FERANMI</p>
+              <p class="candNname">COMR. FERANMI</p>
+              <p class="candPost">PRESIDENT</p>
+            </div>
+            <div class="candidate-data">
+              <p class="vCount">156</p>
               <p class="unit">VOTES</p>            
             </div>
           </div>
@@ -241,61 +169,6 @@
           </div>
         </div>
       </div> 
-      <div class="card-container" id="vicepresident">
-        <div class="card">
-          <div class="thumbnail">
-            <img src="../images/avatar.jpg" alt="" id="avatar">
-            <span>tag</span>
-          </div>
-          <div class="candidate-stat">
-            <div class="candidate-info">
-              <p class="candName">OLUWADILARE OLALEKAN</p>
-               <p class="candNname">COMR. PURPLE DREY</p>
-               <p class="candPost">PRESIDENT</p>
-            </div>
-            <div class="candidate-data">
-              <p class="vote">56</p>
-              <p class="name">VOTES</p>            
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="thumbnail">
-            <img src="../images/avatar.jpg" alt="" id="avatar">
-            <span>tag</span>
-          </div>
-          <div class="candidate-stat">
-            <div class="candidate-info">
-              <p class="candName">OLUWALO FERANMI</p>
-              <p class="candNname">COMR. FERANMI</p>
-              <p class="candPost">PRESIDENT</p>
-            </div>
-            <div class="candidate-data">
-              <p class="vote">156</p>
-              <p class="unit">VOTES</p>            
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="thumbnail">
-            <img src="../images/avatar.jpg" alt="" id="avatar">
-            <span>tag</span>
-          </div>
-          <div class="candidate-stat">
-            <div class="candidate-info">
-              <p class="candName">OLUWAFERANMI BENJANMIN</p>
-              <p class="candNname">COMR. FERANMI</p>
-              <p class="candPost">PRESIDENT</p>
-            </div>
-            <div class="candidate-data">
-              <p class="vCount">156</p>
-              <p class="unit">VOTES</p>            
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <div class="faculty result"> 
@@ -315,8 +188,8 @@
                <p class="candPost">PRESIDENT</p>
             </div>
             <div class="candidate-data">
-              <p class="vote">56</p>
-              <p class="name">VOTES</p>            
+              <p class="vCount">56</p>
+              <p class="unit">VOTES</p>            
             </div>
           </div>
         </div>
@@ -376,8 +249,8 @@
                <p class="candPost">PRESIDENT</p>
             </div>
             <div class="candidate-data">
-              <p class="vote">56</p>
-              <p class="name">VOTES</p>            
+              <p class="vCount">56</p>
+              <p class="unit">VOTES</p>            
             </div>
           </div>
         </div>
@@ -394,7 +267,7 @@
               <p class="candPost">PRESIDENT</p>
             </div>
             <div class="candidate-data">
-              <p class="vote">156</p>
+              <p class="vCount">156</p>
               <p class="unit">VOTES</p>            
             </div>
           </div>
@@ -422,70 +295,10 @@
 
   </main>
 
-
   <footer>
     2026 Copyright, Purple Dragon 
   </footer>
 
-  <script>
-  function navCtrl() {
-      let isNavOpen = false;
-  
-      document.querySelector('.menu-icon').addEventListener('click', ()=>{
-        if (!isNavOpen) {
-          document.querySelector('nav').style.display = 'block';
-          isNavOpen = true;
-        } else{
-          document.querySelector('nav').style.display = 'none';
-          isNavOpen = false;
-        }
-      })
-    }
-    navCtrl()
-
-  function cardCtrl(params) {
-    const resCont = document.querySelectorAll('.result')
-    const res1 = document.querySelector('#dept-modal')
-    // (res1, res2, res3).style.display = 'none'
-    const res2 = document.querySelector('#faculty-modal')
-    const res3 = document.querySelector('#sug-modal')
-
-    resCont[0].addEventListener('click', (e)=>{
-      let isOpen = false
-      if (isOpen) {
-        isOpen = false
-        res1.style.display = 'none';
-        console.log('if 1:',e, isOpen)
-        return;
-      }
-      
-      if(!isOpen) {
-        isOpen = true;
-        res1.style.display = 'block';
-        res2.style.display = 'none';
-        res3.style.display = 'none';
-        res1.style.transition = '1s'
-        console.log('if 2:', e, isOpen)
-        return;
-      }
-      console.log('gen:', e, isOpen)
-
-    })
-    resCont[1].addEventListener('click', ()=>{
-      res1.style.display = 'none';
-      res2.style.display = 'block';
-      res3.style.display = 'none'; 
-    })
-    resCont[2].addEventListener('click', ()=>{
-      res1.style.display = 'none';
-      res2.style.display = 'none';
-      res3.style.display = 'block'; 
-    })
-  }
-  cardCtrl()
-  
-  
-
-  </script>
+  <script src="../script/result.js" defer></script>
 </body>
 </html>

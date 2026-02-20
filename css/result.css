@@ -1,8 +1,13 @@
 nav{
-    display: none;
+    /* display: none; */
 }
 main{
     margin: 110px 5px;
+  }
+   #results {
+  /* Main Container */
+    margin-left: 191px;
+    /* border: 1px solid blue; */
   }
 .result{
   background-color: rgba(237, 235, 235, 0.913);
@@ -12,19 +17,21 @@ main{
   padding: 10px;
   border-radius: 5px;
   box-shadow: inset 1px -1px 10px rgb(60, 165, 18);
+  cursor: pointer;
 }
 section{
   display: none;
   margin-bottom: 20px;
-  transition: all 1s;
 }
 .card-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 7px;
-  row-gap: 20px;
+  column-gap: 10px;
+  row-gap: 5px;
+  margin: 0 5px ;
   height: auto;
 }
+
 .card{
   display: grid;
   grid-template-columns: 1.5fr 2fr;
@@ -34,6 +41,7 @@ section{
   padding: 3px;
   column-gap: 3px;
 
+  cursor: pointer;
   background-color: rgba(219, 245, 219, 0.884);
 }
 #avatar{
@@ -111,7 +119,7 @@ span{
 
 }
 
-.vote{
+.vCount{
   font-size: xx-large;
   font-weight: 1000;
   color: green;
