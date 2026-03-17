@@ -8,6 +8,8 @@ if(!token || token === null){
   window.location.href = './login.html'
 }
 
+let user;
+
 const department = document.querySelector('.campBody#department')
 const faculty = document.querySelector('.campBody#faculty')
 const general = document.querySelector('.campBody#general')
@@ -26,7 +28,7 @@ function miniProfile(elem) {
       <p>${data.username}</p>
       <p>${data.studentId}</p>
     `
-    // user = data
+    user = data
   })
   .catch(err => console.log(err))
 }

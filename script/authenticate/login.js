@@ -28,7 +28,7 @@ loginBtn.addEventListener('click',()=>{
     if (data.status === 500) {
       console.log('Response: ', data.message);
       loginBtn.innerHTML = 'LOG IN'
-      message.innerText = "Server Error. Please try again later."
+      message.innerHTML = "Server Error. Please try again later."
       return;
     }
     
@@ -55,7 +55,7 @@ loginBtn.addEventListener('click',()=>{
 
   })
   .catch((err) => {
-    message.innerText = "Network Error. \n Please check your connection and try again."
+    message.innerHTML = "Network Error. \n Please check your connection and try again."
     loginBtn.innerHTML = 'LOG IN';
     console.log('Error:', err)})
 });

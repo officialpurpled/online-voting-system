@@ -179,7 +179,7 @@
 // }
 
 import {showMsg} from '../utils/response.js';
-import {userIdGen} from '../utils/library.js'
+import {API_KEY, userIdGen} from '../utils/library.js'
 // import {dayjs} from 'https://unpkg.com/dayjs@1.11.19/dayjs.min.js'
 
 
@@ -346,7 +346,7 @@ form.addEventListener('submit', (e)=>{
         }
         signinBtn.innerHTML = 'SIGNING IN...'
 
-        fetch("http://localhost:3030/api/auth/signup", 
+        fetch(`${API_KEY}/auth/signup`, 
           {
             method:"POST",
             headers :{

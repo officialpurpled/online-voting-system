@@ -1,16 +1,15 @@
 import { API_KEY, logout } from "./utils/library.js";
 
-// const API_KEY = 'http://localhost:3030/api';
-
 const token = JSON.parse(localStorage.getItem('p-id'))
-  
-if(!token || token === null){
+
+if(!token || token === null || token === 'Forbbiden'){
   alert("Unauthorized Access \n Please login.")
   window.location.href = './login.html'
 }
 
-const userInfo = document.querySelector('#ab-user-info');
+let user;
 
+const userInfo = document.querySelector('#ab-user-info');
 const loadUserProfile = async () => {
   try {
     const res = await fetch(`${API_KEY}/user/profile`, {
