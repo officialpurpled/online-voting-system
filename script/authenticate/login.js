@@ -1,11 +1,20 @@
 import { API_KEY } from "../utils/library.js";
+import { showMsg } from "../utils/response.js";
 
 const loginBtn = document.querySelector('.login')
 const message = document.querySelector('#message')
 
 loginBtn.addEventListener('click',()=>{
-  let matricNo = document.querySelector('.matric').value.trim();
+  let matricNo = document.querySelector('.matric').value.trim().toUpperCase();
   let password = document.querySelector('.password').value.trim();
+  loginBtn.innerHTML = 'LOGGING IN...'
+  message.innerText = ''
+
+  if(!matricNo || !password){
+    showMsg('no', 'empty')
+    loginBtn.innerHTML = 'LOG IN'
+    return;
+  }
 
   fetch(`${API_KEY}/auth/login`, {
     method: 'POST',
@@ -17,24 +26,25 @@ loginBtn.addEventListener('click',()=>{
   .then(res => res.json())
   .then(data => { 
     if (data.status === 500) {
-      alert('user not found')
+      console.log('Response: ', data.message);
+      loginBtn.innerHTML = 'LOG IN'
+      message.innerText = "Server Error. Please try again later."
       return;
     }
     
     if (data.status === 404) {
       console.log('Response: ', data.message);
-      message.innerText = data.message
+      loginBtn.innerHTML = 'LOG IN';
+      showMsg('no', 'notfound')
       
-    } else if (data.status == 400){
-      message.innerText = data.message;
+    } else if (data.status == 403){
+      showMsg('no', 'incorrect')
+      loginBtn.innerHTML = 'LOG IN';
       console.log('Response: ', data.message)
 
     } else if (data.status === 200){
-      message.innerText = data.message;
-
+      message.innerText = `${data.message}. ${showMsg('yes', 'Login')}`;
       localStorage.setItem('p-id', JSON.stringify(data.token))
-      // saveToStorage(data.token) 
-      console.log(data.token)
 
       setTimeout(() => {
         window.location.href = './dashboard.html'
@@ -44,7 +54,10 @@ loginBtn.addEventListener('click',()=>{
     }
 
   })
-  .catch(err => console.log('Error:', err))
+  .catch((err) => {
+    message.innerText = "Network Error. \n Please check your connection and try again."
+    loginBtn.innerHTML = 'LOG IN';
+    console.log('Error:', err)})
 });
 
 

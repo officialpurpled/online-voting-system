@@ -184,6 +184,7 @@ import {userIdGen} from '../utils/library.js'
 
 
 const form = document.querySelector('form')
+const message = document.querySelector('#message')
 // const today = 'january 1'
 // dayjs().format('ddd M, MMM YYYY (hh:mm A)');
 
@@ -191,7 +192,6 @@ const signinBtn = document.querySelector('.signup')
 const img1 = document.querySelector('.idCard');
 const img2 = document.querySelector('.photo');
 const img3 = document.querySelector('.receipt');
-
 
 let idCard, photo, receipt 
 
@@ -344,9 +344,7 @@ form.addEventListener('submit', (e)=>{
           console.log('accept terms and conditions')
           return;
         }
-        
-        // showMsg('yes', 'Signup')
-        // // signinBtn.innerHTML = 'SIGNED IN';
+        signinBtn.innerHTML = 'SIGNING IN...'
 
         fetch("http://localhost:3030/api/auth/signup", 
           {
@@ -358,25 +356,33 @@ form.addEventListener('submit', (e)=>{
           })
             .then(response => response.json())
             .then(data => {
-              if (data.status === 404) {
-                showMsg('no', 'exists')
+              if (data.status === 500) {
+                message.innerHTML = data.message;
+                signinBtn.innerHTML = 'SIGN UP'
+                console.log('Error signup user. /n Try again later');
+                return;
+              }
+              if (data.status === 400) {
+                showMsg('no', 'exist');
+                signinBtn.innerHTML = 'SIGN UP'
                 console.log('User already exists');
                 return;
-              } else if(data.status == 200){
-                document.querySelector('#message').innerText = data.message
-  
+              }
+              if(data.status == 200){
+                message.innerHTML = `${data.message}. ${showMsg('yes', 'Signup')}`
+
                 setTimeout(() => {
                   window.location.href = './login.html'
                 }, 2000);
               }
-            }).catch(err => console.log(err))
-
+            }).catch(err => {
+              signinBtn.innerHTML = 'SIGN UP'
+              message.innerText = "Network Error. \n Please check your connection and try again."
+              console.log('Error : ' + err)})
         // console.log('signup successful')
       }
     } else {
       showMsg('no', 'password')
-      // alert('Password lenght should atleast be 6(six) character long')
-      // console.log('password not long enough');
     }
   }
 })
