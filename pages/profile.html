@@ -38,9 +38,9 @@
       Dashboard
     </a>
     
-    <a href="result.htm">
+    <a href="result.html">
       <img src="../images/icons/history.svg" alt="View results"> 
-      View Result
+      View Results
     </a>
 
     <a href="#" class="active">
@@ -48,7 +48,7 @@
       My Profile
     </a> 
 
-    <a href="../index.html">
+    <a id="logout">
       <img src="../images/icons/arr-back.svg" alt="">
       Log Out
     </a> 
@@ -65,32 +65,32 @@
           <div class="biodata">
             <span class="label">BIO DATA</span>
             <div>
-              Name: <p> ${currentUser.username}</p>
+              Name: <p> username</p>
             </div>
             <div>
-              Email: <p> ${currentUser.email}</p>
+              Email: <p> email</p>
             </div>
             <div>
-              Reg/Matric: <p> ${currentUser.matric}</p>
+              Reg/Matric: <p> matric no</p>
             </div>
             <div>
-              User ID:<p>  ${currentUser.userId}</p>
+              User ID:<p>  userId</p>
             </div>
             <div>
-              Vote count:<p>  ${currentUser.vote}</p>
+              Vote count:<p>  vote count</p>
             </div>
           </div>
   
           <div class="stddata">
             <span class="label">STUDENTSHIP DATA</span>
             <div>
-              Faculty: <p>currentUser.faculty</p>
+              Faculty: <p>faculty</p>
             </div>
             <div>
-              Department: <p>currentUser.department</p>
+              Department: <p>department</p>
             </div>
             <div>
-              Current Level: <p> currentUser.level</p>
+              Current Level: <p>level</p>
             </div>
   
             <button> 
@@ -98,8 +98,17 @@
                 Back to dashboard 
               </a>
             </button>
-  
           </div>
+        </div>
+      </div>
+      <div class="no-access">
+        <div>
+          <p>Please Login</p>
+          <button>
+            <a href="login.html">
+              Login 
+            </a>
+          </button>
         </div>
       </div>
     </div>

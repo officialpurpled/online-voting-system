@@ -1,0 +1,38 @@
+{
+  "university": "Olabisi Onabanjo University",
+  "faculties": [
+    {
+      "name": "Faculty of Arts"
+    },
+    {
+      "name": "Faculty of Education"
+    },
+    {
+      "name": "Faculty of Law"
+    },
+    {
+      "name": "Faculty of Science"
+    },
+    {
+      "name": "Faculty of Social Sciences"
+    },
+    {
+      "name": "Faculty of Basic Medical Sciences"
+    },
+    {
+      "name": "Faculty of Clinical Sciences"
+    },
+    {
+      "name": "Faculty of Pharmacy"
+    },
+    {
+      "name": "Faculty of Engineering and Environmental Studies"
+    },
+    {
+      "name": "Faculty of Agricultural Production and Renewable Resources"
+    },
+    {
+      "name": "Faculty of Agricultural Management and Rural Development"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 /* for tablet device */
-@media (max-width: 980px) and  (min-width: 750px){
+@media (max-width: 900px) and  (min-width: 600px){
   
   nav{
     display: none;
@@ -10,19 +10,45 @@
     margin-left: 5px;
   }
   .card-container{
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     height: auto;
   }
+
+  /* Dashboard */
+  #dashboard{
+    padding-left: 7px;
+  }
+  .campBody{
+    grid-template-columns: 1fr 1fr 1fr;
+  } 
 } 
 
+
+/* ====================== */
 /* for mobile device */
-@media (max-width: 750px){
+@media (max-width: 600px){
   /* body{
 
   } */
+
+  /* Dashboard sect */
   #dashboard{
-    margin-left: 0;
+    padding-left: 0;
   }
+
+  .uuname{
+    display: none;
+  }
+  .avatar{
+    /* margin-right: 10px; */
+    display: none;
+  }
+  /* .avatar > img{
+    width: 30px;
+    position: relative;
+    left: 2px;
+    bottom: 1px;
+  } */
 
   .campBody{
     margin: 20px 0 20px 20px;
@@ -36,13 +62,13 @@
     /* width: 100%; */
   }
 
-
   nav{
     display: none;
   }
+
+  /* Profile Sect */
   #profile{
-    margin-left: 0;
-    margin-top: 220px;
+    padding: 25px 10px 20px;
   }
   .container-wrapper, 
   .userinfor{
@@ -55,14 +81,17 @@
   }
   .userinfor{
     margin-top: 20px;
-    min-width: 420px;
-    max-width: fit-content;
+    min-width: 370px;
+    max-width: max-content;
+  }
+  .right-section > a{
+    display: none;
   }
 
 
   /* Result page */
   .card-container{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     height: auto;
   }
   #results {

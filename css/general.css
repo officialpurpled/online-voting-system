@@ -28,10 +28,10 @@ body{
 } 
 
 main{
-  margin-top: 120px;
-  margin-left: 190px;
+  padding-top: 120px;
+  padding-left: 190px;
   /* margin-right: 10px; */
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
  
 a{
@@ -51,7 +51,8 @@ footer{
   bottom: 0;
   left: 0;
   right: 0;
-  position: fixed;
+  top: 95vh;
+  position: sticky;
   text-align: center;
   z-index: 1000;
 }
@@ -59,9 +60,3 @@ footer{
 footer > div{
   padding: 10px;
 }
-
-/* @keyframes{
-  footer{
-
-  }
-} */

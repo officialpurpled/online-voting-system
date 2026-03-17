@@ -80,5 +80,5 @@ button{
 main{
   display: flex;
   justify-content: center;
-  margin-left: 0;
+  padding-left: 0;
 }
