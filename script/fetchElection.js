@@ -14,9 +14,13 @@ const department = document.querySelector('.campBody#department')
 const faculty = document.querySelector('.campBody#faculty')
 const general = document.querySelector('.campBody#general')
 const tempBody = document.querySelectorAll('.tempBody')
+
+// console.log('Token:', token); // Debugging line to check token value
+console.log(department, general, faculty); // Debugging line to check API_KEY value
+
 const userInfo = document.querySelector('.uuname'); //header
 
-async function miniProfile(elem) {
+function miniProfile() {
   // Display mini user info
   fetch(`${API_KEY}/user/profile`, {
     method: 'GET',
@@ -24,11 +28,11 @@ async function miniProfile(elem) {
       Authorization : `Bearer ${token}`
     }
   }).then(res=> res.json()).then(data => {
-    elem.innerHTML = `
-      <p>${data.username.slice(0, 1)}</p>
-      <p>${data.studentId}</p>
+    userInfo.innerHTML = `
+      <p>${data.user.username}</p>
+      <p>${data.user.studentId}</p>
     `
-    userId = data._id
+    userId = data.user._id
   })
   .catch(err => console.log(err))
 }
@@ -37,7 +41,7 @@ async function miniProfile(elem) {
 const getTargetContainer = (election) => {
   if (election === 'department') return department;
   if (election === 'faculty') return faculty
-  if (election === 'general' || 'sug') return general
+  if (election === 'general') return general
 
   return null;
 };
@@ -107,7 +111,7 @@ function fetchElections() {
         tempBody[1].style.display = 'none'
 
         facData.forEach(election => {
-          const container = getTargetContainer('department');
+          const container = getTargetContainer('faculty');
           if (!container) return;
           // election.forEach(candidate => {
           container.insertAdjacentHTML('beforeend', buildCard(election.candidates, election));
@@ -124,7 +128,7 @@ function fetchElections() {
         tempBody[2].style.display = 'none'
 
         sugData.forEach(election => {
-          const container = getTargetContainer('department');
+          const container = getTargetContainer('general');
           if (!container) return;
           // election.forEach(candidate => {
           container.insertAdjacentHTML('beforeend', buildCard(election.candidates, election));
@@ -201,8 +205,9 @@ function handleVote(event) {
 }
 
 //on load
-miniProfile(userInfo)
-fetchElections();
+miniProfile()
+fetchElections()
+
 sideFlow(document.querySelector('#dashbord'));
 
 logout();

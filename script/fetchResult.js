@@ -1,5 +1,12 @@
 import { API_KEY, logout } from "./utils/library.js";
 
+const token = JSON.parse(localStorage.getItem('p-id'))
+
+if(!token || token === null || token === 'Forbbiden'){
+  alert("Session timeout \n Please login.")
+  window.location.href = './login.html'
+}
+
 //Nav Toggle
 (() => {
   const navToggle = document.querySelector('.menu-icon');
@@ -104,7 +111,7 @@ const buildCard = (candidate, election) => `
   <div class="card">
     <div class="thumbnail">
       <img src="${candidate.imageUrl || '../images/avatar.jpg'}" alt="" id="avatar">
-      <span>${candidate.userId.level}Lv | ${(candidate.userId.department.slice(0,1)).toUpperCase()}</span>
+      <span>${candidate.userId.level}Lv | ${(candidate.userId.department.split(' ')[0]).toUpperCase()}</span>
     </div>
     <div class="candidate-stat">
       <div class="candidate-info">
@@ -131,7 +138,7 @@ async function fetchResultData() {
   });
 
   try {
-    const res = await fetch(`${API_KEY}/user/results`, {
+    const res = await fetch(`${API_KEY}/user/get-result`, {
       headers: { 
         Authorization: `Bearer ${token}` }
       }

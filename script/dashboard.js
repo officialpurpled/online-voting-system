@@ -5,7 +5,7 @@ const token = JSON.parse(localStorage.getItem('p-id'))
   
 if(!token || token === null){
   alert("Unauthorized Access \n Please login.")
-  // window.location.href = './login.html'
+  window.location.href = './login.html'
 }
 
 let user;

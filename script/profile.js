@@ -4,8 +4,8 @@ import { sideFlow } from "./utils/navFlow.js";
 const token = JSON.parse(localStorage.getItem('p-id'))
   
 if(!token || token === null || token === undefined || token === "Forbidden"){
-  alert("Unauthorized Access \n Please login.")
-  // window.location.href = './login.html'
+  alert("Session Timeout \n Please login.")
+  window.location.href = './login.html'
 }
 
 let user;
@@ -13,11 +13,11 @@ let user;
 const userinfor = document.querySelector('.userinfor');
 
 // Fetch the vote count from the server
-async function getUserVote(iD) {
-  const res = await fetch(`${API_KEY}/user/get-votes/${iD}`);
-  const data = await res.json();
-  return data.voteCount; // return the number directly
-}
+// async function getUserVote(iD) {
+//   const res = await fetch(`${API_KEY}/user/get-votes/${iD}`);
+//   const data = await res.json();
+//   return data.voteCount; // return the number directly
+// }
 
 // Update the profile page with user data
 function updateProfile() {
@@ -47,7 +47,7 @@ function updateProfile() {
           User ID:<p>${user.studentId}</p>
         </div>
         <div>
-          Vote count:<p>${await getUserVote(user._id)}</p>
+          Vote count:<p>${user.votedElections}</p>
         </div>
       </div>
     
