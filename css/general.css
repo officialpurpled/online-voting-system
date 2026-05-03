@@ -45,6 +45,11 @@ a{
   color: var(--color-surface);
 }
 
+#message > p{
+  text-align: center;
+  font-size: 14px;
+}
+
 footer{
   background-color:  var(--color-primary);
   color: var(--color-surface);

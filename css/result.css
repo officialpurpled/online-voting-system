@@ -77,7 +77,7 @@ span{
 }
 .candidate-stat{
   display: grid;
-  grid-template-rows: 2fr 1.7fr;
+  grid-template-rows: 2fr 1.3fr;
   /* row-gap: 12px; */
 }
 .candidate-info{

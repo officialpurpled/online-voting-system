@@ -1,10 +1,11 @@
 import { API_KEY, logout } from "./utils/library.js";
+import { sideFlow } from "./utils/navFlow.js";
 
 const token = JSON.parse(localStorage.getItem('p-id'))
   
-if(!token || token === null){
+if(!token || token === null || token === undefined || token === "Forbidden"){
   alert("Unauthorized Access \n Please login.")
-  window.location.href = './login.html'
+  // window.location.href = './login.html'
 }
 
 let user;
@@ -74,6 +75,7 @@ function updateProfile() {
 }
 
 updateProfile();
+sideFlow(document.querySelector('#profile'))
 logout();
 
 

@@ -4,10 +4,8 @@ const token = JSON.parse(localStorage.getItem('p-id'))
 
 if(!token || token === null || token === 'Forbbiden'){
   alert("Unauthorized Access \n Please login.")
-  window.location.href = './login.html'
+  // window.location.href = './login.html'
 }
-
-let user;
 
 const userInfo = document.querySelector('#ab-user-info');
 const loadUserProfile = async () => {
@@ -20,7 +18,6 @@ const loadUserProfile = async () => {
     if (!res.ok) throw new Error('Unable to load profile');
 
     const data = await res.json();
-    user = data;
 
     if (userInfo) {
       userInfo.innerHTML = `
@@ -185,7 +182,7 @@ async function fetchResultData(currentUser) {
     const data = await res.json();
 
     data.forEach(election => {
-      if (!shouldShowElection(election, currentUser)) return;
+      if (!shouldShowElection(election, currentUser)) return; //out
 
       const container = getTargetContainer(election);
       if (!container) return;

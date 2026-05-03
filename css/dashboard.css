@@ -1,6 +1,11 @@
 /* nav{
   display: flex;
 } */
+
+#logout{
+  position: relative;
+  top: 40vh;
+}
  .avatar{
   width: 40px;
   height: 40px;

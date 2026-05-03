@@ -344,7 +344,7 @@ form.addEventListener('submit', (e)=>{
           console.log('accept terms and conditions')
           return;
         }
-        signinBtn.innerHTML = 'SIGNING IN...'
+        signinBtn.innerText = 'SIGNING IN...'
 
         fetch(`${API_KEY}/auth/signup`, 
           {
@@ -354,32 +354,29 @@ form.addEventListener('submit', (e)=>{
             },
             body: JSON.stringify(newuser)
           })
-            .then(response => response.json())
-            .then(data => {
-              if (data.status === 500) {
-                message.innerHTML = data.message;
-                signinBtn.innerHTML = 'SIGN UP'
-                console.log('Error signup user. /n Try again later');
-                return;
-              }
-              if (data.status === 400) {
-                showMsg('no', 'exist');
-                signinBtn.innerHTML = 'SIGN UP'
-                console.log('User already exists');
-                return;
-              }
-              if(data.status == 200){
-                message.innerHTML = `${data.message}. ${showMsg('yes', 'Signup')}`
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 500) {
+              message.innerHTML = `<p> ${data.message} </p>`;
+              signinBtn.innerText = 'SIGN UP';
+              console.log('Error signup user. /n Try again later');
+            }
+            if (data.status === 400) {
+              showMsg('no', 'exist');
+              signinBtn.innerText = 'SIGN UP';
+              console.log('User already exists');
+            }
+            if(data.status == 200){
+              message.innerHTML = `${data.message}. ${showMsg('yes', 'Signup')}`
 
-                setTimeout(() => {
-                  window.location.href = './login.html'
-                }, 2000);
-              }
-            }).catch(err => {
-              signinBtn.innerHTML = 'SIGN UP'
-              message.innerText = "Network Error. \n Please check your connection and try again."
-              console.log('Error : ' + err)})
-        // console.log('signup successful')
+              setTimeout(() => {
+                window.location.href = './login.html'
+              }, 2000);
+            }
+          }).catch(err => {
+            signinBtn.innerText = 'SIGN UP';
+            message.innerHTML = "<p> Network Error. <br> Please check your connection and try again.</p>"
+            console.log('Error : ' + err)})
       }
     } else {
       showMsg('no', 'password')

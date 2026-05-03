@@ -5,7 +5,7 @@ const token = JSON.parse(localStorage.getItem('p-id'))
   
 if(!token || token === null){
   alert("Unauthorized Access \n Please login.")
-  window.location.href = './login.html'
+  // window.location.href = './login.html'
 }
 
 let user;
@@ -56,7 +56,10 @@ function fetchElections() {
                 <option value="" selected disabled>         
                   Select a candidate
                 </option>
-                ${election.candidates.map(candidate => `<option value="${candidate.name}">${candidate.name}</option>`).join('')}
+                ${election.candidates.map(candidate => `
+                  <option value="${candidate.name}">
+                    ${candidate.name}
+                  </option>`).join('')}
               </select>
               <button class="vote" data-election-id="${election._id}"> 
                 VOTE 
@@ -64,16 +67,24 @@ function fetchElections() {
             </div>
           </div>`
         if (election.mode === 'department') {
+          if (!election || election.length === 0) {
+            tempBody[0].innerHTML = 'test 0 this'          
+          }
           department.style.display = 'grid'
           tempBody[0].style.display = 'none'
           department.innerHTML += electionCard
-          
         } else if (election.mode === 'faculty') {
+          if (!election || election.length === 0) {
+            tempBody[1].innerHTML = 'test 1 this'          
+          }
           faculty.style.display = 'grid'
           tempBody[1].style.display = 'none'
           faculty.innerHTML += electionCard
           
         } else if (election.mode === 'general') {
+          if (!election || election.length === 0) {
+            tempBody[2].innerHTML = 'test 2 this'          
+          }
           general.style.display = 'grid'
           tempBody[2].style.display = 'none'
           general.innerHTML += electionCard
@@ -86,6 +97,7 @@ function fetchElections() {
       });
     })
     .catch(err => {
+      alert("Network Error. \n Please check your internet connection and try again") 
       tempBody.forEach(body => body.innerHTML = '<p class="error-msg">Unable to load elections at the moment. Please refresh or checkback.</p>');
       console.log('Error: Unable to display elections', err)
     })
@@ -143,9 +155,9 @@ function handleVote(event) {
   });
 }
 
+miniProfile(userInfo);
 sideFlow(document.querySelector('#dashbord'));
 fetchElections();
-miniProfile(userInfo);
 logout();
 
 
