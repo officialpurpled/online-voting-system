@@ -5,3 +5,4 @@ document.querySelector('.logIn').addEventListener('click',()=>{
 document.querySelector('.getStart').addEventListener('click',()=>{
   window.location.href = 'pages/signup.html'
 });
+

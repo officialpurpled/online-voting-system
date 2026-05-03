@@ -57,8 +57,8 @@ function fetchElections() {
                   Select a candidate
                 </option>
                 ${election.candidates.map(candidate => `
-                  <option value="${candidate.name}">
-                    ${candidate.name}
+                  <option value="${candidate.username}">
+                    ${candidate.username}
                   </option>`).join('')}
               </select>
               <button class="vote" data-election-id="${election._id}"> 

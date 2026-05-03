@@ -1,0 +1,120 @@
+[
+    {
+      "_id": "69e25b3f47d7114466c522fc",
+      "mode": "department",
+      "m_type": "Religious Studies",
+      "post": "shs",
+      "candidates": [
+        {
+          "_id": "69e25b3f47d7114466c522fe",
+          "userId": {
+            "username": "Olalekan Eritofunmi",
+            "level": "100",
+            "department": "Computer Science"
+          },
+          "electionId": "69e25b3f47d7114466c522fc",
+          "alias": "alli",
+          "imageUrl": "../images/avatar.jpg",
+          "votes": 0,
+          "createdAt": "2026-04-17T16:09:35.320Z",
+          "__v": 0
+        }
+      ],
+      "status": "active",
+      "startDate": "2026-04-17T16:09:35.136Z",
+      "createdAt": "2026-04-17T16:09:35.136Z",
+      "__v": 1
+    },
+    {
+      "_id": "69e25cc947d7114466c52307",
+      "mode": "department",
+      "m_type": "Religious Studies",
+      "post": "shs",
+      "candidates": [
+        {
+          "_id": "69e25cc947d7114466c52309",
+          "userId": {
+            "username": "Eritofunmi 2",
+            "level": "200",
+            "department": "Computer edu"
+          },
+          "electionId": "69e25cc947d7114466c52307",
+          "alias": "alli",
+          "imageUrl": "../images/avatar.jpg",
+          "votes": 0,
+          "createdAt": "2026-04-17T16:16:09.492Z",
+          "__v": 0
+        },
+        {
+          "_id": "69e25cc947d7114466c5230b",
+          "userId": {
+            "username": "Olalekan Eritofunmi",
+            "level": "300",
+            "department": "mcb"
+          },
+          "electionId": "69e25cc947d7114466c52307",
+          "alias": "aa",
+          "imageUrl": "../images/avatar.jpg",
+          "votes": 0,
+          "createdAt": "2026-04-17T16:16:09.716Z",
+          "__v": 0
+        }
+      ],
+      "status": "active",
+      "startDate": "2026-04-17T16:16:09.130Z",
+      "createdAt": "2026-04-17T16:16:09.130Z",
+      "__v": 1
+    },
+    {
+      "_id": "69bfb3c41379d738ef0ce9ac",
+      "mode": "faculty",
+      "m_type": "Faculty of Science",
+      "post": "Emeritus Developer",
+      "candidates": [],
+      "status": "active",
+      "startDate": "2026-03-22T09:17:56.022Z",
+      "createdAt": "2026-03-22T09:17:56.022Z",
+      "__v": 0
+    },
+    {
+      "_id": "69e25f0416b2c4822672a423",
+      "mode": "general",
+      "m_type": "sug",
+      "post": "shs",
+      "candidates": [
+        {
+          "_id": "69e25f0416b2c4822672a425",
+          "userId": {
+            "username": "Olalekan Eritofunmi",
+            "faculty": "Faculty of Science",
+            "department": "Computer Science",
+            "level": 400
+          },
+          "electionId": "69e25f0416b2c4822672a423",
+          "alias": "note1",
+          "imageUrl": "../images/avatar.jpg",
+          "votes": 0,
+          "createdAt": "2026-04-17T16:25:40.989Z",
+          "__v": 0
+        },
+        {
+          "_id": "69e25f0516b2c4822672a427",
+          "userId": {
+            "username": "new user",
+            "department": "mcb",
+            "level":"600"
+          },
+          "electionId": "69e25f0416b2c4822672a423",
+          "alias": "note2",
+          "imageUrl": "../images/avatar.jpg",
+          "votes": 0,
+          "createdAt": "2026-04-17T16:25:41.146Z",
+          "__v": 0
+        }
+      ],
+      "status": "active",
+      "startDate": "2026-04-17T16:25:40.797Z",
+      "createdAt": "2026-04-17T16:25:40.798Z",
+      "__v": 1
+    }
+]

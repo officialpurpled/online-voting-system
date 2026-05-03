@@ -104,11 +104,11 @@ const buildCard = (candidate, election) => `
   <div class="card">
     <div class="thumbnail">
       <img src="${candidate.imageUrl || '../images/avatar.jpg'}" alt="" id="avatar">
-      <span>${(election.mode || election.m_type || '').toUpperCase()}</span>
+      <span>${candidate.userId.level}Lv | ${(candidate.userId.department.slice(0,1)).toUpperCase()}</span>
     </div>
     <div class="candidate-stat">
       <div class="candidate-info">
-        <p class="candName">${candidate.name.toUpperCase()}</p>
+        <p class="candName">${candidate.userId.username.toUpperCase()}</p>
         <p class="candNname">${candidate.alias.toUpperCase() || ''}</p>
         <p class="candPost">${election.post.toUpperCase()}</p>
       </div>
@@ -132,8 +132,11 @@ async function fetchResultData() {
 
   try {
     const res = await fetch(`${API_KEY}/user/results`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+      headers: { 
+        Authorization: `Bearer ${token}` }
+      }
+    // const res = await fetch(`../data/result.json`
+    );
     const data = await res.json();
 
     data.forEach(election => {
@@ -145,6 +148,9 @@ async function fetchResultData() {
       });
     });
   } catch (err) {
+    [deptContainer, facultyContainer, sugContainer].forEach(container => {
+    if (container) container.innerHTML = 'unable to display result';
+  });
     console.error(err);
   }
 }
@@ -155,9 +161,11 @@ const userInfo = document.querySelector('#ab-user-info');
 const loadUserProfile = async () => {
   try {
     const res = await fetch(`${API_KEY}/user/profile`, {
-      method: 'GET',
-      headers: { Authorization: `Bearer ${token}` }
-    });
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    // const res = await fetch(`../data/users.json`
+    );
 
     if (!res.ok) throw new Error('Unable to load profile');
 
@@ -178,10 +186,10 @@ const loadUserProfile = async () => {
 };
 
 //onload
-// loadUserProfile()
-//   .then(() => 
-//     fetchResultData()
-//   );
+loadUserProfile()
+  .then(() => 
+    fetchResultData()
+  );
 
 //logout func
 logout();
