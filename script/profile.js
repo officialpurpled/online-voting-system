@@ -1,12 +1,12 @@
 import { API_KEY, logout } from "./utils/library.js";
 import { sideFlow } from "./utils/navFlow.js";
 
-// const token = JSON.parse(localStorage.getItem('p-id'))
+const token = JSON.parse(localStorage.getItem('p-id'))
   
-// if(!token || token === null || token === undefined || token === "Forbidden"){
-//   alert("Session Timeout \n Please login.")
-//   window.location.href = './login.html'
-// }
+if(!token || token === null || token === undefined || token === "Forbidden"){
+  alert("Session Timeout \n Please login.")
+  window.location.href = './login.html'
+}
 
 let user;
 
@@ -24,12 +24,12 @@ function updateProfile() {
   fetch(`${API_KEY}/user/profile`, {
     method: 'GET',
     headers: {
-      // Authorization : `Bearer ${token}`
+      Authorization : `Bearer ${token}`
     }
   })
   .then(res => res.json())
   .then(async data => {
-    user = data;
+    user = data.user;
 
     userinfor.innerHTML = `
       <div class="biodata">

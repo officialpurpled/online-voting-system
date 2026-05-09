@@ -1,120 +1,236 @@
 [
     {
-      "_id": "69e25b3f47d7114466c522fc",
-      "mode": "department",
-      "m_type": "Religious Studies",
-      "post": "shs",
-      "candidates": [
-        {
-          "_id": "69e25b3f47d7114466c522fe",
-          "userId": {
-            "username": "Olalekan Eritofunmi",
-            "level": "100",
-            "department": "Computer Science"
-          },
-          "electionId": "69e25b3f47d7114466c522fc",
-          "alias": "alli",
-          "imageUrl": "../images/avatar.jpg",
-          "votes": 0,
-          "createdAt": "2026-04-17T16:09:35.320Z",
-          "__v": 0
-        }
-      ],
-      "status": "active",
-      "startDate": "2026-04-17T16:09:35.136Z",
-      "createdAt": "2026-04-17T16:09:35.136Z",
-      "__v": 1
+        "_id": "69ffb6b1778ffcca322913d8",
+        "mode": "department",
+        "m_type": "Computer Science",
+        "post": "President",
+        "candidates": [
+            {
+                "_id": "69ffb6b2778ffcca322913d9",
+                "userId": {
+                    "_id": "69f7987da83638c8a0e8d4d6",
+                    "username": "Okay",
+                    "department": "Religious Studies",
+                    "level": 400
+                },
+                "alias": "Comr. Funmi",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffb6b2778ffcca322913da",
+                "userId": {
+                    "_id": "69ca80c1102280a29e15486b",
+                    "username": "User101",
+                    "department": "Microbiology",
+                    "level": 400
+                },
+                "alias": "Sen Bola",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffb6b2778ffcca322913db",
+                "userId": {
+                    "_id": "69bc2d68374c53a9277af092",
+                    "username": "new user",
+                    "department": "mcb"
+                },
+                "alias": "ZeroJoy",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            }
+        ],
+        "status": "active",
+        "startDate": "2026-05-09T22:35:29.960Z",
+        "createdAt": "2026-05-09T22:35:29.960Z",
+        "__v": 1
     },
     {
-      "_id": "69e25cc947d7114466c52307",
-      "mode": "department",
-      "m_type": "Religious Studies",
-      "post": "shs",
-      "candidates": [
-        {
-          "_id": "69e25cc947d7114466c52309",
-          "userId": {
-            "username": "Eritofunmi 2",
-            "level": "200",
-            "department": "Computer edu"
-          },
-          "electionId": "69e25cc947d7114466c52307",
-          "alias": "alli",
-          "imageUrl": "../images/avatar.jpg",
-          "votes": 0,
-          "createdAt": "2026-04-17T16:16:09.492Z",
-          "__v": 0
-        },
-        {
-          "_id": "69e25cc947d7114466c5230b",
-          "userId": {
-            "username": "Olalekan Eritofunmi",
-            "level": "300",
-            "department": "mcb"
-          },
-          "electionId": "69e25cc947d7114466c52307",
-          "alias": "aa",
-          "imageUrl": "../images/avatar.jpg",
-          "votes": 0,
-          "createdAt": "2026-04-17T16:16:09.716Z",
-          "__v": 0
-        }
-      ],
-      "status": "active",
-      "startDate": "2026-04-17T16:16:09.130Z",
-      "createdAt": "2026-04-17T16:16:09.130Z",
-      "__v": 1
+        "_id": "69bfb3c41379d738ef0ce9ac",
+        "mode": "faculty",
+        "m_type": "Faculty of Science",
+        "post": "Emeritus Developer",
+        "candidates": [],
+        "status": "active",
+        "startDate": "2026-03-22T09:17:56.022Z",
+        "createdAt": "2026-03-22T09:17:56.022Z",
+        "__v": 0
     },
     {
-      "_id": "69bfb3c41379d738ef0ce9ac",
-      "mode": "faculty",
-      "m_type": "Faculty of Science",
-      "post": "Emeritus Developer",
-      "candidates": [],
-      "status": "active",
-      "startDate": "2026-03-22T09:17:56.022Z",
-      "createdAt": "2026-03-22T09:17:56.022Z",
-      "__v": 0
+        "_id": "69ffba23778ffcca322913e2",
+        "mode": "faculty",
+        "m_type": "Faculty of Science",
+        "post": "President",
+        "candidates": [
+            {
+                "_id": "69ffba24778ffcca322913e3",
+                "userId": {
+                    "_id": "69f7987da83638c8a0e8d4d6",
+                    "username": "Okay",
+                    "department": "Religious Studies",
+                    "level": 400
+                },
+                "alias": "Comr. Funmi",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffba24778ffcca322913e4",
+                "userId": {
+                    "_id": "69ca80c1102280a29e15486b",
+                    "username": "User101",
+                    "department": "Microbiology",
+                    "level": 400
+                },
+                "alias": "Sen Bola",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffba24778ffcca322913e5",
+                "userId": {
+                    "_id": "69bc2d68374c53a9277af092",
+                    "username": "new user",
+                    "department": "mcb"
+                },
+                "alias": "ZeroJoy",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            }
+        ],
+        "status": "active",
+        "startDate": "2026-05-09T22:50:11.891Z",
+        "createdAt": "2026-05-09T22:50:11.891Z",
+        "__v": 1
     },
     {
-      "_id": "69e25f0416b2c4822672a423",
-      "mode": "general",
-      "m_type": "sug",
-      "post": "shs",
-      "candidates": [
-        {
-          "_id": "69e25f0416b2c4822672a425",
-          "userId": {
-            "username": "Olalekan Eritofunmi",
-            "faculty": "Faculty of Science",
-            "department": "Computer Science",
-            "level": 400
-          },
-          "electionId": "69e25f0416b2c4822672a423",
-          "alias": "note1",
-          "imageUrl": "../images/avatar.jpg",
-          "votes": 0,
-          "createdAt": "2026-04-17T16:25:40.989Z",
-          "__v": 0
-        },
-        {
-          "_id": "69e25f0516b2c4822672a427",
-          "userId": {
-            "username": "new user",
-            "department": "mcb",
-            "level":"600"
-          },
-          "electionId": "69e25f0416b2c4822672a423",
-          "alias": "note2",
-          "imageUrl": "../images/avatar.jpg",
-          "votes": 0,
-          "createdAt": "2026-04-17T16:25:41.146Z",
-          "__v": 0
-        }
-      ],
-      "status": "active",
-      "startDate": "2026-04-17T16:25:40.797Z",
-      "createdAt": "2026-04-17T16:25:40.798Z",
-      "__v": 1
+        "_id": "69ffba4c778ffcca322913e6",
+        "mode": "faculty",
+        "m_type": "Faculty of Science",
+        "post": "Vice President",
+        "candidates": [
+            {
+                "_id": "69ffba4c778ffcca322913e7",
+                "userId": {
+                    "_id": "69bfb47d1379d738ef0ce9b6",
+                    "username": "Olalekan Eritofunmi",
+                    "department": "Computer Science",
+                    "level": 400
+                },
+                "alias": "Comr. Funmi",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffba4c778ffcca322913e8",
+                "userId": {
+                    "_id": "69ca80c1102280a29e15486b",
+                    "username": "User101",
+                    "department": "Microbiology",
+                    "level": 400
+                },
+                "alias": "Sen Bola",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffba4c778ffcca322913e9",
+                "userId": {
+                    "_id": "69bc2d68374c53a9277af092",
+                    "username": "new user",
+                    "department": "mcb"
+                },
+                "alias": "ZeroJoy",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            }
+        ],
+        "status": "active",
+        "startDate": "2026-05-09T22:50:52.458Z",
+        "createdAt": "2026-05-09T22:50:52.458Z",
+        "__v": 1
+    },
+    {
+        "_id": "69e25f0416b2c4822672a423",
+        "mode": "general",
+        "m_type": "sug",
+        "post": "shs",
+        "candidates": [
+            {
+                "_id": "69e25f0416b2c4822672a425",
+                "userId": {
+                    "_id": "69bfb47d1379d738ef0ce9b6",
+                    "username": "Olalekan Eritofunmi",
+                    "department": "Computer Science",
+                    "level": 400
+                },
+                "alias": "note1",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69e25f0516b2c4822672a427",
+                "userId": {
+                    "_id": "69bc2d68374c53a9277af092",
+                    "username": "new user",
+                    "department": "mcb"
+                },
+                "alias": "note2",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            }
+        ],
+        "status": "active",
+        "startDate": "2026-04-17T16:25:40.797Z",
+        "createdAt": "2026-04-17T16:25:40.798Z",
+        "__v": 1
+    },
+    {
+        "_id": "69ffb8fb778ffcca322913dd",
+        "mode": "general",
+        "m_type": "sug",
+        "post": "President",
+        "candidates": [
+            {
+                "_id": "69ffb8fb778ffcca322913de",
+                "userId": {
+                    "_id": "69f7987da83638c8a0e8d4d6",
+                    "username": "Okay",
+                    "department": "Religious Studies",
+                    "level": 400
+                },
+                "alias": "Comr. Funmi",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffb8fb778ffcca322913df",
+                "userId": {
+                    "_id": "69ca80c1102280a29e15486b",
+                    "username": "User101",
+                    "department": "Microbiology",
+                    "level": 400
+                },
+                "alias": "Sen Bola",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            },
+            {
+                "_id": "69ffb8fc778ffcca322913e0",
+                "userId": {
+                    "_id": "69bc2d68374c53a9277af092",
+                    "username": "new user",
+                    "department": "mcb"
+                },
+                "alias": "ZeroJoy",
+                "imageUrl": "/uploads/avatar.jpg",
+                "votes": 0
+            }
+        ],
+        "status": "active",
+        "startDate": "2026-05-09T22:45:15.632Z",
+        "createdAt": "2026-05-09T22:45:15.632Z",
+        "__v": 1
     }
 ]

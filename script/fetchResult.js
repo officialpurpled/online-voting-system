@@ -96,28 +96,32 @@ if(!token || token === null || token === 'Forbbiden'){
 })();
 
 //insert result card into its container right
-const getTargetContainer = (election) => {
-  const mode = election?.mode?.toLowerCase();
-  const type = election?.m_type?.toLowerCase();
+const getTargetContainer = (mode) => {
+  const normalized = (mode ?? '').toLowerCase();
 
-  if (mode === 'department') return document.querySelector('#dept-modal .card-container');
-  if (mode === 'faculty') return document.querySelector('#faculty-modal .card-container');
-  if (mode === 'general' || type === 'sug') return document.querySelector('#sug-modal .card-container');
+  if (normalized === 'department') return document.querySelector('#dept-modal');
+  if (normalized === 'faculty') return document.querySelector('#faculty-modal');
+  if (normalized === 'sug' || normalized === 'general') return document.querySelector('#sug-modal');
 
   return null;
 };
 
 //build result card with each candidate data
-const buildCard = (candidate, election) => `
+const buildCard = (candidate, election) => {
+  const username = candidate.userId?.username ? candidate.userId.username.toString().toUpperCase() : 'UNKNOWN';
+  const department = candidate.userId?.department ? candidate.userId.department.split(' ')[0].toUpperCase() : '';
+  const level = candidate.userId?.level ?? '';
+  const alias = candidate.alias ? candidate.alias.toString().toUpperCase() : '';
+  return `
   <div class="card">
     <div class="thumbnail">
       <img src="${candidate.imageUrl || '../images/avatar.jpg'}" alt="" id="avatar">
-      <span>${candidate.userId.level}Lv | ${(candidate.userId.department.split(' ')[0]).toUpperCase()}</span>
+      <span>${level}Lv${department ? ` | ${department}` : ''}</span>
     </div>
     <div class="candidate-stat">
       <div class="candidate-info">
-        <p class="candName">${candidate.userId.username.toUpperCase()}</p>
-        <p class="candNname">${candidate.alias.toUpperCase() || ''}</p>
+        <p class="candName">${username}</p>
+        <p class="candNname">${alias}</p>
         <p class="candPost">${election.post.toUpperCase()}</p>
       </div>
       <div class="candidate-data">
@@ -127,32 +131,68 @@ const buildCard = (candidate, election) => `
     </div>
   </div>
 `;
+};
+
+//build post section with title and cards
+const buildPostSection = (postName, candidates, election) => `
+  <div class="post-section">
+    <div class="post-title">${postName}</div>
+    <div class="card-container">
+      ${candidates.map(candidate => buildCard(candidate, election)).join('')}
+    </div>
+  </div>
+`;
 
 // fetch candidate data
 async function fetchResultData() {
-  const deptContainer = document.querySelector('#dept-modal .card-container');
-  const facultyContainer = document.querySelector('#faculty-modal .card-container');
-  const sugContainer = document.querySelector('#sug-modal .card-container');
+  const deptContainer = document.querySelector('#dept-modal');
+  const facultyContainer = document.querySelector('#faculty-modal');
+  const sugContainer = document.querySelector('#sug-modal');
 
   [deptContainer, facultyContainer, sugContainer].forEach(container => {
     if (container) container.innerHTML = '';
   });
 
   try {
-    const res = await fetch(`${API_KEY}/user/get-result`, {
+    const res = await fetch(`../data/result.json`, {
       headers: { 
         Authorization: `Bearer ${token}` }
       }
-    // const res = await fetch(`../data/result.json`
     );
     const data = await res.json();
 
-    data.forEach(election => {
-      const container = getTargetContainer(election);
+    // Group elections by mode (department, faculty, sug)
+    const groupedByMode = data.reduce((acc, election) => {
+      const mode = election.mode?.toLowerCase();
+      if (!mode) return acc;
+      if (!acc[mode]) acc[mode] = [];
+      acc[mode].push(election);
+      return acc;
+    }, {});
+
+    // For each mode, group by post and build sections
+    Object.keys(groupedByMode).forEach(mode => {
+      const elections = groupedByMode[mode];
+      const container = getTargetContainer(mode);
+
       if (!container) return;
 
-      election.candidates?.forEach(candidate => {
-        container.insertAdjacentHTML('beforeend', buildCard(candidate, election));
+      // Group elections by post
+      const groupedByPost = elections.reduce((acc, election) => {
+        const post = election.post;
+        if (!acc[post]) acc[post] = [];
+        acc[post].push(election);
+        return acc;
+      }, {});
+
+      // For each post, build section
+      Object.keys(groupedByPost).forEach(post => {
+        const postElections = groupedByPost[post];
+        // Assuming one election per post, take the first
+        const election = postElections[0];
+        const candidates = election.candidates || [];
+        const postSectionHTML = buildPostSection(post, candidates, election);
+        container.insertAdjacentHTML('beforeend', postSectionHTML);
       });
     });
   } catch (err) {
@@ -181,8 +221,8 @@ const loadUserProfile = async () => {
 
     if (userInfo) {
       userInfo.innerHTML = `
-        <p>${data.username}</p>
-        <p>${data.studentId}</p>
+        <p>${data.user.username}</p>
+        <p>${data.user.studentId}</p>
       `;
     }
 
@@ -194,10 +234,10 @@ const loadUserProfile = async () => {
 };
 
 //onload
-// loadUserProfile()
-  // .then(() => 
-    // fetchResultData()
-  // );
+loadUserProfile()
+  .then(() => 
+    fetchResultData()
+  );
 
 //logout func
 logout();
