@@ -7,7 +7,7 @@ export function sideFlow(container) {
     if (!nav) return;
     navOpen = !navOpen;
     nav.style.display = navOpen ? 'block' : 'none';
-    checkMargin()
+    // checkMargin()
   };
   
   navToggle?.addEventListener('click', toggleNav);

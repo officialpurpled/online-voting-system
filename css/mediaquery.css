@@ -7,20 +7,27 @@
 
   /* Result page */
   #results{
-    margin-left: 5px;
+    margin-left: 0;
   }
-  .card-container{
+  #results .card-container{
     grid-template-columns: 1fr 1fr;
     height: auto;
   }
 
   /* Dashboard */
   #dashboard{
-    padding-left: 7px;
+    padding-left: 0;
   }
   .campBody{
     grid-template-columns: 1fr 1fr 1fr;
   } 
+
+
+  /* profile */
+  #profile {
+    padding-left: 0;
+  }
+
 } 
 
 
@@ -31,7 +38,7 @@
 
   } */
 
-  /* Dashboard sect */
+  /*==== Dashboard sect ==== */
   #dashboard{
     padding-left: 0;
   }
@@ -66,9 +73,10 @@
     display: none;
   }
 
-  /* Profile Sect */
+  /* === Profile Sect === */
   #profile{
-    padding: 25px 10px 20px;
+    padding-left: 0;
+    padding-top: 80px;
   }
   .container-wrapper, 
   .userinfor{
@@ -89,9 +97,9 @@
   }
 
 
-  /* Result page */
+  /* === Result page ==== */
   .card-container{
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     height: auto;
   }
   #results {

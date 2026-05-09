@@ -1,5 +1,5 @@
-import { sideFlow} from "./utils/navFlow.js";
-import { API_KEY, logout } from "./utils/library.js";
+import { sideFlow} from "../../script/utils/navFlow.js";
+import { API_KEY, logout } from "../../script/utils/library.js";
 
 const token = JSON.parse(localStorage.getItem('p-id'))
   

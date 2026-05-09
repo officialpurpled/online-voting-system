@@ -4,12 +4,12 @@ nav{
 main{
     padding: 110px 5px;
   }
-   #results {
+#results {
   /* Main Container */
     margin-left: 191px;
     /* border: 1px solid blue; */
-  }
-.result{
+}
+.resultTab{
   background-color: rgba(237, 235, 235, 0.913);
   margin-bottom: 10px;
   text-align: center;
@@ -25,15 +25,22 @@ section{
 }
 .card-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 10px;
   row-gap: 5px;
   margin: 0 5px ;
   height: auto;
 }
 
+.postCard{
+  color: beige;
+  background-color: aqua;
+  text-align: center;
+}
+
+
 .card{
-  display: grid;
+  display: flex;
   grid-template-columns: 1.5fr 2fr;
   border: 1px solid green;
   border-radius: 5px;
@@ -50,7 +57,7 @@ section{
   transition: border-radius 400ms;
   object-fit: cover;
   object-position: center; 
-  height: 100%;
+  /* height: 100%; */
   /*Playing around 
   border:4px purple solid;
   */
@@ -59,10 +66,12 @@ section{
   border-radius: 0;
 }
 .thumbnail{
-  position: relative;
+  /* position: relative; */
+  width: 100px;
+  height: 100px;
 }
 span::before{
-  content: 'Onholly ';
+  content: 'science';
 }
 span{
   position: absolute;
@@ -76,14 +85,17 @@ span{
   border-radius: 35px;
 }
 .candidate-stat{
-  display: grid;
-  grid-template-rows: 2fr 1.3fr;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: 2fr 1.3fr; */
   /* row-gap: 12px; */
 }
 .candidate-info{
+  flex: 1;
   background-color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
 
   display: flex;
   flex-direction: column;
@@ -93,19 +105,19 @@ span{
   border-radius: 5px;
 }
 .candName{
-    font-weight: 600;
-    font-size: 14px;
+    /* font-weight: 600; */
+    /* font-size: 12px; */
   }
 .candNname{
   background-color: rgba(22, 155, 4, 0.881);
   color: white;
   padding: 2px 4px;
   border-radius: 15px;
-  font-size: 11px;
+  font-size: x-small;
   margin: 0 5px;
 }
 .candPost{
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 5px;
   font-weight: 800;
   font-style: oblique
@@ -120,7 +132,7 @@ span{
 }
 
 .vCount{
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: 1000;
   color: green;
 }

@@ -83,7 +83,8 @@ if(!token || token === null || token === 'Forbbiden'){
     }, 500);
   };
 
-  document.querySelectorAll('.result').forEach((tab, index) => {
+  //needs tweak
+  document.querySelectorAll('.resultTab').forEach((tab, index) => {
     const section = sections[index];
     if (!section) return;
     tab.addEventListener('click', () => {
@@ -193,10 +194,10 @@ const loadUserProfile = async () => {
 };
 
 //onload
-loadUserProfile()
-  .then(() => 
-    fetchResultData()
-  );
+// loadUserProfile()
+  // .then(() => 
+    // fetchResultData()
+  // );
 
 //logout func
 logout();
