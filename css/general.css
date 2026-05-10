@@ -24,10 +24,12 @@ body{
   box-sizing: border-box;
   background-color: var(--color-bg);
   color: var(--color-text);
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
 } 
 
 main{
+  flex: 1;
   padding-top: 120px;
   padding-left: 190px;
   /* margin-right: 10px; */
@@ -57,7 +59,7 @@ footer{
   left: 0;
   right: 0;
   top: 95vh;
-  position: sticky;
+  position: fixed;
   text-align: center;
   z-index: 1000;
 }

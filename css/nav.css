@@ -17,7 +17,7 @@
   transition: .3s;
 }
 .menu-icon{
-  color:  var(--color-primary);
+  color:  var(--color-surface);
   border: 1.5px solid var(--color-secondary);
   padding: 1px 5px;
   border-radius: 2px;

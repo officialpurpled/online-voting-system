@@ -8,7 +8,6 @@ main{
   /* Main Container */
     margin-left: 191px;
     /* border: 1px solid blue; */
-    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 14px;
     line-height: 1.35;
 }
@@ -23,7 +22,7 @@ main{
   cursor: pointer;
   color: #15351f;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
 }
 section{
   display: none;
@@ -73,22 +72,23 @@ section{
 }
 .thumbnail{
   /* position: relative; */
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
 }
 span::before{
-  content: 'science';
+  /* content: 'science'; */
 }
 span{
-  position: absolute;
+  /* position: absolute; */
   bottom: 5px;
   right: 5px;
   background-color: black;
   color: white;
-  padding: 2px 3px;
-  font-size: 10px;
+  padding: 4px 6px;
+  font-size: 6px;
   font-family: inherit;
-  font-weight: 700;
+  font-style: italic;
+  /* font-weight: 600; */
   line-height: 1.1;
   border-radius: 35px;
 }
@@ -102,7 +102,7 @@ span{
 .candidate-info{
   flex: 1;
   background-color: white;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 13px;
 
   display: flex;
@@ -114,7 +114,7 @@ span{
 }
 .candName{
     color: #17251b;
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1.2;
   }
 .candNname{
@@ -123,13 +123,13 @@ span{
   padding: 2px 4px;
   border-radius: 15px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 5px;
 }
 .candPost{
   font-size: 12px;
   margin-top: 5px;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   color: #395242;
 }
@@ -144,7 +144,7 @@ span{
 
 .vCount{
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
   color: green;
   font-variant-numeric: tabular-nums;
@@ -152,7 +152,7 @@ span{
 
 .unit{
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   color: #5f6f63;
   text-transform: uppercase;
 }
@@ -160,14 +160,15 @@ span{
 .post-section {
   margin-bottom: 20px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 10px;
   background-color: #f9f9f9;
 }
 
 .post-title {
+  font-family: 'Poppins';
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.25;
   text-align: center;
   margin-bottom: 10px;

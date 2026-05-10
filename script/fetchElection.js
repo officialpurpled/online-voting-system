@@ -160,6 +160,15 @@ function handleVote(event) {
 
   const candidateName = candidateSelect.value;
 
+  console.log(
+{
+  event: event,
+  eveId: electionId,
+  condSe: candidateSelect,
+  canName: candidateName,
+  user: userId,
+}
+  )
   if (!candidateName) {
     alert('Please select a candidate before voting');
     return;
@@ -208,6 +217,6 @@ function handleVote(event) {
 miniProfile()
 fetchElections()
 
-sideFlow(document.querySelector('#dashbord'));
+sideFlow(document.querySelector('main'));
 
 logout();

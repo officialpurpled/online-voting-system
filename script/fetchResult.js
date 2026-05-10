@@ -1,5 +1,7 @@
 import { API_KEY, logout } from "./utils/library.js";
 
+lucide.createIcons()
+
 const token = JSON.parse(localStorage.getItem('p-id'))
 
 if(!token || token === null || token === 'Forbbiden'){
@@ -13,13 +15,19 @@ if(!token || token === null || token === 'Forbbiden'){
   const nav = document.querySelector('nav');
   let navOpen = false;
 
+  
   const toggleNav = () => {
     if (!nav) return;
     navOpen = !navOpen;
     nav.style.display = navOpen ? 'block' : 'none';
+    navToggle.innerHTML = `<i 
+      data-lucide=${navOpen? "x":"menu" }>
+    </i>`;
     checkMargin();
-  };
 
+    lucide.createIcons()
+  };
+  
   navToggle?.addEventListener('click', toggleNav);
 
   function checkMargin() {
