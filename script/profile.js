@@ -63,11 +63,15 @@ function updateProfile() {
           Current Level: <p>${user.level}</p>
         </div>
     
-        <button> 
-          <a href="dashboard.html">
+        <div class="buttons">
+          <button class="backBtn" href="dashboard.html"> 
             Back to dashboard 
-          </a>
-        </button>
+          </button>
+
+          <button class="editBtn" href="edit.html">
+            Edit Profile
+          </button>
+        </div>
       </div>
     `;
 })

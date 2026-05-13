@@ -3,7 +3,7 @@ import { API_KEY, logout } from "./utils/library.js";
 
 const token = JSON.parse(localStorage.getItem('p-id'))
   
-if(!token || token === null){
+if(!token || token === undefined){
   alert("Session Timeout \n Please login again.")
   window.location.href = './login.html'
 }
@@ -61,7 +61,7 @@ const buildCard = (candidate, election) => `
           Select a candidate
         </option>
         ${candidate.map(c => `
-          <option value="${c.userId.username}">
+          <option value="${c._id}">
             ${c.userId.username}
           </option>`).join('')}
       </select>
@@ -156,37 +156,39 @@ function fetchElections() {
 function handleVote(event) {
   const electionId = event.target.getAttribute('data-election-id');
 
+  // const candidateId = event.target.getAttribute('data-candidate-id');
+
   const candidateSelect = document.querySelector(`#candidates-${electionId}`);
 
-  const candidateName = candidateSelect.value;
+  const candidateId = candidateSelect.value;
 
   console.log(
 {
   event: event,
   eveId: electionId,
   condSe: candidateSelect,
-  canName: candidateName,
+  candId: candidateId,
   user: userId,
 }
   )
-  if (!candidateName) {
+  if (!candidateId) {
     alert('Please select a candidate before voting');
     return;
   }
-
 
   if (
     // !user._id
     !token
   ) {
     alert('User not logged in');
+    window.location.href = './login.html';
     return;
   }
 
   const voteData = {
     userId,
     electionId: electionId,
-    candidateName: candidateName
+    candidateId: candidateId
   };
 
   fetch(`${API_KEY}/user/vote`, {

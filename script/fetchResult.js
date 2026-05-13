@@ -162,7 +162,7 @@ async function fetchResultData() {
   });
 
   try {
-    const res = await fetch(`../data/result.json`, {
+    const res = await fetch(`${API_KEY}/user/get-result`, {
       headers: { 
         Authorization: `Bearer ${token}` }
       }
