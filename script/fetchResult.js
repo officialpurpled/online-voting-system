@@ -214,6 +214,7 @@ async function fetchResultData() {
 
 //load header profile data
 const userInfo = document.querySelector('#ab-user-info');
+
 const loadUserProfile = async () => {
   try {
     const res = await fetch(`${API_KEY}/user/profile`, {
@@ -228,6 +229,8 @@ const loadUserProfile = async () => {
     const data = await res.json();
 
     if (userInfo) {
+      document.querySelector('.userimg img').src = data.user.photo.url;
+
       userInfo.innerHTML = `
         <p>${data.user.username}</p>
         <p>${data.user.studentId}</p>

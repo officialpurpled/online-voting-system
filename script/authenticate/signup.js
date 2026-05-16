@@ -313,7 +313,7 @@ form.addEventListener('submit', (e)=>{
     department,
     level,
     studentId : userIdGen(),
-      photo: '../images/avatar.jpg',
+      photo,
       idCard, 
       receipt
   }
@@ -346,13 +346,28 @@ form.addEventListener('submit', (e)=>{
         }
         signinBtn.innerText = 'SIGNING IN...'
 
+        const formData = new FormData();
+        
+        formData.append('username', username )
+        formData.append('email', email)
+        formData.append('matric', matric)
+        formData.append('password', password )
+        formData.append('faculty', faculty)
+        formData.append('department', department)
+        formData.append('level', level )
+        formData.append('studentId', userIdGen())
+        //for images now
+        formData.append('profileImg', photo)
+        formData.append('idCard', idCard)
+        formData.append('receipt', receipt)
+
         fetch(`${API_KEY}/auth/signup`, 
           {
             method:"POST",
-            headers :{
-              "Content-Type":"application/json"
-            },
-            body: JSON.stringify(newuser)
+            // headers :{
+            //   "Content-Type":"multipart/form-data"
+            // },
+            body: formData
           })
           .then(response => response.json())
           .then(data => {

@@ -11,6 +11,7 @@ if(!token || token === null || token === undefined || token === "Forbidden"){
 let user;
 
 const userinfor = document.querySelector('.userinfor');
+let userimg = document.querySelector('.userimg img');
 
 // Fetch the vote count from the server
 // async function getUserVote(iD) {
@@ -20,7 +21,7 @@ const userinfor = document.querySelector('.userinfor');
 // }
 
 // Update the profile page with user data
-function updateProfile() {
+function renderProfile() {
   fetch(`${API_KEY}/user/profile`, {
     method: 'GET',
     headers: {
@@ -31,6 +32,7 @@ function updateProfile() {
   .then(async data => {
     user = data.user;
 
+    userimg.src = user.photo.url
     userinfor.innerHTML = `
       <div class="biodata">
         <span class="label">BIO DATA</span>
@@ -50,35 +52,37 @@ function updateProfile() {
           Vote count:<p>${user.votedElections}</p>
         </div>
       </div>
-    
+
       <div class="stddata">
-        <span class="label">STUDENTSHIP DATA</span>
-        <div>
-          Faculty: <p>${user.faculty}</p>
+        <div class="mdata">
+          <span class="label">STUDENTSHIP DATA</span>
+          <div>
+            Faculty:<p>${user.faculty}</p>
+          </div>
+          <div>
+            Department:<p>${user.department}</p>
+          </div>
+          <div>
+            Current Level:<p>${user.level}</p>
+          </div>
         </div>
-        <div>
-          Department: <p>${user.department}</p>
-        </div>
-        <div>
-          Current Level: <p>${user.level}</p>
-        </div>
-    
         <div class="buttons">
-          <button class="backBtn" href="dashboard.html"> 
+          <button class="backBtn" href="./dashboard.html"> 
             Back to dashboard 
           </button>
 
-          <button class="editBtn" href="edit.html">
+          <button class="editBtn" href="#">
             Edit Profile
           </button>
         </div>
+
       </div>
     `;
 })
   .catch(err => console.log(err))
 }
 
-updateProfile();
+renderProfile();
 sideFlow(document.querySelector('#profile'))
 logout();
 

@@ -1,6 +1,8 @@
 import { sideFlow} from "./utils/navFlow.js";
 import { API_KEY, logout } from "./utils/library.js";
 
+lucide.createIcons();
+
 const token = JSON.parse(localStorage.getItem('p-id'))
   
 if(!token || token === undefined){
@@ -28,6 +30,8 @@ function miniProfile() {
       Authorization : `Bearer ${token}`
     }
   }).then(res=> res.json()).then(data => {
+    document.querySelector('.userimg img').src = data.user.photo.url;
+
     userInfo.innerHTML = `
       <p>${data.user.username}</p>
       <p>${data.user.studentId}</p>
@@ -54,7 +58,7 @@ const buildCard = (candidate, election) => `
     </div>
     <div class="details">
       <div class="position"> 
-        <b>POST :</b> ${election.post.toUpperCase()}
+        <b>POST :</b> ${election.post}
       </div>
       <select name="candidate" id="candidates-${election._id}" class="candidate-select">
         <option value="" selected disabled>         
