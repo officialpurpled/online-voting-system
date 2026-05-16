@@ -229,7 +229,7 @@ const loadUserProfile = async () => {
     const data = await res.json();
 
     if (userInfo) {
-      document.querySelector('.userimg img').src = data.user.photo.url;
+      document.querySelector('.userimg img').src = data.user.passport.url;
 
       userInfo.innerHTML = `
         <p>${data.user.username}</p>

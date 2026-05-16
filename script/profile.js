@@ -32,7 +32,7 @@ function renderProfile() {
   .then(async data => {
     user = data.user;
 
-    userimg.src = user.photo.url
+    userimg.src = user.passport.url
     userinfor.innerHTML = `
       <div class="biodata">
         <span class="label">BIO DATA</span>

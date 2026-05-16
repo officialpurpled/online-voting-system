@@ -30,7 +30,7 @@ function miniProfile() {
       Authorization : `Bearer ${token}`
     }
   }).then(res=> res.json()).then(data => {
-    document.querySelector('.userimg img').src = data.user.photo.url;
+    document.querySelector('.userimg img').src = data.user.passport.url;
 
     userInfo.innerHTML = `
       <p>${data.user.username}</p>
