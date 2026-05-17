@@ -1,8 +1,19 @@
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding-left: 0;
+}
+.signupMain{
+  padding-top: 170px;
+  padding-bottom: 50px;
+}
 .form-container{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: flex;
   flex-direction: column;
-  row-gap: 15px
-  ;
+  row-gap: 15px;
   padding: 25px 15px;
   justify-content: center;
   align-items: center;
@@ -13,7 +24,7 @@
 
   margin-top: 50px;
   margin-bottom: 40px;
-  min-width: 300px;
+  min-width: 280px;
   max-width: 400px;
   flex: 1 1 auto;
 }
@@ -32,18 +43,27 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   align-items: center;
   color: var(--color-primary);
+  text-wrap-mode: nowrap;
 }
 label input,select{
-  width: 60%;
+  width: 50%;
   border: var(--color-secondary) 1.5px solid;
   border-radius: 5px;
   padding: 5px;
   outline: none;
 }
 label select {
-  width: 63%;
+  width: 53.5%;
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+  /* border: 0; */
+}
+label select:hover{
+  background-color: azure;
+  color: green;
 }
 button{
   width: 200px;
@@ -69,16 +89,12 @@ button{
   align-items: center;
 }
 .ruler > span {
-  /* border: 1px solid black; */
-  background-color: rgba(96, 0, 128, 0.594);
+  border-radius: 30px;
+  background-color: var(--color-secondary);
   height: 1px;
   width: 48%;
 }
 .ruler p{
   margin: 0 2px;
 }
-main{
-  display: flex;
-  justify-content: center;
-  padding-left: 0;
-}
+
