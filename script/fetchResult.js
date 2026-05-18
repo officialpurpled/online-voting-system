@@ -158,7 +158,7 @@ async function fetchResultData() {
   const sugContainer = document.querySelector('#sug-modal');
 
   [deptContainer, facultyContainer, sugContainer].forEach(container => {
-    if (container) container.innerHTML = '';
+    if (container) container.innerHTML = 'fetching result data...';
   });
 
   try {
@@ -211,11 +211,12 @@ async function fetchResultData() {
   }
 }
 
-
 //load header profile data
-const userInfo = document.querySelector('#ab-user-info');
+const userInfo = document.querySelector('.profile-abstract');
 
 const loadUserProfile = async () => {
+  userInfo.innerHTML = `<div "ab-user-info"> fetching data... </div>`
+
   try {
     const res = await fetch(`${API_KEY}/user/profile`, {
         method: 'GET',
@@ -228,27 +229,37 @@ const loadUserProfile = async () => {
 
     const data = await res.json();
 
-    if (userInfo) {
-      document.querySelector('.userimg img').src = data.user.passport.url;
-
-      userInfo.innerHTML = `
-        <p>${data.user.username}</p>
-        <p>${data.user.studentId}</p>
-      `;
+    if (data.message.includes('expired')) {
+      alert("Session timeout. please login again");
+      window.location.href = './login.html'
     }
 
-    return data;
+    const user = data.user
+
+    userInfo.innerHTML = `
+      <div class="avatar"> 
+        <img src="${user.passport.url}" >
+      </div>
+
+      <div style="display: flex; flex-direction: column;" id="ab-user-info">
+        <p>${user.username}</p>
+        <p>${user.studentId}</p>
+      </div>
+    `;
+
+    return user;
   } catch (err) {
+    userInfo.innerHTML = `<div> Error fetching profile</div>`
     console.error(err);
     return null;
   }
 };
 
 //onload
-loadUserProfile()
-  .then(() => 
-    fetchResultData()
-  );
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadUserProfile()
+  fetchResultData()
+})
 
 //logout func
 logout();

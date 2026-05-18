@@ -134,6 +134,7 @@ form.addEventListener('submit', (e)=>{
   try {
     signinBtn.disabled = true
     signinBtn.innerText = 'SIGNING UP...';
+    message.innerText = ''
 
     fetch(`${API_KEY}/auth/signup`, {
       method:"POST",

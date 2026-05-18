@@ -7,6 +7,7 @@ const message = document.querySelector('#message')
 loginBtn.addEventListener('click',()=>{
   let matricNo = document.querySelector('.matric').value.trim().toUpperCase();
   let password = document.querySelector('.password').value.trim();
+  
   loginBtn.disabled = true
   loginBtn.innerHTML = 'LOGGING IN...'
   message.innerText = ''

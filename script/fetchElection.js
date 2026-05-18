@@ -10,8 +10,6 @@ if(!token || token === undefined){
   window.location.href = './login.html'
 }
 
-let userId;
-
 const department = document.querySelector('.campBody#department')
 const faculty = document.querySelector('.campBody#faculty')
 const general = document.querySelector('.campBody#general')
@@ -20,25 +18,48 @@ const tempBody = document.querySelectorAll('.tempBody')
 // console.log('Token:', token); // Debugging line to check token value
 console.log(department, general, faculty); // Debugging line to check API_KEY value
 
-const userInfo = document.querySelector('.uuname'); //header
+const userInfo = document.querySelector('.profile-abstract'); //header
 
 function miniProfile() {
   // Display mini user info
-  fetch(`${API_KEY}/user/profile`, {
-    method: 'GET',
-    headers: {
-      Authorization : `Bearer ${token}`
+  userInfo.innerHTML = `<div class=""> fetching data... </div>`
+
+  try {
+    const res = fetch(`${API_KEY}/user/profile`, {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${token}` }
     }
-  }).then(res=> res.json()).then(data => {
-    document.querySelector('.userimg img').src = data.user.passport.url;
+    // const res = await fetch(`../data/users.json`
+    );
+
+    if (!res.ok) throw new Error('Unable to load profile');
+
+    const data = res.json();
+
+    if (data.message.includes('expired')) {
+      alert("Session timeout. please login again");
+      window.location.href = './login.html'
+    }
+
+    const user = data.user
 
     userInfo.innerHTML = `
-      <p>${data.user.username}</p>
-      <p>${data.user.studentId}</p>
-    `
-    userId = data.user._id
-  })
-  .catch(err => console.log(err))
+      <div class="avatar"> 
+        <img src="${user.passport.url}" >
+      </div>
+
+      <div style="display: flex; flex-direction: column;" id="ab-user-info">
+        <p>${user.username}</p>
+        <p>${user.studentId}</p>
+      </div>
+    `;
+
+    return user;
+  } catch (err) {
+    userInfo.innerHTML = `<div> Error fetching profile</div>`
+    console.error(err);
+    return null;
+  }
 }
 
 //insert result card into its container right
@@ -78,6 +99,10 @@ const buildCard = (candidate, election) => `
 
 // Initial fetch of elections
 function fetchElections() {
+  tempBody.forEach(body => {
+   body.innerHTML = '<div>fetching election data...</div>'
+  }) 
+
   fetch(`${API_KEY}/user/get-election`, {
     method: 'GET',
     headers: {
@@ -86,13 +111,19 @@ function fetchElections() {
   })
     .then(res => res.json())
     .then(data => {
+      if (data.message.includes('expired')) {
+        alert("Session timeout. please login again");
+        window.location.href = './login.html'
+        return
+      }
+
       const deptData = data.department
       const facData = data.faculty
       const sugData = data.sug
 
       if (deptData) {
         if (!deptData || deptData.length === 0) {
-          tempBody[0].innerHTML = 'test 0 this'          
+          tempBody[0].innerHTML = 'No Available ELection'          
         }
 
         department.style.display = 'grid'
@@ -109,7 +140,7 @@ function fetchElections() {
       } 
       if (facData) {
         if (!facData || facData.length === 0) {
-          tempBody[1].innerHTML = 'test 1 this'          
+          tempBody[1].innerHTML = 'No Available ELection'          
         }
         faculty.style.display = 'grid'
         tempBody[1].style.display = 'none'
@@ -126,7 +157,7 @@ function fetchElections() {
       }
       if (sugData) {
         if (!sugData || sugData.length === 0) {
-          tempBody[2].innerHTML = 'test 2 this'          
+          tempBody[2].innerHTML = 'No Available ELection'          
         }
         general.style.display = 'grid'
         tempBody[2].style.display = 'none'
@@ -142,9 +173,9 @@ function fetchElections() {
         // general.innerHTML += electionCard
       }
   
-      // Add vote button event listeners
+      // Add vote event listeners
       document.querySelectorAll('.vote').forEach(button => {
-        button.addEventListener('click', handleVote);
+        button.addEventListener('click',  handleVote);
       });
     })
     .catch(err => {
@@ -158,39 +189,25 @@ function fetchElections() {
 
 // Handle vote submission
 function handleVote(event) {
+  event.target.disabled = true;
+  event.target.textContent = 'VOTING..';
+
   const electionId = event.target.getAttribute('data-election-id');
-
-  // const candidateId = event.target.getAttribute('data-candidate-id');
-
   const candidateSelect = document.querySelector(`#candidates-${electionId}`);
-
   const candidateId = candidateSelect.value;
 
-  console.log(
-{
-  event: event,
-  eveId: electionId,
-  condSe: candidateSelect,
-  candId: candidateId,
-  user: userId,
-}
-  )
   if (!candidateId) {
     alert('Please select a candidate before voting');
     return;
   }
 
-  if (
-    // !user._id
-    !token
-  ) {
+  if (!token || token === undefined) {
     alert('User not logged in');
     window.location.href = './login.html';
     return;
   }
 
   const voteData = {
-    userId,
     electionId: electionId,
     candidateId: candidateId
   };
@@ -205,15 +222,27 @@ function handleVote(event) {
   })
   .then(res => res.json())
   .then(data => {
+    if (data.message.includes('expired')) {
+      alert("Session timeout. please login again");
+      window.location.href = './login.html'
+      return
+    }
+
+    if (data.message.includes('already voted')) {
+      event.target.disabled = false;
+      event.target.textContent = 'VOTED';
+      return
+    }
+
     if (data.status === 200 || data.message.includes('successfully')) {
       alert('Vote submitted successfully!');
       event.target.disabled = true;
       event.target.textContent = 'VOTED';
-    } else {
-      alert(data.message || 'Error submitting vote');
-    }
+    } 
   })
   .catch(err => {
+    event.target.disabled = false;
+    event.target.textContent = 'VOTE';
     alert('Error submitting vote');
     console.error('Vote submission error:', err);
   });

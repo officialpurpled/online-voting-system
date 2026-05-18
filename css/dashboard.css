@@ -35,11 +35,17 @@
   /* border: 1px solid black; */
   padding: 3px;
 
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-between;
   align-items: center ;
   gap: 25px;
+}
+.tempBody{
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 /* Election Card  */
