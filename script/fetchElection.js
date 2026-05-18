@@ -36,10 +36,10 @@ function miniProfile() {
 
     const data = res.json();
 
-    if (data.message.includes('expired')) {
-      alert("Session timeout. please login again");
-      window.location.href = './login.html'
-    }
+    // if (data.message.includes('expired')) {
+    //   alert("Session timeout. please login again");
+    //   window.location.href = './login.html'
+    // }
 
     const user = data.user
 
@@ -111,11 +111,11 @@ function fetchElections() {
   })
     .then(res => res.json())
     .then(data => {
-      if (data.message.includes('expired')) {
-        alert("Session timeout. please login again");
-        window.location.href = './login.html'
-        return
-      }
+      // if (data.message.includes('expired')) {
+      //   alert("Session timeout. please login again");
+      //   window.location.href = './login.html'
+      //   return
+      // }
 
       const deptData = data.department
       const facData = data.faculty
@@ -222,11 +222,11 @@ function handleVote(event) {
   })
   .then(res => res.json())
   .then(data => {
-    if (data.message.includes('expired')) {
-      alert("Session timeout. please login again");
-      window.location.href = './login.html'
-      return
-    }
+    // if (data.message.includes('expired')) {
+    //   alert("Session timeout. please login again");
+    //   window.location.href = './login.html'
+    //   return
+    // }
 
     if (data.message.includes('already voted')) {
       event.target.disabled = false;

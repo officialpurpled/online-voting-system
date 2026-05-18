@@ -12,7 +12,7 @@ const userinfor = document.querySelector('.userinfor');
 const userimg = document.querySelector('.userimg img');
 
 function renderProfile(user) {
-  userimg.src = user.passport.url
+  userimg.src = user.passport.url || '../images/avatar.jpg'
   userinfor.innerHTML = `
     <div class="biodata">
       <span class="label">BIO DATA</span>
@@ -78,7 +78,7 @@ function loadData() {
       return
     }
 
-    return data.user
+    renderProfile(data.user)
   })
   .catch(err => {
     userinfor.innerHTML = `<div class="biodata"> Error fetching profile data... </div>`
@@ -89,9 +89,8 @@ function loadData() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const user = await loadData();
+  await loadData();
   await sideFlow(document.querySelector('#profile'))
-  renderProfile(user)
 })
 
 logout();
