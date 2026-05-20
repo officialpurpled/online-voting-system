@@ -44,8 +44,7 @@
 .tempBody{
   text-align: center;
   margin: 20px 0;
-  font-weight: 600;
-  font-family: 'Courier New', Courier, monospace;
+  /* font-weight: 500; */
 }
 
 /* Election Card  */

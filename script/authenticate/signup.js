@@ -47,7 +47,7 @@ fetch('../data/deptFac.json')
       loadDepartments(data.faculties[0].name);
     }
   })
-  .catch(_err => console.log('Error loading faculty list', _err));
+  .catch(err => console.log('Error loading faculty list' + err));
 
 // Function to load departments based on selected faculty name
 function loadDepartments(facultyName) {
@@ -93,7 +93,7 @@ form.addEventListener('submit', (e)=>{
     return
   }
 
-  if(password.length <= 6) return showMsg('no', 'password')
+  if(password.length < 6) return showMsg('no', 'password')
 
   if (!idCard && !receipt){
     showMsg('no', 'file')
@@ -106,15 +106,6 @@ form.addEventListener('submit', (e)=>{
     console.log('accept terms and conditions')
     return;
   }
-
-  // if (idCard === photo || idCard === receipt) {
-  //   photo = '../images/avatar.jpg'
-  //   receipt = ''
-  // } 
-  // if (receipt === photo || receipt === idCard) {
-  //   receipt = ''
-  //   idCard = ''
-  // }
 
   const formData = new FormData();
   
@@ -142,30 +133,23 @@ form.addEventListener('submit', (e)=>{
     })
     .then(response => response.json())
     .then(data => {
-      if (data.status === 500) {
-        message.innerHTML = `<p> ${data.message} </p>`;
+      if (!data.success) {
+        message.innerHTML = `<p> ${data.message}</p>`;
         signinBtn.disabled = false
         signinBtn.innerText = 'SIGN UP';
-        console.log('Error signup user. /n Try again later');
+        return
       }
-      if (data.status === 400) {
-        showMsg('no', 'exist');
-        signinBtn.disabled = false
-        signinBtn.innerText = 'SIGN UP';
-        console.log('User already exists');
-      }
-      if(data.status == 200){
-        message.innerHTML = `${data.message}. ${showMsg('yes', 'Signup')}`
 
-        setTimeout(() => {
-          window.location.href = './login.html'
-        }, 1000);
-      }
+      message.innerHTML = `${data.message}. ${showMsg('yes', 'Signup')}`
+
+      setTimeout(() => {
+        window.location.href = './login.html'
+      }, 1500);
     })
   } catch (error) {
     signinBtn.disabled = false
     signinBtn.innerText = 'SIGN UP';
     message.innerHTML = "<p> Network Error. <br> Please check your connection and try again.</p>"
-    console.log('Error : ' + err)
+    // console.log('Error : ' + err)
   }
 })

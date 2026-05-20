@@ -72,16 +72,22 @@ function loadData() {
   })
   .then(res => res.json())
   .then(data => {
-    if(data.message.includes('expired')){
-      alert('Session timeout. Kindly login again')
-      window.location.href = './login.html'
+    if (!data.success && data.redirect) {
+      alert(data.message)
+      window.location.href = "./login.html"
+      return
+    }
+
+    if (!data.success) {
+      userinfor.innerHTML = `<div class="biodata"> Error fetching profile data. <br>Error: ${data.message} </div>`
+      // alert(data.message)
       return
     }
 
     renderProfile(data.user)
   })
   .catch(err => {
-    userinfor.innerHTML = `<div class="biodata"> Error fetching profile data... </div>`
+    userinfor.innerHTML = `<div class="biodata"> Error fetching profile data. <br>Error: ${err.message} </div>`
     console.log(err.message)
     return
   }

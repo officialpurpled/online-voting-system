@@ -14,7 +14,7 @@ export function sideFlow(container) {
       data-lucide=${navOpen? "x":"menu"}
     ></i>`;
     lucide.createIcons()
-    checkMargin()
+    // checkMargin()
   };
   
   navToggle?.addEventListener('click', toggleNav);

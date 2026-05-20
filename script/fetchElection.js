@@ -36,11 +36,17 @@ function miniProfile() {
 
     const data = res.json();
 
-    // if (data.message.includes('expired')) {
-    //   alert("Session timeout. please login again");
-    //   window.location.href = './login.html'
-    // }
+    if (!data.success && data.redirect) {
+      alert(data.message)
+      window.location.href = "./login.html"
+      return
+    }
 
+    if (!data.success) {
+      alert(data.message)
+      return
+    }
+    
     const user = data.user
 
     userInfo.innerHTML = `
@@ -111,11 +117,17 @@ function fetchElections() {
   })
     .then(res => res.json())
     .then(data => {
-      // if (data.message.includes('expired')) {
-      //   alert("Session timeout. please login again");
-      //   window.location.href = './login.html'
-      //   return
-      // }
+      if (!data.success && data.redirect) {
+        alert(data.message)
+        window.location.href = "./login.html"
+        return
+      }
+
+      if (!data.success) {
+        tempBody.forEach(body => body.innerHTML = `<p class="error-msg">${data.message}</p>`);
+        alert(data.message)
+        return
+      }
 
       const deptData = data.department
       const facData = data.faculty
@@ -179,7 +191,7 @@ function fetchElections() {
       });
     })
     .catch(err => {
-      alert("Network Error. \n Please check your internet connection and try again") 
+      alert("Network Error. Please check your internet connection and try again") 
       
       tempBody.forEach(body => body.innerHTML = '<p class="error-msg">Unable to load elections at the moment. Please refresh or check back.</p>');
 
@@ -222,28 +234,30 @@ function handleVote(event) {
   })
   .then(res => res.json())
   .then(data => {
-    // if (data.message.includes('expired')) {
-    //   alert("Session timeout. please login again");
-    //   window.location.href = './login.html'
-    //   return
-    // }
-
-    if (data.message.includes('already voted')) {
-      event.target.disabled = false;
-      event.target.textContent = 'VOTED';
+    if (!data.success && data.redirect) {
+      event.target.textContent = 'VOTE';
+      alert(data.message)
+      window.location.href = "./login.html"
       return
     }
 
-    if (data.status === 200 || data.message.includes('successfully')) {
-      alert('Vote submitted successfully!');
-      event.target.disabled = true;
-      event.target.textContent = 'VOTED';
-    } 
+    if (!data.success) {
+      alert(data.message)
+      event.target.disabled = false;
+      event.target.textContent = 'VOTE';
+      return
+    }
+
+    // if (data.status === 200 || data.message.includes('successfully')) {
+    alert('Vote submitted successfully!');
+    event.target.disabled = true;
+    event.target.textContent = 'VOTED';
+    // } 
   })
   .catch(err => {
     event.target.disabled = false;
     event.target.textContent = 'VOTE';
-    alert('Error submitting vote');
+    alert(`Error submitting vote ${err.message}`);
     console.error('Vote submission error:', err);
   });
 }

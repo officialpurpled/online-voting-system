@@ -28,37 +28,20 @@ loginBtn.addEventListener('click',()=>{
   })
   .then(res => res.json())
   .then(data => { 
-    if (data.status === 500) {
-      console.log('Response: ', data.message);
+    if (!data.success) {
       loginBtn.disabled = false
       loginBtn.innerHTML = 'LOG IN'
-      message.innerHTML = "Server Error. Please try again later."
+      message.innerHTML = data.message
       return;
     }
     
-    if (data.status === 404) {
-      console.log('Response: ', data.message);
-      loginBtn.disabled = false
-      loginBtn.innerHTML = 'LOG IN';
-      showMsg('no', 'notfound')
-      
-    } else if (data.status == 403){
-      showMsg('no', 'incorrect')
-      loginBtn.disabled = false
-      loginBtn.innerHTML = 'LOG IN';
-      console.log('Response: ', data.message)
+    message.innerText = `${data.message}. ${showMsg('yes', 'Login')}`;
+    localStorage.setItem('p-id', JSON.stringify(data.token))
 
-    } else if (data.status === 200){
-      message.innerText = `${data.message}. ${showMsg('yes', 'Login')}`;
-      localStorage.setItem('p-id', JSON.stringify(data.token))
-
-      setTimeout(() => {
-        window.location.href = './dashboard.html'
-      }, 2000);
-      
-      console.log('Response: ', data.message)
-    }
-
+    setTimeout(() => {
+      window.location.href = './dashboard.html'
+    }, 1500);
+    // console.log('Response: ', data.message)
   })
   .catch((err) => {
     message.innerHTML = "Network Error. Please check your connection and try again."

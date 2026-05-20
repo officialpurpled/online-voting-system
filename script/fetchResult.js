@@ -14,7 +14,6 @@ if(!token || token === null || token === 'Forbbiden'){
   const navToggle = document.querySelector('.menu-icon');
   const nav = document.querySelector('nav');
   let navOpen = false;
-
   
   const toggleNav = () => {
     if (!nav) return;
@@ -23,8 +22,7 @@ if(!token || token === null || token === 'Forbbiden'){
     navToggle.innerHTML = `<i 
       data-lucide=${navOpen? "x":"menu" }>
     </i>`;
-    checkMargin();
-
+    // checkMargin();
     lucide.createIcons()
   };
   
@@ -169,6 +167,20 @@ async function fetchResultData() {
     );
     const data = await res.json();
 
+    if (!data.success && data.redirect) {
+      alert(data.message)
+      window.location.href = "./login.html"
+      return
+    }
+
+    if (!data.success) {
+      [deptContainer, facultyContainer, sugContainer].forEach(container => {
+        if (container) container.innerHTML = `Error: ${data.message}`;
+      });
+      return
+    }
+
+
     // Group elections by mode (department, faculty, sug)
     const groupedByMode = data.reduce((acc, election) => {
       const mode = election.mode?.toLowerCase();
@@ -193,6 +205,7 @@ async function fetchResultData() {
         return acc;
       }, {});
 
+      container.innerHTML = '';
       // For each post, build section
       Object.keys(groupedByPost).forEach(post => {
         const postElections = groupedByPost[post];
@@ -200,13 +213,13 @@ async function fetchResultData() {
         const election = postElections[0];
         const candidates = election.candidates || [];
         const postSectionHTML = buildPostSection(post, candidates, election);
-        container.insertAdjacentHTML('beforeend', postSectionHTML);
+        container.innerHTML += postSectionHTML;
       });
     });
   } catch (err) {
     [deptContainer, facultyContainer, sugContainer].forEach(container => {
-    if (container) container.innerHTML = 'unable to display result';
-  });
+      if (container) container.innerHTML = 'Unable to display result';
+    });
     console.error(err);
   }
 }
