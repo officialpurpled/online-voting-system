@@ -45,6 +45,10 @@ header{
   cursor: pointer;
 }
 
+.profile-abstract{
+  font-size: small;
+}
+
 .right-section a{
   color: var(--color-surface);
   display: flex;

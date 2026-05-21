@@ -112,7 +112,7 @@ function fetchElections() {
   })
     .then(res => res.json())
     .then(data => {
-      if (data.redirect === true) {
+      if (data.success === false && data.redirect === true) {
         alert(data.message)
         window.location.href = "./login.html"
         return
@@ -120,7 +120,7 @@ function fetchElections() {
 
       if (data.success === false) {
         tempBody.forEach(body => body.innerHTML = `<p class="error-msg">${data.message}</p>`);
-        alert(data.message)
+        // alert(data.message)
         return
       }
 
@@ -229,14 +229,21 @@ function handleVote(event) {
   })
   .then(res => res.json())
   .then(data => {
-    if (!data.success && data.redirect) {
+    if (data.success === false && data.redirect === true) {
       event.target.textContent = 'VOTE';
       alert(data.message)
       window.location.href = "./login.html"
       return
     }
 
-    if (!data.success) {
+    if (data.success === false && data.message.includes('voted')) {
+      alert(data.message)
+      event.target.disabled = true;
+      event.target.textContent = 'VOTED';
+      return
+    }
+
+    if (data.success === false) {
       alert(data.message)
       event.target.disabled = false;
       event.target.textContent = 'VOTE';

@@ -119,11 +119,13 @@ const buildCard = (candidate, election) => {
   const department = candidate.userId?.department ? candidate.userId.department.split(' ')[0].toUpperCase() : '';
   const level = candidate.userId?.level ?? '';
   const alias = candidate.alias ? candidate.alias.toString().toUpperCase() : '';
+  const imgSrc = candidate.imageUrl || '..images/candidate.jpg'
+  
   return `
   <div class="card">
     <div class="thumbnail">
-      <img src="${candidate.imageUrl}" alt="${alias}" id="avatar">
-      <span>${level}Lv${department ? ` | ${department}` : ''}</span>
+      <img src="${imgSrc}" alt="${alias}" id="avatar">
+      <span>${level}Lv ${department ? ` | ${department}` : ''}</span>
     </div>
     <div class="candidate-stat">
       <div class="candidate-info">
@@ -151,18 +153,17 @@ const buildPostSection = (postName, candidates, election) => `
 `;
 
 // fetch candidate data
-async function fetchResultData() {
+function fetchResultData() {
   const deptContainer = document.querySelector('#dept-modal');
   const facultyContainer = document.querySelector('#faculty-modal');
   const sugContainer = document.querySelector('#sug-modal');
 
   try {
-    // fetch(`${API_KEY}/user/get-result`, {
-    //   headers: { 
-    //     Authorization: `Bearer ${token}` }
-    //   }
-      fetch(`../data/result.json`
-    )
+    fetch(`${API_KEY}/user/get-result`, {
+      headers: { 
+        Authorization: `Bearer ${token}` 
+      }
+    })
     .then(res => res.json()) 
     .then(data => {
       if (data.success === false && data.redirect === true) {
@@ -177,7 +178,6 @@ async function fetchResultData() {
         });
         return
       }
-  
   
       // Group elections by mode (department, faculty, sug)
       const groupedByMode = data.reduce((acc, election) => {
@@ -225,7 +225,7 @@ async function fetchResultData() {
 
 
 //onload
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   miniProfile(document.querySelector('.profile-abstract'))
   fetchResultData()
 })

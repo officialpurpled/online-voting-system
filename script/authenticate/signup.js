@@ -87,16 +87,19 @@ form.addEventListener('submit', (e)=>{
   const radio = document.querySelector('.radio');
   
   if (!username || !password || !department || !faculty || !level || !matric) {
-    showMsg('no', 'empty')
-    // alert('all field is required')
+    showMsg('no', 'all field is required')
+    // alert()
     console.log('all field required')
     return
   }
 
-  if(password.length < 6) return showMsg('no', 'password')
+  if(password.length < 6) {
+    showMsg('no', 'Password should be atleast 6')
+    return 
+  }
 
   if (!idCard && !receipt){
-    showMsg('no', 'file')
+    showMsg('no', 'Please reupload school fee receipt or and Id Card')
     console.log('upload required files')
     return
   }
@@ -125,22 +128,31 @@ form.addEventListener('submit', (e)=>{
   try {
     signinBtn.disabled = true
     signinBtn.innerText = 'SIGNING UP...';
-    message.innerText = ''
+    message.innerHTML = ''
 
     fetch(`${API_KEY}/auth/signup`, {
       method:"POST",
       body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-      if (!data.success) {
-        message.innerHTML = `<p> ${data.message}</p>`;
+    .then(response => {
+      if (!response.ok) {
         signinBtn.disabled = false
+        signinBtn.innerText = 'SIGN UP';
+        // message.innerHTML = ''
+        console.log(response.status) 
+        return
+      }
+      return response.json()
+    })
+    .then(data => {
+      if (data.success === false) {
+        signinBtn.disabled = false
+        showMsg('no', data.message);
         signinBtn.innerText = 'SIGN UP';
         return
       }
 
-      message.innerHTML = `${data.message}. ${showMsg('yes', 'Signup')}`
+      showMsg('yes', `${data.message}. Redirecting...`);
 
       setTimeout(() => {
         window.location.href = './login.html'
@@ -149,7 +161,7 @@ form.addEventListener('submit', (e)=>{
   } catch (error) {
     signinBtn.disabled = false
     signinBtn.innerText = 'SIGN UP';
-    message.innerHTML = "<p> Network Error. <br> Please check your connection and try again.</p>"
+    showMsg('no', 'Please check your connection and try again.')
     // console.log('Error : ' + err)
   }
 })

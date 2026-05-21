@@ -9,13 +9,13 @@ loginBtn.addEventListener('click',()=>{
   let password = document.querySelector('.password').value.trim();
   
   loginBtn.disabled = true
-  loginBtn.innerHTML = 'LOGGING IN...'
-  message.innerText = ''
+  loginBtn.innerText = 'LOGGING IN...'
+  message.innerHTML = ''
 
   if(!matricNo || !password){
-    showMsg('no', 'empty')
+    showMsg('no', 'All field is required')
     loginBtn.disabled = false
-    loginBtn.innerHTML = 'LOG IN'
+    loginBtn.innerText = 'LOG IN'
     return;
   }
 
@@ -28,14 +28,14 @@ loginBtn.addEventListener('click',()=>{
   })
   .then(res => res.json())
   .then(data => { 
-    if (!data.success) {
+    if (data.success === false) {
       loginBtn.disabled = false
-      loginBtn.innerHTML = 'LOG IN'
-      message.innerHTML = data.message
+      loginBtn.innerText = 'LOG IN'
+      showMsg('no', data.message)
       return;
     }
     
-    message.innerText = `${data.message}. ${showMsg('yes', 'Login')}`;
+    showMsg('yes', `${data.message}. Redirecting...`);
     localStorage.setItem('p-id', JSON.stringify(data.token))
 
     setTimeout(() => {
@@ -44,8 +44,9 @@ loginBtn.addEventListener('click',()=>{
     // console.log('Response: ', data.message)
   })
   .catch((err) => {
-    message.innerHTML = "Network Error. Please check your connection and try again."
+    showMsg('no', "Network Error. Please check your connection and try again.")
+    // message.innerHTML = 
     loginBtn.disabled = false
-    loginBtn.innerHTML = 'LOG IN';
+    loginBtn.innerText = 'LOG IN';
     console.log('Error:', err)})
 });
