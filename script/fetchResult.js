@@ -1,10 +1,11 @@
+import { miniProfile } from "./fetchElection.js";
 import { API_KEY, logout } from "./utils/library.js";
 
 lucide.createIcons()
 
 const token = JSON.parse(localStorage.getItem('p-id'))
 
-if(!token || token === null || token === 'Forbbiden'){
+if(!token || token === null){
   alert("Session timeout \n Please login.")
   window.location.href = './login.html'
 }
@@ -121,7 +122,7 @@ const buildCard = (candidate, election) => {
   return `
   <div class="card">
     <div class="thumbnail">
-      <img src="${candidate.imageUrl || '../images/avatar.jpg'}" alt="" id="avatar">
+      <img src="${candidate.imageUrl}" alt="${alias}" id="avatar">
       <span>${level}Lv${department ? ` | ${department}` : ''}</span>
     </div>
     <div class="candidate-stat">
@@ -155,67 +156,65 @@ async function fetchResultData() {
   const facultyContainer = document.querySelector('#faculty-modal');
   const sugContainer = document.querySelector('#sug-modal');
 
-  [deptContainer, facultyContainer, sugContainer].forEach(container => {
-    if (container) container.innerHTML = 'fetching result data...';
-  });
-
   try {
-    const res = await fetch(`${API_KEY}/user/get-result`, {
-      headers: { 
-        Authorization: `Bearer ${token}` }
+    // fetch(`${API_KEY}/user/get-result`, {
+    //   headers: { 
+    //     Authorization: `Bearer ${token}` }
+    //   }
+      fetch(`../data/result.json`
+    )
+    .then(res => res.json()) 
+    .then(data => {
+      if (data.success === false && data.redirect === true) {
+        alert(data.message)
+        window.location.href = "./login.html"
+        return
       }
-    );
-    const data = await res.json();
-
-    if (!data.success && data.redirect) {
-      alert(data.message)
-      window.location.href = "./login.html"
-      return
-    }
-
-    if (!data.success) {
-      [deptContainer, facultyContainer, sugContainer].forEach(container => {
-        if (container) container.innerHTML = `Error: ${data.message}`;
-      });
-      return
-    }
-
-
-    // Group elections by mode (department, faculty, sug)
-    const groupedByMode = data.reduce((acc, election) => {
-      const mode = election.mode?.toLowerCase();
-      if (!mode) return acc;
-      if (!acc[mode]) acc[mode] = [];
-      acc[mode].push(election);
-      return acc;
-    }, {});
-
-    // For each mode, group by post and build sections
-    Object.keys(groupedByMode).forEach(mode => {
-      const elections = groupedByMode[mode];
-      const container = getTargetContainer(mode);
-
-      if (!container) return;
-
-      // Group elections by post
-      const groupedByPost = elections.reduce((acc, election) => {
-        const post = election.post;
-        if (!acc[post]) acc[post] = [];
-        acc[post].push(election);
+  
+      if (data.success === false) {
+        [deptContainer, facultyContainer, sugContainer].forEach(container => {
+          if (container) container.innerHTML = `Error: ${data.message}`;
+        });
+        return
+      }
+  
+  
+      // Group elections by mode (department, faculty, sug)
+      const groupedByMode = data.reduce((acc, election) => {
+        const mode = election.mode?.toLowerCase();
+        if (!mode) return acc;
+        if (!acc[mode]) acc[mode] = [];
+        acc[mode].push(election);
         return acc;
       }, {});
-
-      container.innerHTML = '';
-      // For each post, build section
-      Object.keys(groupedByPost).forEach(post => {
-        const postElections = groupedByPost[post];
-        // Assuming one election per post, take the first
-        const election = postElections[0];
-        const candidates = election.candidates || [];
-        const postSectionHTML = buildPostSection(post, candidates, election);
-        container.innerHTML += postSectionHTML;
+  
+      // For each mode, group by post and build sections
+      Object.keys(groupedByMode).forEach(mode => {
+        const elections = groupedByMode[mode];
+        const container = getTargetContainer(mode);
+  
+        if (!container) return;
+  
+        // Group elections by post
+        const groupedByPost = elections.reduce((acc, election) => {
+          const post = election.post;
+          if (!acc[post]) acc[post] = [];
+          acc[post].push(election);
+          return acc;
+        }, {});
+  
+        container.innerHTML = '';
+        // For each post, build section
+        Object.keys(groupedByPost).forEach(post => {
+          const postElections = groupedByPost[post];
+          // Assuming one election per post, take the first
+          const election = postElections[0];
+          const candidates = election.candidates || [];
+          const postSectionHTML = buildPostSection(post, candidates, election);
+          container.innerHTML += postSectionHTML;
+        });
       });
-    });
+    })
   } catch (err) {
     [deptContainer, facultyContainer, sugContainer].forEach(container => {
       if (container) container.innerHTML = 'Unable to display result';
@@ -224,53 +223,10 @@ async function fetchResultData() {
   }
 }
 
-//load header profile data
-const userInfo = document.querySelector('.profile-abstract');
-
-const loadUserProfile = async () => {
-  userInfo.innerHTML = `<div "ab-user-info"> fetching data... </div>`
-
-  try {
-    const res = await fetch(`${API_KEY}/user/profile`, {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${token}` }
-      }
-    // const res = await fetch(`../data/users.json`
-    );
-
-    if (!res.ok) throw new Error('Unable to load profile');
-
-    const data = await res.json();
-
-    if (data.message.includes('expired')) {
-      alert("Session timeout. please login again");
-      window.location.href = './login.html'
-    }
-
-    const user = data.user
-
-    userInfo.innerHTML = `
-      <div class="avatar"> 
-        <img src="${user.passport.url}" >
-      </div>
-
-      <div style="display: flex; flex-direction: column;" id="ab-user-info">
-        <p>${user.username}</p>
-        <p>${user.studentId}</p>
-      </div>
-    `;
-
-    return user;
-  } catch (err) {
-    userInfo.innerHTML = `<div> Error fetching profile</div>`
-    console.error(err);
-    return null;
-  }
-};
 
 //onload
 document.addEventListener('DOMContentLoaded', async () => {
-  await loadUserProfile()
+  miniProfile(document.querySelector('.profile-abstract'))
   fetchResultData()
 })
 

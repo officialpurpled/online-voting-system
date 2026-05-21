@@ -5,8 +5,8 @@ lucide.createIcons();
 
 const token = JSON.parse(localStorage.getItem('p-id'))
   
-if(!token || token === undefined){
-  alert("Session Timeout \n Please login again.")
+if(!token || token === null){
+  alert("User not logged in. kindly login again")
   window.location.href = './login.html'
 }
 
@@ -15,52 +15,47 @@ const faculty = document.querySelector('.campBody#faculty')
 const general = document.querySelector('.campBody#general')
 const tempBody = document.querySelectorAll('.tempBody')
 
-// console.log('Token:', token); // Debugging line to check token value
 console.log(department, general, faculty); // Debugging line to check API_KEY value
 
-const userInfo = document.querySelector('.profile-abstract'); //header
-
-function miniProfile() {
+export function miniProfile(userInfo) {
   // Display mini user info
   userInfo.innerHTML = `<div class=""> fetching data... </div>`
 
   try {
-    const res = fetch(`${API_KEY}/user/profile`, {
+    fetch(`${API_KEY}/user/profile`, {
       method: 'GET',
       headers: { Authorization: `Bearer ${token}` }
     }
     // const res = await fetch(`../data/users.json`
-    );
+    )
+    .then(res => res.json()) 
+    .then(data => {
+      if (data.redirect === true) {
+        alert(data.message)
+        window.location.href = "./login.html"
+        return
+      }
+  
+      if (data.success === false) {
+        alert(data.message)
+        return
+      }
+      
+      const user = data.user
+  
+      userInfo.innerHTML = `
+        <div class="avatar"> 
+          <img src="${user.passport.url}" >
+        </div>
+  
+        <div style="display: flex; flex-direction: column;" id="ab-user-info">
+          <p>${user.username}</p>
+          <p>${user.studentId}</p>
+        </div>
+      `;
 
-    if (!res.ok) throw new Error('Unable to load profile');
-
-    const data = res.json();
-
-    if (!data.success && data.redirect) {
-      alert(data.message)
-      window.location.href = "./login.html"
-      return
-    }
-
-    if (!data.success) {
-      alert(data.message)
-      return
-    }
-    
-    const user = data.user
-
-    userInfo.innerHTML = `
-      <div class="avatar"> 
-        <img src="${user.passport.url}" >
-      </div>
-
-      <div style="display: flex; flex-direction: column;" id="ab-user-info">
-        <p>${user.username}</p>
-        <p>${user.studentId}</p>
-      </div>
-    `;
-
-    return user;
+      return user;
+    })
   } catch (err) {
     userInfo.innerHTML = `<div> Error fetching profile</div>`
     console.error(err);
@@ -81,7 +76,7 @@ const getTargetContainer = (election) => {
 const buildCard = (candidate, election) => `
   <div class="election-card" id="${election._id}">
     <div class="icon">
-      <img src="../images/avatar.jpg" alt="">
+      <img src="../images/ballot.jpg" alt="">
     </div>
     <div class="details">
       <div class="position"> 
@@ -117,13 +112,13 @@ function fetchElections() {
   })
     .then(res => res.json())
     .then(data => {
-      if (!data.success && data.redirect) {
+      if (data.redirect === true) {
         alert(data.message)
         window.location.href = "./login.html"
         return
       }
 
-      if (!data.success) {
+      if (data.success === false) {
         tempBody.forEach(body => body.innerHTML = `<p class="error-msg">${data.message}</p>`);
         alert(data.message)
         return
@@ -263,7 +258,7 @@ function handleVote(event) {
 }
 
 //on load
-miniProfile()
+miniProfile(document.querySelector('.profile-abstract'))
 fetchElections()
 
 sideFlow(document.querySelector('main'));
