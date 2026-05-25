@@ -72,6 +72,12 @@ section{
   height: 130px;
   overflow: hidden;
 }
+.thumbnail > img{
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: -0.01%;
+}
 
 span{
   position: absolute;
