@@ -5,22 +5,23 @@ const form = document.querySelector('form')
 const message = document.querySelector('#message')
 
 const signinBtn = document.querySelector('.signup')
-const img1 = document.querySelector('.idCard');
-const img2 = document.querySelector('.photo');
-const img3 = document.querySelector('.receipt');
+// const img1 = document.querySelector('.idCard');
+const img1 = document.querySelector('.photo');
+const img2 = document.querySelector('.receipt');
 
-let idCard, photo, receipt 
+let photo, receipt
+// idCard 
 
+// img1.addEventListener('change', ()=>{
+//   idCard = img1.files[0];
+//   console.log('ID Card added', idCard);
+// });
 img1.addEventListener('change', ()=>{
-  idCard = img1.files[0];
-  console.log('ID Card added', idCard);
-});
-img2.addEventListener('change', ()=>{
-  photo = img2.files[0];
+  photo = img1.files[0];
   console.log('Photo added', photo);
 });
-img3.addEventListener('change', ()=>{
-  receipt = img3.files[0];
+img2.addEventListener('change', ()=>{
+  receipt = img2.files[0];
   console.log('Receipt added', receipt);
 });
 
@@ -88,7 +89,6 @@ form.addEventListener('submit', (e)=>{
   
   if (!username || !password || !department || !faculty || !level || !matric) {
     showMsg('no', 'all field is required')
-    // alert()
     console.log('all field required')
     return
   }
@@ -98,7 +98,7 @@ form.addEventListener('submit', (e)=>{
     return 
   }
 
-  if (!idCard && !receipt){
+  if (!receipt){
     showMsg('no', 'Please reupload school fee receipt or and Id Card')
     console.log('upload required files')
     return
@@ -121,9 +121,8 @@ form.addEventListener('submit', (e)=>{
   formData.append('level', level )
   formData.append('studentId', userIdGen())
   //for images now
-  formData.append('profileImg', photo)
-  formData.append('idCard', idCard)
-  formData.append('receipt', receipt)
+  formData.append('passport', photo)
+  formData.append('document', receipt)
 
   try {
     signinBtn.disabled = true
@@ -154,9 +153,7 @@ form.addEventListener('submit', (e)=>{
 
       showMsg('yes', `${data.message}. Redirecting...`);
 
-      setTimeout(() => {
-        window.location.href = './login.html'
-      }, 1500);
+      window.location.href = './login.html'
     })
   } catch (error) {
     signinBtn.disabled = false

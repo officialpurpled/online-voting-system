@@ -1,5 +1,5 @@
 import { sideFlow} from "./utils/navFlow.js";
-import { API_KEY, logout } from "./utils/library.js";
+import { API_KEY, logout, showToast } from "./utils/library.js";
 
 lucide.createIcons();
 
@@ -31,13 +31,14 @@ export function miniProfile(userInfo) {
     .then(res => res.json()) 
     .then(data => {
       if (data.redirect === true) {
-        alert(data.message)
+        // alert(data.message)
         window.location.href = "./login.html"
         return
       }
   
       if (data.success === false) {
-        alert(data.message)
+        // alert(data.message)
+        showToast(data.message)
         return
       }
       
@@ -49,8 +50,7 @@ export function miniProfile(userInfo) {
         </div>
   
         <div style="display: flex; flex-direction: column;" id="ab-user-info">
-          <p>${user.username}</p>
-          <p>${user.studentId}</p>
+          <p>${user.username.slice(0, 10)}</p>
         </div>
       `;
 
@@ -113,7 +113,8 @@ function fetchElections() {
     .then(res => res.json())
     .then(data => {
       if (data.success === false && data.redirect === true) {
-        alert(data.message)
+        // alert(data.message)
+        showToast(data.message)
         window.location.href = "./login.html"
         return
       }
@@ -121,6 +122,7 @@ function fetchElections() {
       if (data.success === false) {
         tempBody.forEach(body => body.innerHTML = `<p class="error-msg">${data.message}</p>`);
         // alert(data.message)
+        showToast(data.message)
         return
       }
 
@@ -186,7 +188,8 @@ function fetchElections() {
       });
     })
     .catch(err => {
-      alert("Network Error. Please check your internet connection and try again") 
+      // alert("Network Error. Please check your internet connection and try again") 
+      showToast("Network Error. Please try again")
       
       tempBody.forEach(body => body.innerHTML = '<p class="error-msg">Unable to load elections at the moment. Please refresh or check back.</p>');
 
@@ -204,12 +207,16 @@ function handleVote(event) {
   const candidateId = candidateSelect.value;
 
   if (!candidateId) {
-    alert('Please select a candidate before voting');
+    event.target.disabled = false;
+    event.target.textContent = 'VOTE';
+    // alert('Please select a candidate before voting');
+    showToast('Please select a candidate before voting')
     return;
   }
 
   if (!token || token === undefined) {
-    alert('User not logged in');
+    // alert('User not logged in');
+    showToast('User not logged in')
     window.location.href = './login.html';
     return;
   }
@@ -231,27 +238,31 @@ function handleVote(event) {
   .then(data => {
     if (data.success === false && data.redirect === true) {
       event.target.textContent = 'VOTE';
-      alert(data.message)
+      // alert(data.message)
+      showToast(data.message)
       window.location.href = "./login.html"
       return
     }
 
     if (data.success === false && data.message.includes('voted')) {
-      alert(data.message)
+      // alert(data.message)
+      showToast(data.message)
       event.target.disabled = true;
       event.target.textContent = 'VOTED';
       return
     }
 
     if (data.success === false) {
-      alert(data.message)
+      // alert(data.message)
+      showToast(data.message)
       event.target.disabled = false;
       event.target.textContent = 'VOTE';
       return
     }
 
     // if (data.status === 200 || data.message.includes('successfully')) {
-    alert('Vote submitted successfully!');
+    // alert('Vote submitted successfully!');
+    showToast(data.message)
     event.target.disabled = true;
     event.target.textContent = 'VOTED';
     // } 
@@ -259,7 +270,7 @@ function handleVote(event) {
   .catch(err => {
     event.target.disabled = false;
     event.target.textContent = 'VOTE';
-    alert(`Error submitting vote ${err.message}`);
+    showToast(`Error submitting vote ${err.message}`);
     console.error('Vote submission error:', err);
   });
 }

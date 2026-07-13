@@ -5,6 +5,16 @@ export function userIdGen() {
   return 'VOTER-' + Math.floor(Math.random() * 1000) + '-' + Math.floor(Math.random() * 1000);
 }
 
+export function showToast(message) {
+  const t = document.getElementById('notisModal');
+  if (!t) return;
+
+  t.innerText = message || 'Message parsing error';
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
 export function logout() {
   document.getElementById('logout').addEventListener('click', ()=>{
     localStorage.removeItem('p-id');

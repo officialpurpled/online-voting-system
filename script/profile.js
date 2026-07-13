@@ -1,4 +1,4 @@
-import { API_KEY, logout } from "./utils/library.js";
+import { API_KEY, logout, showToast } from "./utils/library.js";
 import { sideFlow } from "./utils/navFlow.js";
 
 const token = JSON.parse(localStorage.getItem('p-id'))
@@ -26,9 +26,6 @@ function renderProfile(user) {
         Reg/Matric: <p>${user.matric}</p>
       </div>
       <div>
-        User ID:<p>${user.studentId}</p>
-      </div>
-      <div>
         Vote count:<p>${user.votedElections}</p>
       </div>
     </div>
@@ -45,13 +42,16 @@ function renderProfile(user) {
         <div>
           Current Level:<p>${user.level}</p>
         </div>
+        <div>
+          Status:<p>${user.status}</p>
+        </div>
       </div>
       <div class="buttons">
         <button class="backBtn" href="./dashboard.html"> 
           Back to dashboard 
         </button>
 
-        <button class="editBtn" onclick="showToast('Not awailable yet')">
+        <button class="editBtn" onClick="showToast('Not awailable yet')">
           Edit Profile
         </button>
       </div>
@@ -73,14 +73,14 @@ function loadData() {
   .then(res => res.json())
   .then(data => {
     if (!data.success && data.redirect) {
-      alert(data.message)
+      showToast(data.message)
       window.location.href = "./login.html"
       return
     }
 
     if (!data.success) {
       userinfor.innerHTML = `<div class="biodata"> Error fetching profile data. <br>Error: ${data.message} </div>`
-      // alert(data.message)
+      showToast(data.message)
       return
     }
 

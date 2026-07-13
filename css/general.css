@@ -29,6 +29,7 @@ body{
 } 
 
 main{
+  position: relative;
   flex: 1;
   padding-top: 120px;
   padding-left: 190px;
@@ -53,6 +54,34 @@ a{
 #message > p{
   text-align: center;
   font-size: 14px;
+}
+
+
+#notisModal {
+  position: fixed;
+  top: 108px; left: 60%;
+  transform: translateX(-50%) translateY(12px);
+
+  background-color: rgba(8, 69, 14, 0.658);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 5px 0 rgb(0, 0, 0, 0.2);
+
+  color: rgba(255, 255, 255, 0.893);
+  font-size: 13px; 
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity .45s, transform .3s cubic-bezier(.34,1.56,.64,1);
+  z-index: 9999;
+}
+#notisModal.show { 
+  opacity: 1; 
+  transform: translateX(-50%) translateY(0); 
 }
 
 footer{
