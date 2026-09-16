@@ -18,7 +18,8 @@
         "Educational Management and Business Studies",
         "Arts and Social Sciences Education",
         "Science and Technology Education",
-        "Physical and Health Education"
+        "Physical and Health Education",
+        "Computer Science Education"
       ]
     },
     {
@@ -36,8 +37,13 @@
         "Chemistry",
         "Mathematics",
         "Computer Science",
+        "Statistic", 
+        "Cyber Security", 
+        "Software Engineering",
         "Plant Science",
-        "Zoology"
+        "Zoology",
+        "Microbiology",
+        "Geology"        
       ]
     },
     {
