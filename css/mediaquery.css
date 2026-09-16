@@ -1,28 +1,30 @@
 /* for tablet device */
-@media (max-width: 900px) and  (min-width: 600px){
-  
-  nav{
+@media (max-width: 900px) and (min-width: 600px) {
+
+  nav {
     display: none;
   }
 
   /* Result page */
-  #results{
+  #results {
     margin-left: 2px;
     margin-right: 2px;
   }
-  #results .card-container{
+
+  #results .card-container {
     grid-template-columns: 1fr 1fr;
     height: auto;
   }
 
   /* Dashboard */
-  #dashboard{
+  #dashboard {
     padding-left: 0;
     /* padding-right: 5px; */
   }
-  .campBody{
+
+  .campBody {
     grid-template-columns: 1fr 1fr 1fr;
-  } 
+  }
 
 
   /* profile */
@@ -30,29 +32,51 @@
     padding-left: 0;
   }
 
-} 
+}
 
 
 /* ====================== */
 /* for mobile device */
-@media (max-width: 600px){
-  /* body{
+@media (max-width: 600px) {
 
-  } */
+  /* ===The Header Section=== */
+  .menu-list {
+    position: absolute;
+    top: 80%;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.2);
+    background: var(--color-primary);
+  }
+
+  .menu-list.open {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
 
   /*==== Dashboard sect ==== */
-  #dashboard{
+  #dashboard {
     padding-left: 0;
     padding-right: 5px;
   }
 
-  .uuname{
+  .uuname {
     display: none;
   }
-  .avatar{
+
+  .avatar {
     /* margin-right: 10px; */
     display: none;
   }
+
   /* .avatar > img{
     width: 30px;
     position: relative;
@@ -60,10 +84,10 @@
     bottom: 1px;
   } */
 
-  .campBody{
+  .campBody {
     margin: 20px 0 20px 20px;
     padding: 0;
-    row-gap: 30px; 
+    row-gap: 30px;
     column-gap: 20px;
     grid-template-columns: 1fr 1fr;
     /* justify-content: ; */
@@ -72,40 +96,45 @@
     /* width: 100%; */
   }
 
-  nav{
+  nav {
     display: none;
   }
 
   /* === Profile Sect === */
-  #profile{
+  #profile {
     padding-left: 2px;
     padding-right: 2px;
     padding-top: 80px;
   }
-  .container-wrapper, 
-  .userinfor{
+
+  .container-wrapper,
+  .userinfor {
     display: flex;
     flex-direction: column;
   }
-  .container-wrapper{
+
+  .container-wrapper {
     align-items: center;
     justify-content: center;
   }
-  .userinfor{
+
+  .userinfor {
     margin-top: 20px;
     min-width: 370px;
     max-width: max-content;
   }
-  .right-section > a{
+
+  .right-section>a {
     display: none;
   }
 
 
   /* === Result page ==== */
-  .card-container{
-    grid-template-columns:1fr;
+  .card-container {
+    grid-template-columns: 1fr;
     height: auto;
   }
+
   #results {
     margin-left: 5px;
     margin-right: 5px;

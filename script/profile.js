@@ -2,14 +2,16 @@ import { API_KEY, logout, showToast } from "./utils/library.js";
 import { sideFlow } from "./utils/navFlow.js";
 
 const token = JSON.parse(localStorage.getItem('p-id'))
-  
-if(!token || token === undefined){
+
+if (!token || token === undefined) {
   alert("User not logged in \n Please login.")
   window.location.href = './login.html'
 }
 
 const userinfor = document.querySelector('.userinfor');
 const userimg = document.querySelector('.userimg img');
+// const backBtn = document.querySelector('.backBtn');
+// const editBtn = ;
 
 function renderProfile(user) {
   userimg.src = user.passport.url || '../images/avatar.jpg'
@@ -47,11 +49,11 @@ function renderProfile(user) {
         </div>
       </div>
       <div class="buttons">
-        <button class="backBtn" href="./dashboard.html"> 
+        <button class="backBtn"> 
           Back to dashboard 
         </button>
 
-        <button class="editBtn" onClick="showToast('Not awailable yet')">
+        <button class="editBtn">
           Edit Profile
         </button>
       </div>
@@ -67,36 +69,50 @@ function loadData() {
   fetch(`${API_KEY}/user/profile`, {
     method: 'GET',
     headers: {
-      Authorization : `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     }
   })
-  .then(res => res.json())
-  .then(data => {
-    if (!data.success && data.redirect) {
-      showToast(data.message)
-      window.location.href = "./login.html"
+    .then(res => res.json())
+    .then(data => {
+      if (!data.success && data.redirect) {
+        showToast(data.message)
+        window.location.href = "./login.html"
+        return
+      }
+
+      if (!data.success) {
+        userinfor.innerHTML = `<div class="biodata"> Error fetching profile data. <br>Error: ${data.message} </div>`
+        showToast(data.message)
+        return
+      }
+
+      renderProfile(data.user)
+    })
+    .catch(err => {
+      userinfor.innerHTML = `<div class="biodata"> Error fetching profile data. <br>Error: ${err.message} </div>`
+      console.log(err.message)
       return
     }
-
-    if (!data.success) {
-      userinfor.innerHTML = `<div class="biodata"> Error fetching profile data. <br>Error: ${data.message} </div>`
-      showToast(data.message)
-      return
-    }
-
-    renderProfile(data.user)
-  })
-  .catch(err => {
-    userinfor.innerHTML = `<div class="biodata"> Error fetching profile data. <br>Error: ${err.message} </div>`
-    console.log(err.message)
-    return
-  }
-  )
+    )
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  await loadData();
-  await sideFlow(document.querySelector('#profile'))
+userinfor.addEventListener('click', (e) => {
+  const container = e.target
+
+  if (container.closest('.backBtn')) {
+    container.addEventListener('click', () => {
+      window.location.href = "./dashboard.html"
+    })
+  } else {
+    container.addEventListener('click', () => {
+      window.location.href = './edit.html'
+    })
+  }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+  sideFlow(document.querySelector('#profile'))
 })
 
 logout();

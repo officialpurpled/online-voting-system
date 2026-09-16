@@ -1,74 +1,121 @@
-.intro{
-  /* margin-top: 50px; */
-  background-color: white;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
-  align-items: center;
-
-  border-radius: 10px;
-  width: 400px;
-  box-shadow: 4px 4px 3px ;
-
-}
-.introHead{
- border-bottom: 1.5px solid var(--color-primary);
- padding: 12px 5px;
- width: 100%;
- text-align: center;
- font-family: Arial Black;
- color: var(--color-text);
-} 
-.introBody{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: 550;
-  /* text-wrap: wrap; */
-  hyphens: manual;
-  text-align: justify;
-  line-height: 25px;
-  padding: 0 10px;
-  margin-bottom: 5px;
-}
-.startBtn{
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  column-gap: 10px;
-}
-.getStart, .logIn{
-  border-radius: 30px;
-  padding: 8px 1px;
-  width: 150px;
-  font-family: Calibri;
-  font-weight: 600;
-}
-.getStart{
-  color: var(--color-surface);
-  background-color: var(--color-primary);
-  border: none;
-}
-.getStart a{
-  color: var(--color-surface);
-}
-.logIn{
-  color:  var(--color-primary);
-  background-color: var(--color-surface);
-  border:  var(--color-primary) 2px solid;
-}
-.logIn a{
-  color:  var(--color-primary);
-} 
-.callCare{
-  font-family: Calibri;
-  font-weight: 700;
-  margin-top: 5px;
-  margin-bottom: 9px;
-}
-main{
+#home-section {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding: 0;
+  background: linear-gradient(rgba(16, 23, 16, 0.82), rgba(24, 22, 22, 0.95)),
+    url('../images/oouhero.jpg') center/cover no-repeat;
+}
+
+.hero-content {
+  width: min(100%, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.text-section {
+  max-width: 760px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+.text-section h2 {
+  margin: 0;
+  font-size: clamp(2.9rem, 5vw, 5rem);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.text-section p {
+  margin: 1rem auto 0;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.42s ease-in-out;
+  background-color: var(--color-accent);
+  border-radius: 5px;
+  padding: 20px 22px;
+  border: none;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+a {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(20, 110, 60, 0.25);
+  cursor: pointer;
+}
+
+.status-ticker {
+  font-family: sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: absolute;
+  background-color: var(--color-accent);
+  bottom: 50px;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.ticker-label {
+  padding: 12px;
+  max-width: 120px;
+  z-index: 500;
+  font-weight: 600;
+  border-top-right-radius: 10px;
+  border-end-end-radius: 10px;
+
+  background-color: var(--color-danger);
+}
+
+.ticker-track {
+  flex: 1;
+  display: inline-block;
+  padding-left: 100%;
+  animation: movingText 35s linear infinite;
+}
+
+.ticker-track span {
+  display: inline-block;
+}
+
+@keyframes movingText {
+  0% {
+    /* opacity: 0; */
+    transform: translateX(0);
+  }
+
+  100% {
+    /* opacity: 1; */
+    transform: translateX(-50%);
+  }
 }

@@ -1,31 +1,34 @@
-.profile-abstract{
+.profile-abstract {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 15px;
   gap: 5px;
 }
+
 .avatar img {
   position: relative;
   top: 6.5px;
   /* color: white; */
 }
-.profile-abstract:hover{
+
+.profile-abstract:hover {
   border: 1.5px solid var(--color-secondary);
   padding: 2px 7px;
   border-radius: 2px;
   transition: .3s;
 }
-.menu-icon{
-  color:  var(--color-surface);
+
+.menu-icon {
+  color: var(--color-surface);
   border: 1.5px solid var(--color-secondary);
   padding: 1px 5px;
   border-radius: 2px;
   display: flex;
-} 
+}
 
 /* main */
-nav{
+nav {
   display: flex;
   flex-direction: column;
   background-color: var(--color-surface);
@@ -36,8 +39,9 @@ nav{
   padding-top: 120px;
   width: 190px;
   z-index: 998;
-} 
-nav a{
+}
+
+nav a {
   display: flex;
   align-items: center;
   gap: 15px;
@@ -50,12 +54,15 @@ nav a{
 
   cursor: pointer;
 }
-nav > a:hover{
+
+nav>a:hover {
   background-color: rgba(240, 234, 234, 0.831);
   transition: 700ms;
 }
 
-#logout{
+
+
+#logout {
   position: relative;
   top: 35vh;
   /* border:2px solid rgb(162, 7, 7); */
@@ -68,14 +75,16 @@ nav > a:hover{
   font-family: Calibri;
   margin-right: 15px;
 }
-#logout img{
+
+#logout img {
   width: 20px;
 }
-#logout:hover{
-  background-color:var(--color-bg);
+
+#logout:hover {
+  background-color: var(--color-bg);
 }
 
-#logout:active{
-  border:2px solid rgb(162, 7, 7);
+#logout:active {
+  border: 2px solid rgb(162, 7, 7);
   color: brown;
 }

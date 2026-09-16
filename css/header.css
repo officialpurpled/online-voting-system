@@ -1,66 +1,96 @@
-header{
+header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 70px;  
-  display: flex;
   z-index: 999;
-  padding: 15px;
+  height: 80px;
+  padding: 10px 20px;
 
-  border-bottom: 1px solid rgba(17,85,48,0.12);
   border-radius: 5px;
 
   background-color: var(--color-primary);
   color: var(--color-surface);
 
-}
-
-header{
   display: flex;
   gap: 10px;
-  /* width: 100%; */
   align-items: center;
-  justify-content: space-between;   
+  justify-content: space-between;
 }
 
-.left-section{
+.accent-color {
+  color: var(--color-accent);
+}
+
+.left-section {
   flex: 1;
   padding-left: 5px;
 }
-.left-section > img{
+
+.left-section>img {
   min-width: 150px;
   max-width: 200px;
 }
 
-.right-section{
-  /* flex: 1; */
+.right-section {
+
   display: flex;
   padding-right: 10px;
   padding-left: 10px;
   align-items: center;
   justify-content: space-between;
   font-family: 'Franklin Gothic Medium';
-  gap: 15px;
   cursor: pointer;
 }
 
-.profile-abstract{
+.profile-abstract {
   font-size: small;
 }
 
-.right-section a{
-  color: var(--color-surface);
+.menu-list {
   display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: 600;
   justify-content: center;
+  gap: 22px;
 }
-.right-section > a:hover{
-  /* text-decoration: wavy underline; */
-  border: 1px solid var(--color-secondary);
-  padding: 4px 7px;
-  border-radius: 2px;
-  transition: 400ms ease-out;
+
+
+.menu-item a {
+  position: relative;
+  color: var(--color-surface);
+  font-size: 1.05em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.menu-item a::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.35rem;
+  left: 0;
+  height: 2px;
+  background: var(--color-accent);
+  content: '';
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.menu-item a:hover,
+.menu-item a.active {
+  color: var(--color-surface);
+  border: none;
+}
+
+.menu-item a:hover::after,
+.menu-item a.active::after {
+  transform: scaleX(1);
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon i {
+  font-size: 28px;
 }

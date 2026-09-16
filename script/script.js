@@ -1,8 +1,16 @@
-document.querySelector('.logIn').addEventListener('click',()=>{
-  window.location.href = 'pages/login.html'
-});
+let isOpen = false
 
-document.querySelector('.getStart').addEventListener('click',()=>{
-  window.location.href = 'pages/signup.html'
-});
+const navMenu = document.querySelector('.menu-list')
+const hamburger = document.querySelector('.menu-icon')
+
+hamburger.addEventListener('click', () => {
+  isOpen = !isOpen
+
+  hamburger.innerHTML = isOpen ? `<i class="fas fa-times"></i>` : `<i class="fas fa-bars"></i>` //tenary operator
+
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('open');
+})
+
+
 

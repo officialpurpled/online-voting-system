@@ -1,48 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     Home
   </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="./css/mediaquery.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
   <header>
     <div class="left-section">
       <img src="images/logo.png" alt="Logo" width="50%">
     </div>
     <div class="right-section">
-      <a href="pages/signup.html"> 
-       Sign Up
-      </a>
-      <a href="pages/login.html">
-        Log In
-      </a>
-      <a href="pages/about.html">
-        About
-      </a>
+      <div class="menu-list">
+        <span class="menu-item">
+          <a>
+            Home
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="./pages/about.html">
+            About
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="./pages/login.html">
+            Log In
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="./pages/signup.html">
+            Sign Up
+          </a>
+        </span>
+      </div>
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
   </header>
-  <main>
-    <div class="intro">
-      <p class="introHead">Welcome to the new age of technology</p>
-      <p class="introBody">MyPJ is a secure voting platform design to neutralize intransparency and enhance rigg free and decentralized voting system.</p>
-      <div class="startBtn">
-        <button class="getStart">GET STARTED</button>
-        <button class="logIn">LOG IN</button>
+  <main id="home-section">
+    <div class="hero-content">
+      <div class="text-section">
+        <h2>Fast, Secure, and Easy <br> <span class="accent">Campus Voting</span> </h2>
+        <p>
+          Log in with your student credentials to securely vote for your next student leaders and campus referendums.
+        </p>
       </div>
-      <p class="callCare">Get in touch with us. <a href="#">/</a></p>
+      <button class="cta-btn">
+        <a href="./pages/login.html">
+          LOG IN & VOTE
+          <i class="fas fa-sign-in-alt" style="margin-left: 8px; font-size: 18px;"></i>
+        </a>
+      </button>
     </div>
   </main>
 
   <footer>
-    <div> Purple Dragon Cares | Copyright 2026 </div>
+    <div> &copy; Purple Dragon Cares | Copyright 2026 </div>
   </footer>
 
+  <div class="status-ticker">
+    <div class="ticker-label">
+      <i class="fas fa-bullhorn" style="margin-right:  4px;"></i>
+      Update
+    </div>
+    <div class="ticker-track">
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+      <span> This website is function well, but undergoing some developement.&nbsp; &nbsp; </span>
+    </div>
+  </div>
   <script src="script/script.js" type="module"></script>
 </body>
+
 </html>

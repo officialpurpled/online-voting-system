@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,9 @@
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/profile.css">
-  <!-- <link rel="stylesheet" href="../css/dashboard.css"> -->
   <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
+
 <body>
   <header>
     <div class="left-section">
@@ -18,7 +19,7 @@
     </div>
     <div class="right-section">
       <a href="dashboard.html">
-       Dashboard
+        Dashboard
       </a>
       <a href="#">
         View Result
@@ -38,29 +39,29 @@
       <img src="../images/icons/home.svg" alt="Dashboard">
       Dashboard
     </a>
-    
+
     <a href="result.html">
-      <img src="../images/icons/history.svg" alt="View results"> 
+      <img src="../images/icons/history.svg" alt="View results">
       View Results
     </a>
 
     <a href="#" class="active">
       <img src="../images/icons/user.svg" alt="">
       My Profile
-    </a> 
+    </a>
 
     <a id="logout">
       <img src="../images/icons/download.svg" alt="">
       Log Out
-    </a> 
+    </a>
   </nav>
 
   <main id="profile">
+    <div id="notisModal" class="notisModal"></div>
     <div class="container">
       <div class="container-wrapper">
         <div class="userimg">
           <img src="../images/avatar.jpg" alt="avatar">
-          <p>edit photo</p>
         </div>
         <div class="userinfor">
           <!-- <div class="biodata">
@@ -113,15 +114,16 @@
           <p>Please Login</p>
           <button>
             <a href="login.html">
-              Login 
+              Login
             </a>
           </button>
         </div>
       </div>
     </div>
   </main>
-    <!-- <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script> -->
   <script src="../lib/lucide.js"></script>
   <script src="../script/profile.js" type="module"></script>
 </body>
+
 </html>
