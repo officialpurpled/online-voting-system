@@ -4,7 +4,8 @@
 :root {
   --color-primary: #1b1762;
   --color-secondary: #221d7b;
-  --color-accent: #d2a740;
+  /* --color-accent: #d2a740; */
+  --color-accent: #daa520;
 
   --color-bg: #f9fafb;
   --white: #ffffff;

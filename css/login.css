@@ -42,7 +42,7 @@
 .form-icon {
   width: 70px;
   position: relative;
-  top: 15px;
+  top: 12px;
 }
 
 h1 {
@@ -68,6 +68,7 @@ form {
   width: 100%;
   flex: 1;
   margin-top: 7px;
+  font-size: 14px;
 }
 
 .input-group {
@@ -90,7 +91,6 @@ form {
   padding-right: 3px;
 }
 
-span .fa-lock,
 .fa-eye {
   color: var(--color-muted);
 }
@@ -113,7 +113,7 @@ input {
   box-sizing: border-box;
   padding: 7px 4px;
   padding-right: 0;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
   border: none;
 }
@@ -156,6 +156,11 @@ button {
 
 button i {
   font-size: small;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .redirector {

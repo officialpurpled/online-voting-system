@@ -65,7 +65,7 @@
         <h1>Welcome Back</h1>
         <p>Login with your student credetials, to securely vote for the candidate of your choice.</p>
       </div>
-      <form>
+      <form id="loginForm">
         <label for="matric"> Matric/Reg No: </label>
         <div class="input-group">
           <span><i class="fas fa-user"></i></span>
@@ -82,7 +82,13 @@
         <div id="message" style="display: none;"></div>
 
         <p class="forget-password"><a href="forget-password.html"> Forget password? </a></p>
-        <button class="login">LOG IN <i class="fas fa-arrow-right"></i></button>
+        <button type="submit" class="loginBtn">
+          <span class="btn-text">
+            Log In
+          </span>
+          <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
       </form>
       <div class="divider">
         <hr>
@@ -90,7 +96,8 @@
         <hr>
       </div>
       <div class="redirector">
-        <p style="color: black;"> Don't have an account yet? <a href="signup.html" style="margin-left: 2px;">Sign up</a>
+        <p style="color: rgb(86, 86, 87);"> Don't have an account yet? <a href="signup.html"
+            style="margin-left: 2px;">Sign up</a>
         </p>
         <p class="form-footer"><i class="fas fa-lock" style="margin-right: 8px;"></i> Your credentials are secure handle
         </p>

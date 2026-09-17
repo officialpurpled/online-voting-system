@@ -1,68 +1,103 @@
+import toggleNav from "../script.js";
 import { API_KEY } from "../utils/library.js";
 import { showMsg } from "../utils/response.js";
 
-const loginBtn = document.querySelector('.login')
+const form = document.querySelector('#loginForm')
+const loginBtn = document.querySelector('.loginBtn')
+const passwordInput = document.querySelector('#password')
 const message = document.querySelector('#feedback')
+const passwordToggle = document.querySelector('.eye-icon i')
 
-loginBtn.addEventListener('click', () => {
-  let matricNo = document.querySelector('.matric').value.trim().toUpperCase();
-  let password = document.querySelector('.password').value.trim();
+toggleNav()
 
+// function validateInput(input) {
+//   // 1. Remove all spaces and convert to uppercase for consistency
+//   const cleanRegNo = input.replace(/\s+/g, '').toUpperCase();
+
+//   // 2. Test against the regex pattern
+//   const jambRegex = /^\d{10}[A-Z]{2}$/;
+//   const oouFtRegex = /^[A-Z]{3,}\/\d{2}\/\d{2}\/\d{4}$/;
+
+//   if (jambRegex.test(cleanRegNo) || oouFtRegex.test(cleanRegNo)) {
+//     return { isValid: true, formatted: cleanRegNo };
+//   } else {
+//     return { isValid: false, formatted: input };
+//   }
+// }
+
+// const regex = /^[a-z]{3,}\/\d{2}\/\d{2}\/\d{4}$/i; const validation = validateInput(matricNo);
+
+// if (validation.isValid) {
+//   console.log(`Valid JAMB Number! Saved as: ${validation.formatted}`);
+// } else {
+//   console.log("Invalid JAMB Registration Number format. Please check it and try again.");
+// }
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const matricNo = document.querySelector('.matric').value.trim().toUpperCase();
+  const password = document.querySelector('.password').value.trim();
+  const btnText = document.querySelector('.btn-text');
+  const spinner = document.querySelector('.fa-spinner');
+  const arrow = document.querySelector('.fa-sign-out-alt');
+
+  showMsg('', '')
   loginBtn.disabled = true
-  loginBtn.innerText = 'LOGGING IN...'
-  message.innerText = ''
+  btnText.innerText = 'LOGGING IN'
+  spinner.style.display = 'inline-block'
+  arrow.style.display = 'none'
 
   if (!matricNo || !password) {
     showMsg('no', 'All field is required')
     loginBtn.disabled = false
-    loginBtn.innerText = 'LOG IN'
+    btnText.innerText = 'LOG IN'
+    spinner.style.display = 'none'
+    arrow.style.display = 'inline-block'
     return;
   }
 
-  fetch(`${API_KEY}/auth/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ matricNo, password })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success === false) {
-        loginBtn.disabled = false
-        loginBtn.innerText = 'LOG IN'
-        showMsg('no', data.message)
-        return;
-      }
+  try {
+    fetch(`${API_KEY}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ matricNo, password })
+    }).then(res => res.json())
+      .then(data => {
+        if (data.success === false) {
+          loginBtn.disabled = false
+          btnText.innerText = 'LOG IN'
+          spinner.style.display = 'none'
+          arrow.style.display = 'inline-block'
+          showMsg('no', data.message)
 
-      showMsg('yes', `${data.message}. Redirecting...`);
-      localStorage.setItem('p-id', JSON.stringify(data.token))
+          console.log('then false');
 
-      setTimeout(() => {
-        window.location.href = './dashboard.html'
-      }, 1500);
-      // console.log('Response: ', data.message)
-    })
-    .catch((err) => {
-      showMsg('no', "Network Error. Please check your connection and try again.")
-      // message.innerHTML = 
-      loginBtn.disabled = false
-      loginBtn.innerText = 'LOG IN';
-      console.log('Error:', err)
-    })
-});
+          return;
+        }
 
+        console.log('then true');
+        showMsg('yes', `${data.message}. Redirecting...`);
+        localStorage.setItem('p-id', JSON.stringify(data.token))
 
-let isOpen = false
+        setTimeout(() => {
+          window.location.href = './dashboard.html'
+          // console.log('Response: ', data.message)
+        }, 1500);
+      })
+  } catch (error) {
+    console.log('Error :', error.message)
+  }
+})
 
-const navMenu = document.querySelector('.menu-list')
-const hamburger = document.querySelector('.menu-icon')
+passwordToggle.addEventListener('click', () => {
+  const isPassword = passwordInput.type === 'password'
 
-hamburger.addEventListener('click', () => {
-  isOpen = !isOpen
+  passwordInput.type = isPassword ? 'text' : 'password'
+  passwordToggle.classList.toggle('fa-eye-slash')
 
-  hamburger.innerHTML = isOpen ? `<i class="fas fa-times"></i>` : `<i class="fas fa-bars"></i>` //tenary operator
-
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('open');
+  console.log('clicked')
 })
