@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(16, 23, 16, 0.82), rgba(24, 22, 22, 0.95)),
+  background: linear-gradient(rgba(16, 17, 23, 0.82), rgba(22, 23, 24, 0.95)),
     url('../images/oouhero.jpg') center/cover no-repeat;
 }
 
@@ -38,7 +38,8 @@
   margin: 1rem auto 0;
   font-size: clamp(1.1rem, 2vw, 1.25rem);
   line-height: 1.6;
-  opacity: 0.9;
+  /* opacity: 0.9; */
+  color: var(--color-surface);
 }
 
 .cta-btn {
@@ -57,7 +58,7 @@
 }
 
 a {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: white;
   font-weight: 600;
   display: flex;
@@ -77,8 +78,8 @@ a {
   white-space: nowrap;
   width: 100%;
   position: absolute;
-  background-color: var(--color-accent);
-  bottom: 50px;
+  background-color: var(--color-secondary);
+  bottom: 40px;
   right: 0;
   left: 0;
   display: flex;

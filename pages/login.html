@@ -5,10 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Log In</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="/css/login.css">
-  <link rel="stylesheet" href="../css/signup.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
 <style>
   .loginMain {
@@ -20,38 +27,81 @@
 <body>
   <header>
     <div class="left-section">
-      <img src="../images/logo.png" alt="Logo" width="80%">
+      <img src="../images/logo.png" alt="Logo">
     </div>
     <div class="right-section">
-      <a href="../index.html">
-        Home
-      </a>
-      <a href="signup.html">
-        Register
-      </a>
+      <div class="menu-list">
+        <span class="menu-item">
+          <a href="../index.html">
+            Home
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="./about.html">
+            About
+          </a>
+        </span>
+        <span class="menu-item">
+          <a>
+            Log In
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="./signup.html">
+            Sign Up
+          </a>
+        </span>
+      </div>
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
   </header>
 
   <main class="loginMain">
     <div class="form-container">
-      <div class="title"> LOG IN/SIGN IN</div>
-      <div class="form">
-        <label for="matric"> Matric/Reg No:
-          <input type="text" name="matric" id="matricNo" class="matric">
-        </label>
-        <label for="password"> Password:
-          <input type="password" id="password" name="password" class="password">
-        </label>
+      <div class="form-header">
+        <img src="../images/icons/auth-icon.svg" class="form-icon">
+        <h1>Welcome Back</h1>
+        <p>Login with your student credetials, to securely vote for the candidate of your choice.</p>
+      </div>
+      <form>
+        <label for="matric"> Matric/Reg No: </label>
+        <div class="input-group">
+          <span><i class="fas fa-user"></i></span>
+          <input type="text" name="matric" id="matricNo" class="matric" placeholder="Enter your matriculation number">
+        </div>
+
+        <label for="password"> Password: </label>
+        <div class="input-group">
+          <span><i class="fas fa-lock"></i></span>
+          <input type="password" id="password" name="password" class="password" placeholder="Enter your password">
+          <span class="eye-icon"><i class="fas fa-eye" style="margin-right: 6px;"></i></span>
+        </div>
+
         <div id="message" style="display: none;"></div>
-        <button class="login">LOG IN</button>
+
+        <p class="forget-password"><a href="forget-password.html"> Forget password? </a></p>
+        <button class="login">LOG IN <i class="fas fa-arrow-right"></i></button>
+      </form>
+      <div class="divider">
+        <hr>
+        OR
+        <hr>
       </div>
       <div class="redirector">
-        Have no account yet? <a href="signup.html">Create one</a>.,
-        Forget password? <a href="forget-password.html">Reset</a>
+        <p style="color: black;"> Don't have an account yet? <a href="signup.html" style="margin-left: 2px;">Sign up</a>
+        </p>
+        <p class="form-footer"><i class="fas fa-lock" style="margin-right: 8px;"></i> Your credentials are secure handle
+        </p>
       </div>
     </div>
   </main>
 
+  <footer>
+    <div> &copy; Purple Dragon Cares 2026 | <i class="fas fa-lock" style="margin: 0 8px;"></i> Secure Voting System
+    </div>
+  </footer>
   <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script>
   <script src="../script/authenticate/login.js" type="module"> </script>
 </body>

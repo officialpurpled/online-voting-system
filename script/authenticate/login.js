@@ -2,17 +2,17 @@ import { API_KEY } from "../utils/library.js";
 import { showMsg } from "../utils/response.js";
 
 const loginBtn = document.querySelector('.login')
-const message = document.querySelector('#message')
+const message = document.querySelector('#feedback')
 
-loginBtn.addEventListener('click',()=>{
+loginBtn.addEventListener('click', () => {
   let matricNo = document.querySelector('.matric').value.trim().toUpperCase();
   let password = document.querySelector('.password').value.trim();
-  
+
   loginBtn.disabled = true
   loginBtn.innerText = 'LOGGING IN...'
-  message.innerHTML = ''
+  message.innerText = ''
 
-  if(!matricNo || !password){
+  if (!matricNo || !password) {
     showMsg('no', 'All field is required')
     loginBtn.disabled = false
     loginBtn.innerText = 'LOG IN'
@@ -22,31 +22,47 @@ loginBtn.addEventListener('click',()=>{
   fetch(`${API_KEY}/auth/login`, {
     method: 'POST',
     headers: {
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({matricNo, password})
+    body: JSON.stringify({ matricNo, password })
   })
-  .then(res => res.json())
-  .then(data => { 
-    if (data.success === false) {
-      loginBtn.disabled = false
-      loginBtn.innerText = 'LOG IN'
-      showMsg('no', data.message)
-      return;
-    }
-    
-    showMsg('yes', `${data.message}. Redirecting...`);
-    localStorage.setItem('p-id', JSON.stringify(data.token))
+    .then(res => res.json())
+    .then(data => {
+      if (data.success === false) {
+        loginBtn.disabled = false
+        loginBtn.innerText = 'LOG IN'
+        showMsg('no', data.message)
+        return;
+      }
 
-    setTimeout(() => {
-      window.location.href = './dashboard.html'
-    }, 1500);
-    // console.log('Response: ', data.message)
-  })
-  .catch((err) => {
-    showMsg('no', "Network Error. Please check your connection and try again.")
-    // message.innerHTML = 
-    loginBtn.disabled = false
-    loginBtn.innerText = 'LOG IN';
-    console.log('Error:', err)})
+      showMsg('yes', `${data.message}. Redirecting...`);
+      localStorage.setItem('p-id', JSON.stringify(data.token))
+
+      setTimeout(() => {
+        window.location.href = './dashboard.html'
+      }, 1500);
+      // console.log('Response: ', data.message)
+    })
+    .catch((err) => {
+      showMsg('no', "Network Error. Please check your connection and try again.")
+      // message.innerHTML = 
+      loginBtn.disabled = false
+      loginBtn.innerText = 'LOG IN';
+      console.log('Error:', err)
+    })
 });
+
+
+let isOpen = false
+
+const navMenu = document.querySelector('.menu-list')
+const hamburger = document.querySelector('.menu-icon')
+
+hamburger.addEventListener('click', () => {
+  isOpen = !isOpen
+
+  hamburger.innerHTML = isOpen ? `<i class="fas fa-times"></i>` : `<i class="fas fa-bars"></i>` //tenary operator
+
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('open');
+})

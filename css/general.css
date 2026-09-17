@@ -1,21 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
-  --color-primary: #166534;
-  --color-secondary: #22c55e;
-  --color-accent: #f97316;
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
-  --color-text: #172033;
+  --color-primary: #1b1762;
+  --color-secondary: #221d7b;
+  --color-accent: #d2a740;
+
+  --color-bg: #f9fafb;
+  --white: #ffffff;
+  --color-text: #171a29;
+  --color-surface: #f8f8f8;
+
+  --border: #cdd3df;
+  --roboto: "Roboto",
+    sans-serif;
+  --poppins: "Poppins",
+    sans-serif;
   --color-muted: #6B7280;
-  --color-danger: #DC2626;
+  --color-danger: #dc3545;
+
 }
 
 * {
   margin: 0;
   padding: 0;
+  font-family: var(--poppins);
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -47,7 +59,7 @@ a {
   border-right: 1px solid var(--color-secondary);
 }
 
-#message>p {
+#feedback>p {
   text-align: center;
   font-size: 14px;
 }
@@ -86,12 +98,13 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-weight: 500;
-  font-size: medium;
+  font-size: small;
   position: fixed;
   z-index: 999;
 }
