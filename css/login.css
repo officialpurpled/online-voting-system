@@ -6,9 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-bg);
+  background: var(--color-bg);
   color: var(--color-text);
-  background-color: aliceblue;
   min-height: 100vh;
   padding: 16px;
   margin-top: 20px;
@@ -18,11 +17,6 @@
   max-width: 450px;
   min-width: 300px;
   margin: 0 auto;
-  /* display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-  align-items: center;
-  justify-content: center; */
   background-color: var(--color-bg);
   box-shadow: 1px 5px 25px rgba(136, 136, 136, 0.26);
   ;

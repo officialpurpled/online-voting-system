@@ -1,5 +1,6 @@
-import { showMsg } from '../utils/response.js';
 import { API_KEY, userIdGen } from '../utils/library.js'
+import { showMsg } from '../utils/response.js';
+import { validateInput } from '../utils/regex.js';
 
 const form = document.querySelector('form')
 const message = document.querySelector('#feedback')
@@ -9,7 +10,6 @@ const img1 = document.querySelector('.photo');
 const img2 = document.querySelector('.receipt');
 
 let photo, receipt
-// idCard 
 
 img1.addEventListener('change', () => {
   photo = img1.files[0];
@@ -75,7 +75,7 @@ form.addEventListener('submit', (e) => {
 
   const username = document.querySelector('.name').value;
   const email = document.querySelector('.email').value;
-  const matric = document.querySelector('.matric').value.toUpperCase();
+  const matric = document.querySelector('.matric').value;
   const password = document.querySelector('.password').value.trim();
   const faculty = document.querySelector('#faculty').value;
   const department = document.querySelector('#department').value;
@@ -87,6 +87,14 @@ form.addEventListener('submit', (e) => {
     console.log('all field required')
     return
   }
+
+  const validate = validateInput(matric)
+
+  if (!validate.isValid) {
+    showMsg('no', `Invalid Matric/Reg Number format.`)
+    return
+  }
+
 
   if (password.length < 6) {
     showMsg('no', 'Password should be atleast 6')
@@ -109,7 +117,7 @@ form.addEventListener('submit', (e) => {
 
   formData.append('username', username)
   formData.append('email', email)
-  formData.append('matric', matric)
+  formData.append('matric', validate.formatted)
   formData.append('password', password)
   formData.append('faculty', faculty)
   formData.append('department', department)
@@ -122,7 +130,7 @@ form.addEventListener('submit', (e) => {
   try {
     signinBtn.disabled = true
     signinBtn.innerText = 'SIGNING UP...';
-    message.innerText = ''
+    showMsg('', '')
 
     fetch(`${API_KEY}/auth/signup`, {
       method: "POST",
@@ -132,8 +140,7 @@ form.addEventListener('submit', (e) => {
         if (!response.ok) {
           signinBtn.disabled = false
           signinBtn.innerText = 'SIGN UP';
-          // message.innerHTML = ''
-          console.log(response.status)
+          showMsg('no', `${response.status}`)
           return
         }
         return response.json()
@@ -154,6 +161,5 @@ form.addEventListener('submit', (e) => {
     signinBtn.disabled = false
     signinBtn.innerText = 'SIGN UP';
     showMsg('no', 'Please check your connection and try again.')
-    // console.log('Error : ' + err)
   }
 })

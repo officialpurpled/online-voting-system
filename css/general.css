@@ -108,6 +108,7 @@ footer {
   font-size: small;
   position: fixed;
   z-index: 999;
+  padding: 8px 0;
 }
 
 footer>div {
