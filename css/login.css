@@ -6,11 +6,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bg);
+  background-color: var(--color-bg);
   color: var(--color-text);
   min-height: 100vh;
   padding: 16px;
   margin-top: 20px;
+  background: linear-gradient(rgba(167, 167, 167, 0.92), rgba(204, 205, 206, 0.87)),
+    url('../images/oouhero.jpg') center/cover no-repeat;
 }
 
 .form-container {
