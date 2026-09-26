@@ -27,74 +27,155 @@
 
   <main class="signupMain">
     <div class="form-container">
-      <div class="title"> CREATE ACCOUNT/SIGN UP</div>
+      <div class="form-header">
+        <img src="" alt="">
+        <div class="header-text">
+          <h2>Create Your Account</h2>
+          <p>Register to participate in campus voting</p>
+        </div>
+      </div>
       <form class="form">
-        <label> Fullname:
-          <input type="text" id="fullname" class="name">
-        </label>
-        <label> Email Address:
-          <input type="text" id="email" class="email">
-        </label>
-        <label> Matric/Reg No:
-          <input type="text" id="regMatricNo" class="matric">
-        </label>
-        <label> Faculty:
-          <select name="faculty" id="faculty">
-          </select>
-        </label>
-        <label> Department:
-          <select name="department" id="department">
-          </select>
-        </label>
-        <label> Current Level:
-          <select name="level" id="level">
-            <option value="100">100</option>
-            <option value="200">200</option>
-            <option value="300">300</option>
-            <option value="400">400</option>
-            <option value="500">500</option>
-          </select>
-        </label>
-        <label>
-          Password:
-          <input type="password" id="password" class="password">
-        </label>
-        <p class="info">
-          <i>
-            <b>
-              Upload a clear image of your ID Card or Receipt <span style="color: #e20d0d; font-size: smaller;">(4mb
-                max)</span>
-            </b>
-          </i>
-        </p>
-        <!-- <label> School ID Card:
-          <input type="file" class="idCard" accept="image/*">
-        </label> -->
-        <label> School Fee / Id Card:
-          <input type="file" class="receipt" accept="image/*">
-        </label>
-        <label> You Selfie Photo:
-          <input type="file" class="photo" accept="image/*">
-        </label>
-        <div id="feedback" style="display: none;"></div>
-        <button class="signup" type="submit">SIGN UP</button>
+        <div class="form-group">
+          <div class="group-container information">
+            <div class="group-header">
+              <i> icon </i>
+              <h3>Personal Information </h3>
+              <hr>
+            </div>
+            <div class="group-content">
+              <div class="alt-flex">
+                <div class="input-group">
+                  <label>Full Name <strong>*</strong></label>
+                  <div class="input">
+                    <span><i>icon</i></span>
+                    <input type="text" id="fullname" class="fullname" placeholder="Enter your full name" required>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label>Email Address <strong>*</strong></label>
+                  <div class="input">
+                    <span><i>icon</i></span>
+                    <input type="email" class="email" id="email" placeholder="user@email.com" required>
+                  </div>
+                </div>
+              </div>
+              <div class="alt-flex">
+                <div class="input-group">
+                  <label>Matric/Reg. No. <strong>*</strong></label>
+                  <div class="input">
+                    <span><i>icon</i></span>
+                    <input type="text" class="matric" id="matric" placeholder="e.g. 2026123456789AB" required>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label>Faculty <strong>*</strong></label>
+                  <div class="input">
+                    <span><i>icon</i></span>
+                    <select name="faculty" id="faculty"></select>
+                    <!-- <span><i>icon</i></span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="alt-flex">
+                <div class="input-group">
+                  <label>Department <strong>*</strong></label>
+                  <div class="input">
+                    <span><i>icon</i></span>
+                    <select name="department" id="department"></select>
+                    <!-- <span><i>icon</i></span> -->
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label>Level <strong>*</strong></label>
+                  <div class="input">
+                    <span><i>icon</i></span>
+                    <select name="level" id="level">
+                      <option value="100">100</option>
+                      <option value="200">200</option>
+                      <option value="300">300</option>
+                      <option value="400">400</option>
+                      <option value="500">500</option>
+                    </select>
+                    <!-- <span><i>icon</i></span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="input-group">
+                <label>Password <strong>*</strong></label>
+                <div class="input">
+                  <span><i>icon</i></span>
+                  <input type="password" class="password" id="password" placeholder="Enter a strong password" required>
+                  <span><i>icon</i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="group-container verification">
+            <div class="group-header">
+              <i> icon </i>
+              <h3>Verification Document </h3>
+              <hr>
+            </div>
+            <div class="group-content">
+              <div class="alt-flex">
+                <div class="input-group">
+                  <label for="">
+                    <span><i>icon</i></span>
+                    <span>
+                      <p>School Fee Receipt/ID Card <strong>*</strong></p>
+                      <p>Upload a clear image of your school fee receipt or student ID card </p>
+                    </span>
+                  </label>
+                  <div id="receipt" class="input">
+                    <i>icon</i>
+                    <p>Click to upload or drag and drop</p>
+                    <p>JPG, PNG * Max 4mb</p>
+                  </div>
+                </div>
+                <div class="input-group">
+                  <label for="">
+                    <i>icon</i>
+                    <span>
+                      <p>Selfie Photo <em>(Optional)</em></p>
+                      <p>Upload a clear selfie photo of yourself </p>
+                    </span>
+                  </label>
+                  <div class="input" id="selfie">
+                    <i>icon</i>
+                    <p>Click to upload or drag and drop</p>
+                    <p>JPG, PNG * Max 4mb</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div id="message" style="display: none;"></div> -->
+
+        <div class="terms">
+          <input type="radio" class="radio">
+          <span>
+            I agree to the Terms & Condition and Privacy Policy
+          </span>
+        </div>
+
+        <button type="submit" class="signupBtn" disabled>
+          <span class="btn-text">
+            SIGN UP
+          </span>
+          <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+
       </form>
-      <div class="terms">
-        <input type="radio" class="radio">
-        <span>
-          Agree to the terms and condition T&C
-        </span>
-      </div>
-      <!-- <hr> //there should be a line -->
-      <div class="ruler">
-        <span></span>
-        <p>OR</p>
-        <span></span>
-      </div>
 
       <div class="redirector">
         Already have an account. <a href="login.html">Login</a>
       </div>
+
     </div>
   </main>
 
