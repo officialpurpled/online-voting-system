@@ -6,7 +6,7 @@ header {
   left: 0;
   right: 0;
   z-index: 999;
-  height: 60px;
+  height: 75px;
   padding: 15px 25px;
 
   border-radius: 5px;
@@ -15,10 +15,9 @@ header {
   color: var(--color-surface);
 
   display: flex;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .accent-color {
@@ -31,9 +30,8 @@ header {
   display: flex;
 }
 
-.left-section>img {
+.left-section img {
   flex: 1;
-  width: 100%;
   min-width: 150px;
   max-width: 200px;
 }
@@ -63,7 +61,7 @@ header {
   font-weight: 700;
   position: relative;
   color: var(--color-surface);
-  font-size: 1.05em;
+  font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.25s ease;
