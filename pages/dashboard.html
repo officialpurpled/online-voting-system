@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     Dashboard
   </title>
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/mediaquery.css">
+  <link rel="stylesheet" href="../css/general.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
+
 <body>
   <header>
     <div class="left-section">
@@ -48,7 +50,7 @@
     <a href="profile.html">
       <img src="../images/icons/user.svg" alt="Profile">
       My Profile
-    </a> 
+    </a>
 
     <a id="logout">
       <img src="../images/icons/download.svg" alt="">
@@ -57,12 +59,12 @@
   </nav>
 
   <main id="dashboard">
-    <div id="notisModal" class="notisModal"></div>
-    <div class="campSection"> 
+    <div id="notisModal" class="notisModal" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div class="campSection">
       <div class="campHead">
         Departmental Voting Campaign
       </div>
-      <div class="campBody" id="department"> 
+      <div class="campBody" id="department">
         <!-- <div class="election-card">
           <div class="icon">
             <img src="../images/electLogo/nacos.JPG" alt="">
@@ -184,7 +186,7 @@
 
     <div class="campSection">
       <div class="campHead">Faculty Voting Campaign</div>
-      <div class="campBody" id="faculty"> 
+      <div class="campBody" id="faculty">
         <!-- <div class="election-card">
           <div class="icon">
             <img src="../images/electLogo/science.JPG" alt="">
@@ -254,7 +256,8 @@
   </main>
 
   <!-- <script src="../script/dashboard.js" type="module"></script> -->
-   <script src="../lib/lucide.js"></script>
+  <script src="../lib/lucide.js"></script>
   <script src="../script/fetchElection.js" type="module"></script>
 </body>
+
 </html>

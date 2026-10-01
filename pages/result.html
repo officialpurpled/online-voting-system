@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,8 @@
   <link rel="stylesheet" href="../css/mediaquery.css">
   <link rel="stylesheet" href="../fonts/poppins/stylesheet.css">
 </head>
- <body>
+
+<body>
   <header>
     <div class="left-section">
       <img src="../images/logo.png" alt="Logo" width="100%">
@@ -48,31 +50,31 @@
     <a href="profile.html">
       <img src="../images/icons/user.svg" alt="Profile">
       My Profile
-    </a> 
+    </a>
 
     <a id="logout">
       Log Out
       <img src="../images/icons/download.svg" alt="Log out">
-    </a> 
+    </a>
   </nav>
 
   <main id="results">
-    <div id="notisModal" class="notisModal"></div>
-    <div class="departmental resultTab"> 
+    <div id="notisModal" class="notisModal" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div class="departmental resultTab">
       DEPARTMENTAL RESULT TAB
     </div>
     <section id="dept-modal">
       <!-- Dynamic post sections will be inserted here -->
     </section>
 
-    <div class="faculty resultTab"> 
+    <div class="faculty resultTab">
       FACULTY RESULT TAB
     </div>
     <section id="faculty-modal">
       <!-- Dynamic post sections will be inserted here -->
     </section>
 
-    <div class="sug resultTab"> 
+    <div class="sug resultTab">
       SUG RESULT TAB
     </div>
     <section id="sug-modal">
@@ -84,4 +86,5 @@
   <script src="../lib/lucide.js"></script>
   <script type="module" src="../script/fetchResult.js"></script>
 </body>
+
 </html>
