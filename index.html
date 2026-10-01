@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="./css/mediaquery.css">
@@ -60,21 +59,23 @@
       <button class="cta-btn">
         <a href="./pages/login.html">
           LOG IN & VOTE
-          <i class="fas fa-sign-in-alt" style="margin-left: 8px; font-size: 18px;"></i>
+          <i data-lucide="log-in" class="cta-icon" aria-hidden="true"></i>
         </a>
       </button>
     </div>
   </main>
 
   <footer>
-    <div> &copy; Purple Dragon Cares 2026 | <i class="fas fa-lock" style="margin-left: 0 6px;"></i> OOU Secure Voting
-      System
+    <div>
+      <span>&copy; Purple Dragon Cares 2026</span>
+      <span class="footer-separator" aria-hidden="true"></span>
+      <span class="footer-system"><i data-lucide="lock-keyhole" aria-hidden="true"></i> OOU Secure Voting System</span>
     </div>
   </footer>
 
   <div class="status-ticker">
     <div class="ticker-label">
-      <i class="fas fa-bullhorn" style="margin-right:  4px;"></i>
+      <i data-lucide="megaphone" class="ticker-icon" aria-hidden="true"></i>
       Update
     </div>
     <div class="ticker-track">

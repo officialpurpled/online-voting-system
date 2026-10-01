@@ -6,7 +6,7 @@
   color: var(--color-text);
   padding: 16px;
   margin-top: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 76px;
   background: linear-gradient(rgba(167, 167, 167, 0.95), rgba(204, 205, 206, 0.87)),
     url('../images/oouhero.jpg') center/cover no-repeat;
 }
@@ -218,6 +218,41 @@ input::placeholder {
   margin-top: 4px;
 }
 
+.upload-zone {
+  min-height: 112px;
+  cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.upload-zone:hover,
+.upload-zone:focus-visible,
+.upload-zone.dragging {
+  border-color: var(--color-primary);
+  background-color: rgba(27, 23, 98, 0.08);
+  outline: none;
+}
+
+.upload-zone.selected {
+  border-color: #28734a;
+  background-color: rgba(40, 115, 74, 0.06);
+}
+
+.upload-zone [data-upload-title] {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+  text-align: center;
+}
+
+.upload-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .cloud {
   flex: 0 0 24px;
   width: 24px;
@@ -231,6 +266,7 @@ input::placeholder {
 }
 
 span {
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;

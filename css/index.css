@@ -109,6 +109,12 @@ a {
   display: inline-block;
 }
 
+@media (max-width: 600px) {
+  .status-ticker {
+    bottom: 56px;
+  }
+}
+
 @keyframes movingText {
   0% {
     /* opacity: 0; */
@@ -119,4 +125,17 @@ a {
     /* opacity: 1; */
     transform: translateX(-50%);
   }
+}
+
+.cta-icon {
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+}
+
+.ticker-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: middle;
 }

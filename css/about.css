@@ -1,7 +1,7 @@
 main {
   margin-top: 120px;
   margin-left: 0;
-  padding: 40px 20px;
+  padding: 40px 20px 88px;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -82,7 +82,7 @@ main {
 @media (max-width: 650px) {
   main {
     margin-top: 88px;
-    padding: 24px 14px;
+    padding: 24px 14px 82px;
   }
 
   .about-container {

@@ -1,5 +1,4 @@
 import { API_KEY, userIdGen } from '../utils/library.js'
-import { showMsg } from '../utils/response.js';
 import { validateInput } from '../utils/regex.js';
 import { toggleNav } from '../utils/navFlow.js';
 
@@ -7,55 +6,47 @@ lucide.createIcons()
 toggleNav()
 
 const form = document.querySelector('form')
-const message = document.querySelector('#feedback')
+const feedback = document.querySelector('#message')
+const signupButton = document.querySelector('.signupBtn')
+const signupButtonText = signupButton.querySelector('.btn-text')
+const nameInput = document.querySelector('.fullname')
+const emailInput = document.querySelector('.email')
+const matricInput = document.querySelector('.matric')
+const passwordInput = document.querySelector('.password')
+const facultySelect = document.querySelector('#faculty')
+const departmentSelect = document.querySelector('#department')
+const levelSelect = document.querySelector('#level')
+const consentInput = document.querySelector('#terms-consent')
+const receiptZone = document.querySelector('#receipt')
+const selfieZone = document.querySelector('#selfie')
+const receiptInput = document.querySelector('#receipt-file')
+const selfieInput = document.querySelector('#selfie-file')
 
-const signinBtn = document.querySelector('.signup')
-const img1 = document.querySelector('.photo');
-const img2 = document.querySelector('.receipt');
-
-let photo, receipt
-
-img1.addEventListener('change', () => {
-  photo = img1.files[0];
-  console.log('Photo added', photo);
-});
-img2.addEventListener('change', () => {
-  receipt = img2.files[0];
-  console.log('Receipt added', receipt);
-});
-
-
+let passportFile = null
+let documentFile = null
 let facultiesData = null;
 
-// Load the JSON data
+bindUploadZone(receiptZone, receiptInput, 'document')
+bindUploadZone(selfieZone, selfieInput, 'passport')
+
 fetch('../data/deptFac.json')
   .then(res => res.json())
   .then(data => {
     facultiesData = data;
 
-    // Populate faculty dropdown
-    const facultySelect = document.querySelector('#faculty');
     data.faculties.forEach((faculty) => {
       const option = document.createElement('option');
-      option.value = faculty.name; // Use the actual faculty name
+      option.value = faculty.name;
       option.textContent = faculty.name;
       facultySelect.appendChild(option);
     });
-
-    // Load departments for the first faculty (if any)
-    if (data.faculties.length > 0) {
-      loadDepartments(data.faculties[0].name);
-    }
   })
   .catch(err => console.log('Error loading faculty list' + err));
 
-// Function to load departments based on selected faculty name
 function loadDepartments(facultyName) {
-  const departmentSelect = document.querySelector('#department');
-  departmentSelect.innerHTML = ''; // Clear existing options
+  departmentSelect.innerHTML = '<option value="" selected disabled>Select your department</option>';
 
   if (facultiesData) {
-    // Find the faculty by name
     const faculty = facultiesData.faculties.find(f => f.name === facultyName);
 
     if (faculty) {
@@ -69,51 +60,45 @@ function loadDepartments(facultyName) {
   }
 }
 
-// Listen for faculty selection changes
-document.querySelector('#faculty').addEventListener('change', (e) => {
+facultySelect.addEventListener('change', (e) => {
   loadDepartments(e.target.value);
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const username = document.querySelector('.name').value;
-  const email = document.querySelector('.email').value;
-  const matric = document.querySelector('.matric').value;
-  const password = document.querySelector('.password').value.trim();
-  const faculty = document.querySelector('#faculty').value;
-  const department = document.querySelector('#department').value;
-  const level = document.querySelector('#level').value;
-  const radio = document.querySelector('.radio');
+  const username = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const matric = matricInput.value.trim();
+  const password = passwordInput.value.trim();
+  const faculty = facultySelect.value;
+  const department = departmentSelect.value;
+  const level = levelSelect.value;
 
   if (!username || !password || !department || !faculty || !level || !matric) {
-    showMsg('no', 'all field is required')
-    console.log('all field required')
+    setFeedback('no', 'All fields are required.')
     return
   }
 
   const validate = validateInput(matric)
 
   if (!validate.isValid) {
-    showMsg('no', `Invalid Matric/Reg Number format.`)
+    setFeedback('no', 'Invalid matriculation or registration number format.')
     return
   }
-
 
   if (password.length < 6) {
-    showMsg('no', 'Password should be atleast 6')
+    setFeedback('no', 'Password must be at least 6 characters.')
     return
   }
 
-  if (!receipt) {
-    showMsg('no', 'Please reupload school fee receipt or and Id Card')
-    console.log('upload required files')
+  if (!documentFile) {
+    setFeedback('no', 'Please upload your school fee receipt or student ID card.')
     return
   }
 
-  if (!radio.checked) {
-    alert('You must accept terms and conditions to proceed')
-    console.log('accept terms and conditions')
+  if (!consentInput.checked) {
+    setFeedback('no', 'Please accept the terms and conditions to continue.')
     return;
   }
 
@@ -127,43 +112,93 @@ form.addEventListener('submit', (e) => {
   formData.append('department', department)
   formData.append('level', level)
   formData.append('studentId', userIdGen())
-  //for images now
-  formData.append('passport', photo)
-  formData.append('document', receipt)
+  if (passportFile) formData.append('passport', passportFile)
+  formData.append('document', documentFile)
+
+  signupButton.disabled = true
+  signupButtonText.textContent = 'CREATING ACCOUNT...'
+  setFeedback('', '')
 
   try {
-    signinBtn.disabled = true
-    signinBtn.innerText = 'SIGNING UP...';
-    showMsg('', '')
-
-    fetch(`${API_KEY}/auth/signup`, {
-      method: "POST",
+    const response = await fetch(`${API_KEY}/auth/signup`, {
+      method: 'POST',
       body: formData
     })
-      .then(response => {
-        if (!response.ok) {
-          signinBtn.disabled = false
-          signinBtn.innerText = 'SIGN UP';
-          showMsg('no', `${response.status}`)
-          return
-        }
-        return response.json()
-      })
-      .then(data => {
-        if (data.success === false) {
-          signinBtn.disabled = false
-          showMsg('no', data.message);
-          signinBtn.innerText = 'SIGN UP';
-          return
-        }
+    const data = await response.json()
 
-        showMsg('yes', `${data.message}. Redirecting...`);
+    if (!response.ok || data.success === false) {
+      throw new Error(data.message || `Sign up failed (${response.status}).`)
+    }
 
-        window.location.href = './login.html'
-      })
+    setFeedback('yes', `${data.message || 'Account created successfully.'} Redirecting...`)
+    window.location.href = './login.html'
   } catch (error) {
-    signinBtn.disabled = false
-    signinBtn.innerText = 'SIGN UP';
-    showMsg('no', 'Please check your connection and try again.')
+    setFeedback('no', error.message || 'Please check your connection and try again.')
+    signupButton.disabled = false
+    signupButtonText.textContent = 'SIGN UP'
   }
 })
+
+function bindUploadZone(zone, input, fileType) {
+  zone.addEventListener('click', () => input.click())
+  zone.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return
+    event.preventDefault()
+    input.click()
+  })
+
+  input.addEventListener('change', () => {
+    setSelectedFile(input.files[0], zone, fileType)
+  })
+
+  zone.addEventListener('dragover', (event) => {
+    event.preventDefault()
+    zone.classList.add('dragging')
+  })
+
+  zone.addEventListener('dragleave', (event) => {
+    if (!zone.contains(event.relatedTarget)) zone.classList.remove('dragging')
+  })
+
+  zone.addEventListener('drop', (event) => {
+    event.preventDefault()
+    zone.classList.remove('dragging')
+    setSelectedFile(event.dataTransfer.files[0], zone, fileType)
+  })
+}
+
+function setSelectedFile(file, zone, fileType) {
+  if (!file) return
+
+  const extension = file.name.split('.').pop().toLowerCase()
+  const isSupportedImage = ['image/jpeg', 'image/png'].includes(file.type) || ['jpg', 'jpeg', 'png'].includes(extension)
+  if (!isSupportedImage) {
+    setFeedback('no', 'Choose a JPG or PNG image.')
+    return
+  }
+
+  if (file.size > 4 * 1024 * 1024) {
+    setFeedback('no', 'Each image must be 4 MB or smaller.')
+    return
+  }
+
+  if (fileType === 'document') documentFile = file
+  else passportFile = file
+
+  zone.classList.add('selected')
+  zone.querySelector('[data-upload-title]').textContent = file.name
+  zone.querySelector('[data-upload-help]').textContent = `${formatFileSize(file.size)} selected`
+  setFeedback('', '')
+}
+
+function formatFileSize(size) {
+  return size < 1024 * 1024
+    ? `${Math.max(1, Math.round(size / 1024))} KB`
+    : `${(size / (1024 * 1024)).toFixed(1)} MB`
+}
+
+function setFeedback(status, text) {
+  feedback.textContent = text
+  feedback.style.display = text ? 'block' : 'none'
+  feedback.style.color = status === 'yes' ? 'green' : 'red'
+}

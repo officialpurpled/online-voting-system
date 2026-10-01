@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/signup.css">
@@ -146,11 +147,14 @@
                     <p>Upload a clear image of your school fee receipt or student ID card </p>
                     <!-- </span> -->
                   </label>
-                  <div id="receipt" class="input">
+                  <div id="receipt" class="input upload-zone" role="button" tabindex="0" aria-controls="receipt-file"
+                    aria-label="Upload school fee receipt or student ID card">
                     <i data-lucide="cloud-upload" class="cloud"></i>
-                    <p>Click to upload or drag and drop</p>
-                    <p>JPG, PNG * Max 4mb</p>
+                    <p data-upload-title>Click to choose or drag and drop</p>
+                    <p data-upload-help>JPG or PNG, up to 4 MB</p>
                   </div>
+                  <input id="receipt-file" class="upload-file" type="file" accept="image/jpeg,image/png"
+                    aria-label="School fee receipt or student ID card" hidden>
                 </div>
                 <div class="input-group">
                   <label class="fileInp-label">
@@ -162,11 +166,14 @@
                     <p>Upload a clear selfie photo of yourself </p>
                     <!-- </span> -->
                   </label>
-                  <div class="input" id="selfie">
+                  <div class="input upload-zone" id="selfie" role="button" tabindex="0" aria-controls="selfie-file"
+                    aria-label="Upload an optional selfie photo">
                     <i data-lucide="cloud-upload" class="cloud"></i>
-                    <p>Click to upload or drag and drop</p>
-                    <p>JPG, PNG * Max 4mb</p>
+                    <p data-upload-title>Click to choose or drag and drop</p>
+                    <p data-upload-help>JPG or PNG, up to 4 MB</p>
                   </div>
+                  <input id="selfie-file" class="upload-file" type="file" accept="image/jpeg,image/png"
+                    aria-label="Optional selfie photo" hidden>
                 </div>
               </div>
             </div>
@@ -198,7 +205,10 @@
   </main>
 
   <footer>
-    <div> &copy; Purple Dragon Cares 2026 | <i class="fas fa-lock" style="margin: 0 6px;"></i> OOU Secure Voting System
+    <div>
+      <span>&copy; Purple Dragon Cares 2026</span>
+      <span class="footer-separator" aria-hidden="true"></span>
+      <span class="footer-system"><i data-lucide="lock-keyhole" aria-hidden="true"></i> OOU Secure Voting System</span>
     </div>
   </footer>
 

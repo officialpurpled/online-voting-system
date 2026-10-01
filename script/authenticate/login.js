@@ -8,7 +8,7 @@ const form = document.querySelector('#loginForm')
 const loginBtn = document.querySelector('.loginBtn')
 const passwordInput = document.querySelector('#password')
 const message = document.querySelector('#feedback')
-const passwordToggle = document.querySelector('.eye-icon i')
+const passwordToggle = document.querySelector('.password-toggle')
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -17,7 +17,7 @@ form.addEventListener('submit', (e) => {
   const password = document.querySelector('.password').value.trim();
   const btnText = document.querySelector('.btn-text');
   const spinner = document.querySelector('.fa-spinner');
-  const arrow = document.querySelector('.fa-sign-out-alt');
+  const arrow = document.querySelector('.login-arrow');
 
   showMsg('', '')
   loginBtn.disabled = true
@@ -79,9 +79,9 @@ passwordToggle.addEventListener('click', () => {
   const isPassword = passwordInput.type === 'password'
 
   passwordInput.type = isPassword ? 'text' : 'password'
-  passwordToggle.classList.toggle('fa-eye-slash')
-
-  console.log('clicked')
+  passwordToggle.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password')
+  passwordToggle.innerHTML = `<i data-lucide="${isPassword ? 'eye-off' : 'eye'}" aria-hidden="true"></i>`
+  lucide.createIcons()
 })
 
 toggleNav()

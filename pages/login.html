@@ -20,7 +20,7 @@
 <style>
   .loginMain {
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 72px;
   }
 </style>
 
@@ -54,22 +54,24 @@
   <main class="loginMain">
     <div class="form-container">
       <div class="form-header">
-        <img src="../images/icons/auth-icon.svg" class="form-icon">
+        <i data-lucide="shield-check" class="form-icon" aria-hidden="true"></i>
         <h1>Welcome Back</h1>
         <p>Login with your student credetials, to securely vote for the candidate of your choice.</p>
       </div>
       <form id="loginForm">
         <label for="matric"> Matric/Reg No: </label>
         <div class="input-group">
-          <span><i class="fas fa-user"></i></span>
+          <span class="field-icon"><i data-lucide="user-round" aria-hidden="true"></i></span>
           <input type="text" name="matric" id="matricNo" class="matric" placeholder="Enter your matriculation number">
         </div>
 
         <label for="password"> Password: </label>
         <div class="input-group">
-          <span><i class="fas fa-lock"></i></span>
+          <span class="field-icon"><i data-lucide="lock-keyhole" aria-hidden="true"></i></span>
           <input type="password" id="password" name="password" class="password" placeholder="Enter your password">
-          <span class="eye-icon"><i class="fas fa-eye" style="margin-right: 6px;"></i></span>
+          <button type="button" class="password-toggle" aria-label="Show password">
+            <i data-lucide="eye" aria-hidden="true"></i>
+          </button>
         </div>
 
         <div id="message" style="display: none;"></div>
@@ -80,7 +82,7 @@
             Log In
           </span>
           <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-          <i class="fas fa-sign-out-alt"></i>
+          <i data-lucide="log-in" class="login-arrow" aria-hidden="true"></i>
         </button>
       </form>
       <div class="divider">
@@ -92,7 +94,7 @@
         <p style="color: rgb(86, 86, 87);"> Don't have an account yet? <a href="signup.html"
             style="margin-left: 2px;">Sign up</a>
         </p>
-        <p class="form-footer"><i class="fas fa-lock" style="margin-right: 8px;"></i> Your credentials are secure handle
+        <p class="form-footer"><i data-lucide="lock-keyhole" aria-hidden="true"></i> Your credentials are secure handle
         </p>
       </div>
     </div>
@@ -100,7 +102,9 @@
 
   <footer>
     <div>
-      &copy; Purple Dragon Cares 2026 | <i class="fas fa-lock" style="margin: 0 6px;"></i> OOU Secure Voting System
+      <span>&copy; Purple Dragon Cares 2026</span>
+      <span class="footer-separator" aria-hidden="true"></span>
+      <span class="footer-system"><i data-lucide="lock-keyhole" aria-hidden="true"></i> OOU Secure Voting System</span>
     </div>
   </footer>
 

@@ -32,9 +32,11 @@
 }
 
 .form-icon {
-  width: 70px;
+  width: 42px;
+  height: 42px;
   position: relative;
-  top: 12px;
+  top: 8px;
+  color: var(--color-primary);
 }
 
 h1 {
@@ -83,11 +85,20 @@ form {
   padding-right: 3px;
 }
 
-.fa-eye {
+.field-icon {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 36px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 3px;
   color: var(--color-muted);
 }
 
-span i {
+.field-icon svg {
+  width: 17px;
+  height: 17px;
   color: var(--color-secondary);
 }
 
@@ -114,11 +125,43 @@ input:last-child {
   padding-right: 3px;
 }
 
-.eye-icon {
-  width: 100px;
+.password-toggle {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-muted);
+}
+
+.password-toggle:hover {
+  background: rgba(27, 23, 98, 0.06);
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.login-arrow {
+  width: 17px;
+  height: 17px;
+}
+
+.form-footer svg {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  vertical-align: -2px;
+  color: var(--color-secondary);
+}
+
+.input-group .password-toggle {
   display: flex;
-  justify-content: flex-start;
-  align-items: start;
+  justify-content: center;
+  align-items: center;
 }
 
 .forget-password {
@@ -182,8 +225,4 @@ hr {
 .form-footer {
   margin-top: 2px;
   font-size: small;
-}
-
-.form-footer i {
-  color: var(--color-secondary);
 }
