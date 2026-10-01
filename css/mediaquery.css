@@ -142,3 +142,43 @@
     margin-right: 5px;
   }
 }
+
+@media (max-width: 650px) {
+  .menu-list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 16px 16px;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.2);
+    background: var(--color-primary);
+  }
+
+  .menu-list.open {
+    display: flex;
+  }
+
+  .menu-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-item a {
+    display: block;
+    width: 100%;
+    padding: 11px 8px;
+    text-align: center;
+  }
+
+  .menu-icon {
+    display: block;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    color: var(--color-surface);
+  }
+}

@@ -219,6 +219,9 @@ input::placeholder {
 }
 
 .cloud {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
   color: #1b1762;
 }
 
@@ -271,19 +274,28 @@ button:disabled {
 
 .terms {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
   color: var(--color-muted);
 }
 
 .terms input {
-  flex: 0;
-  margin-right: 8px;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--color-primary);
 }
 
-/* 
 .terms span {
+  display: block;
   flex: 1;
-} */
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
 
 .redirector {
   text-align: center;
@@ -295,8 +307,10 @@ button:disabled {
 }
 
 @media (max-width: 650px) {
-  .menu-list {
-    display: none;
+  .form-container {
+    width: 100%;
+    min-width: 0;
+    padding: 20px 16px;
   }
 
   .alt-flex {
@@ -308,11 +322,4 @@ button:disabled {
     gap: 10px;
   }
 
-  .terms {
-    word-break: break-all;
-  }
-
-  .terms span {
-    font-size: small;
-  }
 }

@@ -78,3 +78,41 @@ main {
 .back-button:hover {
   background-color: var(--color-secondary);
 }
+
+@media (max-width: 650px) {
+  main {
+    margin-top: 88px;
+    padding: 24px 14px;
+  }
+
+  .about-container {
+    padding: 24px 18px;
+  }
+
+  .about-container h1 {
+    font-size: 1.8em;
+    line-height: 1.25;
+  }
+
+  .about-section {
+    margin-bottom: 28px;
+  }
+
+  .about-section h2 {
+    font-size: 1.3em;
+  }
+
+  .about-section p {
+    font-size: 1em;
+  }
+
+  .features-list li {
+    padding-left: 26px;
+    font-size: 1em;
+  }
+
+  .back-button {
+    margin-top: 16px;
+    padding: 10px 16px;
+  }
+}
