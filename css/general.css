@@ -58,6 +58,10 @@ a {
   font-size: 14px;
 }
 
+input::-ms-reveal {
+  display: none;
+}
+
 .notisModal {
   position: absolute;
   top: 110px;
@@ -101,9 +105,9 @@ footer {
   font-size: small;
   position: fixed;
   z-index: 999;
-  padding: 8px 0;
+  padding: 20px;
 }
 
 footer>div {
-  padding: 10px;
+  padding: 5px;
 }

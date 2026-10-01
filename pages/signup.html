@@ -8,37 +8,50 @@
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/signup.css">
+  <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
 
 <body>
   <header>
     <div class="left-section">
-      <img src="../images/logo.png" alt="Logo" width="80%">
+      <img src="../images/logo.png" alt="Logo">
     </div>
     <div class="right-section">
-      <a href="../index.html">
-        Home
-      </a>
-      <a href="login.html">
-        Log In
-      </a>
+      <div class="menu-list">
+        <span class="menu-item">
+          <a>
+            Home
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="about.html">
+            About
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="login.html">
+            Log In
+          </a>
+        </span>
+      </div>
+      <i data-lucide="menu" class="menu-icon"></i>
     </div>
   </header>
 
   <main class="signupMain">
     <div class="form-container">
       <div class="form-header">
-        <img src="" alt="">
+        <!-- <img src="" alt=""> -->
         <div class="header-text">
           <h2>Create Your Account</h2>
           <p>Register to participate in campus voting</p>
         </div>
       </div>
-      <form class="form">
+      <form>
         <div class="form-group">
           <div class="group-container information">
             <div class="group-header">
-              <i> icon </i>
+              <i data-lucide="user-round-plus"></i>
               <h3>Personal Information </h3>
               <hr>
             </div>
@@ -47,14 +60,14 @@
                 <div class="input-group">
                   <label>Full Name <strong>*</strong></label>
                   <div class="input">
-                    <span><i>icon</i></span>
+                    <span><i data-lucide="user-round" class="f-icon"></i></span>
                     <input type="text" id="fullname" class="fullname" placeholder="Enter your full name" required>
                   </div>
                 </div>
                 <div class="input-group">
                   <label>Email Address <strong>*</strong></label>
                   <div class="input">
-                    <span><i>icon</i></span>
+                    <span><i data-lucide="mail" class="f-icon"></i></span>
                     <input type="email" class="email" id="email" placeholder="user@email.com" required>
                   </div>
                 </div>
@@ -63,15 +76,17 @@
                 <div class="input-group">
                   <label>Matric/Reg. No. <strong>*</strong></label>
                   <div class="input">
-                    <span><i>icon</i></span>
+                    <span><i data-lucide="id-card-lanyard" class="f-icon"></i></span>
                     <input type="text" class="matric" id="matric" placeholder="e.g. 2026123456789AB" required>
                   </div>
                 </div>
                 <div class="input-group">
                   <label>Faculty <strong>*</strong></label>
                   <div class="input">
-                    <span><i>icon</i></span>
-                    <select name="faculty" id="faculty"></select>
+                    <span><i data-lucide="university" class="f-icon"></i></span>
+                    <select name="faculty" id="faculty">
+                      <option selected disabled> Select your faculty </option>
+                    </select>
                     <!-- <span><i>icon</i></span> -->
                   </div>
                 </div>
@@ -80,16 +95,18 @@
                 <div class="input-group">
                   <label>Department <strong>*</strong></label>
                   <div class="input">
-                    <span><i>icon</i></span>
-                    <select name="department" id="department"></select>
-                    <!-- <span><i>icon</i></span> -->
+                    <span><i data-lucide="users-round" class="f-icon"></i></span>
+                    <select name="department" id="department">
+                      <option selected disabled> Select your department</option>
+                    </select>
                   </div>
                 </div>
                 <div class="input-group">
                   <label>Level <strong>*</strong></label>
                   <div class="input">
-                    <span><i>icon</i></span>
+                    <span><i data-lucide="graduation-cap" class="f-icon"></i></span>
                     <select name="level" id="level">
+                      <option selected disabled> Select your level</option>
                       <option value="100">100</option>
                       <option value="200">200</option>
                       <option value="300">300</option>
@@ -103,47 +120,50 @@
               <div class="input-group">
                 <label>Password <strong>*</strong></label>
                 <div class="input">
-                  <span><i>icon</i></span>
+                  <span><i data-lucide="lock-keyhole" class="f-icon"></i></span>
                   <input type="password" class="password" id="password" placeholder="Enter a strong password" required>
-                  <span><i>icon</i></span>
+                  <span><i data-lucide="eye" class="eye-icon"></i></span>
                 </div>
               </div>
+              <div id="message" style="display: none;"></div>
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="group-container verification">
             <div class="group-header">
-              <i> icon </i>
+              <i data-lucide="shield-check"></i>
               <h3>Verification Document </h3>
               <hr>
             </div>
             <div class="group-content">
               <div class="alt-flex">
                 <div class="input-group">
-                  <label for="">
-                    <span><i>icon</i></span>
-                    <span>
-                      <p>School Fee Receipt/ID Card <strong>*</strong></p>
-                      <p>Upload a clear image of your school fee receipt or student ID card </p>
-                    </span>
+                  <label class="fileInp-label">
+                    <!-- <span><i data-lucide="file-text" class="big-icon"></i></span> -->
+                    <!-- <span> -->
+                    <p>School Fee Receipt/ID Card <strong>*</strong></p>
+                    <p>Upload a clear image of your school fee receipt or student ID card </p>
+                    <!-- </span> -->
                   </label>
                   <div id="receipt" class="input">
-                    <i>icon</i>
+                    <i data-lucide="cloud-upload" class="cloud"></i>
                     <p>Click to upload or drag and drop</p>
                     <p>JPG, PNG * Max 4mb</p>
                   </div>
                 </div>
                 <div class="input-group">
-                  <label for="">
-                    <i>icon</i>
-                    <span>
-                      <p>Selfie Photo <em>(Optional)</em></p>
-                      <p>Upload a clear selfie photo of yourself </p>
+                  <label class="fileInp-label">
+                    <!-- <span>
+                      <i data-lucide="camera" class="big-icon"></i>
                     </span>
+                    <span> -->
+                    <p>Selfie Photo <em>(Optional)</em></p>
+                    <p>Upload a clear selfie photo of yourself </p>
+                    <!-- </span> -->
                   </label>
                   <div class="input" id="selfie">
-                    <i>icon</i>
+                    <i data-lucide="cloud-upload" class="cloud"></i>
                     <p>Click to upload or drag and drop</p>
                     <p>JPG, PNG * Max 4mb</p>
                   </div>
@@ -153,21 +173,19 @@
           </div>
         </div>
 
-        <!-- <div id="message" style="display: none;"></div> -->
-
         <div class="terms">
           <input type="radio" class="radio">
-          <span>
-            I agree to the Terms & Condition and Privacy Policy
-          </span>
+          <div>
+            I agree to the&nbsp;<a>Terms & Condition</a>&nbsp;and&nbsp;<a>Privacy Policy</a>
+          </div>
         </div>
 
-        <button type="submit" class="signupBtn" disabled>
+        <button type="submit" class="signupBtn">
           <span class="btn-text">
             SIGN UP
           </span>
           <i class="fas fa-spinner fa-spin" style="display: none;"></i>
-          <i class="fas fa-sign-out-alt"></i>
+          <i data-lucide="arrow-right"></i>
         </button>
 
       </form>
@@ -179,7 +197,12 @@
     </div>
   </main>
 
-  <!-- <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script> -->
+  <footer>
+    <div> &copy; Purple Dragon Cares 2026 | <i class="fas fa-lock" style="margin: 0 6px;"></i> OOU Secure Voting System
+    </div>
+  </footer>
+
+  <script src="../lib/lucide.js"></script>
   <script src="../script/authenticate/signup.js" type="module"></script>
 </body>
 

@@ -1,15 +1,5 @@
-// toggleNav() {
-let isOpen = false
+lucide.createIcons()
 
-const navMenu = document.querySelector('.menu-list')
-const hamburger = document.querySelector('.menu-icon')
+import { toggleNav } from './utils/navFlow.js'
 
-hamburger.addEventListener('click', () => {
-  isOpen = !isOpen
-
-  hamburger.innerHTML = isOpen ? `<i class="fas fa-times"></i>` : `<i class="fas fa-bars"></i>` //tenary operator
-
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('open');
-})
-// }
+toggleNav()

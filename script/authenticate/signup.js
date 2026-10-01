@@ -1,6 +1,10 @@
 import { API_KEY, userIdGen } from '../utils/library.js'
 import { showMsg } from '../utils/response.js';
 import { validateInput } from '../utils/regex.js';
+import { toggleNav } from '../utils/navFlow.js';
+
+lucide.createIcons()
+toggleNav()
 
 const form = document.querySelector('form')
 const message = document.querySelector('#feedback')

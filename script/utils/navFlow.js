@@ -41,12 +41,16 @@ export function toggleNav() {
   const navMenu = document.querySelector('.menu-list')
   const hamburger = document.querySelector('.menu-icon')
 
-  hamburger.addEventListener('click', () => {
+  if (!navMenu || !hamburger) return
+
+  hamburger.parentElement.addEventListener('click', (event) => {
+    const menuIcon = event.target.closest('.menu-icon')
+    if (!menuIcon) return
+
     isOpen = !isOpen
 
-    hamburger.innerHTML = isOpen ? `<i class="fas fa-times"></i>` : `<i class="fas fa-bars"></i>` //tenary operator
-
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('open');
+    navMenu.classList.toggle('open', isOpen)
+    menuIcon.outerHTML = `<i data-lucide="${isOpen ? 'x' : 'menu'}" class="menu-icon${isOpen ? ' active' : ''}"></i>`
+    lucide.createIcons()
   })
 }

@@ -1,99 +1,318 @@
-main{
+.signupMain {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding-left: 0;
-}
-.signupMain{
-  padding-top: 170px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 16px;
+  margin-top: 20px;
   padding-bottom: 50px;
+  background: linear-gradient(rgba(167, 167, 167, 0.95), rgba(204, 205, 206, 0.87)),
+    url('../images/oouhero.jpg') center/cover no-repeat;
 }
-.form-container{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-  padding: 25px 15px;
-  justify-content: center;
-  align-items: center;
 
-  background-color: rgba(255, 255, 255, 0.648);
+.form-container {
+  width: 100%;
+  max-width: 750px;
+  min-width: 400px;
+  margin-top: 60px;
+  background-color: var(--color-bg);
+  box-shadow: 1px 5px 25px rgba(136, 136, 136, 0.26);
+  ;
+  padding:
+    /* 5px 24px  */
+    25px 32px;
   border-radius: 10px;
-  border: 1px solid var(--color-secondary);
+}
 
-  margin-top: 50px;
-  margin-bottom: 40px;
-  min-width: 280px;
-  max-width: 400px;
-  flex: 1 1 auto;
+.form-header {
+  font-family: var(--poppins);
+  font-size: 16px;
+  text-align: center;
+  padding: 0 30px 9px;
 }
-.title{
-  font-weight: 600;
+
+.form-icon {
+  width: 70px;
+  position: relative;
+  top: 12px;
+  /* not added*/
 }
-.form{
+
+
+h2 {
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--color-secondary);
+}
+
+p {
+  font-weight: 500;
+  font-size: medium;
+}
+
+.form-header p {
+  font-size: 15px;
+}
+
+form {
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
-  align-items: center;
-  width: 95%;
-  margin-top: 10px;
-}
-.form label{
+  justify-content: center;
+  gap: 20px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: center;
-  color: var(--color-primary);
-  text-wrap-mode: nowrap;
+  flex: 1;
+  margin-top: 7px;
+  font-size: 14px;
 }
-label input,select{
-  width: 50%;
-  border: var(--color-secondary) 1.5px solid;
-  border-radius: 5px;
-  padding: 5px;
-  outline: none;
-}
-label select {
-  width: 53.5%;
-  color: var(--color-surface);
-  background-color: var(--color-primary);
-  /* border: 0; */
-}
-label select:hover{
-  background-color: azure;
-  color: green;
-}
-button{
-  width: 200px;
-  padding: 10px 1px;
-  border-radius: 20px;
-  border: none;
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-  font-weight: 600;
-  margin-top: 10px;
-}
-.terms{
-  color: var(--color-primary);
-  margin-top: 5px;
-} 
 
-.ruler{
-  width: 100%;
+.information {
+  margin-bottom: 7px;
+}
+
+.form-group {
+  flex: 1;
+}
+
+.group-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.group-header hr {
+  border: solid 1px var(--color-muted);
+  border-radius: 10px;
   height: 0;
-  position: relative;
+  flex: 1;
+}
+
+.group-content {
+  display: grid;
+  gap: 10px;
+}
+
+.alt-flex {
+  display: flex;
+  gap: 25px;
+}
+
+.input-group {
+  flex: 1;
+  display: grid;
+  padding: 1px;
+  gap: 5px;
+  overflow: hidden;
+  min-height: 70px;
+}
+
+.input {
+  background-color: white;
+  border: 2px groove var(--color-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 0 1px 5px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.input span,
+select span {
+  padding: 0 5px;
+}
+
+select {
+  color: var(--color-muted);
+  font-weight: 500;
+  /* flex: 1; */
+  width: 100%;
+  text-overflow: ellipsis;
+  margin-right: 5px;
+  border: 0;
+  outline: none;
+  /* border-radius: 100px; */
+  height: 35px;
+}
+
+strong {
+  color: red;
+}
+
+input {
+  width: 100%;
+  border-radius: 10px;
+  padding: 7px 4px;
+  padding-right: 0;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  text-overflow: ellipsis;
+}
+
+input::placeholder {
+  /* max-width: 100%; */
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alt-flex .input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.verification .input-group {
+  padding: 3px 12px 12px;
+  border-radius: 10px;
+  border: solid 1px rgba(128, 128, 128, 0.342);
+}
+
+/* label:has(.big-icon) {
+  } */
+
+.fileInp-label {
+  margin-left: 5px;
+}
+
+.fileInp-label p:first-child {
+  font-size: 14px;
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+.fileInp-label p {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.big-icon {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.input#selfie,
+.input#receipt {
+  border: dashed;
+  padding: 12px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-muted);
+  background-color: rgba(4, 0, 78, 0.039);
+}
+
+#receipt p,
+#selfie p {
+  font-size: 13px;
+}
+
+#receipt {
+  margin-top: 4px;
+}
+
+.cloud {
+  color: #1b1762;
+}
+
+.f-icon,
+.input-group label {
+  color: var(--color-primary);
+}
+
+span {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.ruler > span {
-  border-radius: 30px;
-  background-color: var(--color-secondary);
-  height: 1px;
-  width: 48%;
+
+label {
+  font-weight: 600;
+  margin-top: 5px;
 }
-.ruler p{
-  margin: 0 2px;
+
+.eye-icon {
+  color: var(--color-muted);
+  cursor: pointer;
+  padding-right: 5px;
+}
+
+button {
+  background-color: var(--color-accent);
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  font-size: medium;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+button i {
+  font-size: small;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+}
+
+.terms input {
+  flex: 0;
+  margin-right: 8px;
+}
+
+/* 
+.terms span {
+  flex: 1;
+} */
+
+.redirector {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.form-container a {
+  font-weight: 600;
+}
+
+@media (max-width: 650px) {
+  .menu-list {
+    display: none;
+  }
+
+  .alt-flex {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .verification .alt-flex {
+    gap: 10px;
+  }
+
+  .terms {
+    word-break: break-all;
+  }
+
+  .terms span {
+    font-size: small;
+  }
 }

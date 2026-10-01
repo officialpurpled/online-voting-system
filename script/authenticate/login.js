@@ -1,6 +1,8 @@
 import { API_KEY } from "../utils/library.js";
-// import { toggleNav } from "../utils/navFlow.js";
+import { toggleNav } from "../utils/navFlow.js";
 import { showMsg } from "../utils/response.js";
+
+lucide.createIcons()
 
 const form = document.querySelector('#loginForm')
 const loginBtn = document.querySelector('.loginBtn')
@@ -82,19 +84,4 @@ passwordToggle.addEventListener('click', () => {
   console.log('clicked')
 })
 
-const toogleNav = () => {
-  let isOpen = false
-
-  const navMenu = document.querySelector('.menu-list')
-  const hamburger = document.querySelector('.menu-icon')
-
-  hamburger.addEventListener('click', () => {
-    isOpen = !isOpen
-
-    hamburger.innerHTML = isOpen ? `<i class="fas fa-times"></i>` : `<i class="fas fa-bars"></i>` //tenary operator
-
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('open');
-  })
-}
-toogleNav()
+toggleNav()
