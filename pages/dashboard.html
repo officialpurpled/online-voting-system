@@ -14,55 +14,47 @@
   <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
 
-<body>
-  <header>
+<body class="dashboard-page">
+  <header class="dashboard-header">
     <div class="left-section">
-      <img src="../images/logo.png" alt="Logo">
+      <a class="dashboard-brand" href="dashboard.html" aria-label="Secure Campus Voting dashboard">
+        <img src="../images/logo.png" alt="Secure Campus Voting">
+      </a>
     </div>
     <div class="right-section">
-      <div class="profile-abstract">
-        <!-- <div class="avatar"> 
-          <img src="../images/avatar.jpg" >
-        </div>
-
-        <div class="uuname">
-          <p>username</p>
-          <p>userId</p>
-        </div> -->
+      <div class="menu-list">
+        <span class="menu-item"><a href="dashboard.html" class="active"><i data-lucide="layout-dashboard"
+              class="dashboard-nav-icon" aria-hidden="true"></i>Dashboard</a></span>
+        <span class="menu-item"><a href="result.html"><i data-lucide="chart-no-axes-column-increasing"
+              class="dashboard-nav-icon" aria-hidden="true"></i>Results</a></span>
+        <span class="menu-item"><a href="profile.html"><i data-lucide="user-round" class="dashboard-nav-icon"
+              aria-hidden="true"></i>My Profile</a></span>
+        <span class="menu-item"><a id="logout" href="../index.html"><i data-lucide="log-out" class="dashboard-nav-icon"
+              aria-hidden="true"></i>Log Out</a></span>
       </div>
-      <div class="menu-icon">
-        <i data-lucide="menu" id="openNav"></i>
-      </div>
+      <i data-lucide="menu" class="menu-icon" aria-label="Toggle navigation"></i>
     </div>
   </header>
 
-  <nav>
-    <a class="active">
-      <img src="../images/icons/home.svg" alt="Dashboard">
-      Dashboard
-    </a>
-
-    <a href="result.html">
-      <img src="../images/icons/history.svg" alt="View results">
-      View Result
-    </a>
-
-    <a href="profile.html">
-      <img src="../images/icons/user.svg" alt="Profile">
-      My Profile
-    </a>
-
-    <a id="logout">
-      <img src="../images/icons/download.svg" alt="">
-      Log Out
-    </a>
-  </nav>
-
   <main id="dashboard">
     <div id="notisModal" class="notisModal" role="status" aria-live="polite" aria-atomic="true"></div>
+    <section class="welcome-panel" aria-label="Student profile">
+      <div class="profile-abstract">
+        <img class="welcome-avatar" src="../images/avatar.jpg" alt="">
+        <div class="welcome-copy">
+          <p class="welcome-kicker">WELCOME BACK</p>
+          <h1 class="welcome-name">Loading profile...</h1>
+        </div>
+      </div>
+    </section>
+
     <div class="campSection">
       <div class="campHead">
-        Departmental Voting Campaign
+        <i data-lucide="building-2" aria-hidden="true"></i>
+        <div>
+          <h2>Departmental election</h2>
+          <p>Choose a candidate for each available post.</p>
+        </div>
       </div>
       <div class="campBody" id="department">
         <!-- <div class="election-card">
@@ -185,7 +177,13 @@
     </div>
 
     <div class="campSection">
-      <div class="campHead">Faculty Voting Campaign</div>
+      <div class="campHead">
+        <i data-lucide="landmark" aria-hidden="true"></i>
+        <div>
+          <h2>Faculty election</h2>
+          <p>Choose a candidate for each available post.</p>
+        </div>
+      </div>
       <div class="campBody" id="faculty">
         <!-- <div class="election-card">
           <div class="icon">
@@ -220,7 +218,13 @@
     </div>
 
     <div class="campSection">
-      <div class="campHead">Student Union Voting Campaign</div>
+      <div class="campHead">
+        <i data-lucide="vote" aria-hidden="true"></i>
+        <div>
+          <h2>Student union election</h2>
+          <p>Choose a candidate for each available post.</p>
+        </div>
+      </div>
       <div class="campBody" id="general">
         <!-- <div class="election-card">
           <div class="icon">
@@ -255,7 +259,14 @@
     </div>
   </main>
 
-  <!-- <script src="../script/dashboard.js" type="module"></script> -->
+  <footer>
+    <div>
+      <span>&copy; 2026 Purple Dragon Cares</span>
+      <span class="footer-separator" aria-hidden="true"></span>
+      <span class="footer-system"><i data-lucide="lock-keyhole" aria-hidden="true"></i> Secure Campus Voting</span>
+    </div>
+  </footer>
+
   <script src="../lib/lucide.js"></script>
   <script src="../script/fetchElection.js" type="module"></script>
 </body>

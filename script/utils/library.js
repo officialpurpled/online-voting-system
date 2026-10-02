@@ -16,9 +16,12 @@ export function showToast(message) {
 }
 
 export function logout() {
-  document.getElementById('logout').addEventListener('click', ()=>{
+  const logoutLink = document.getElementById('logout')
+  if (!logoutLink) return
+
+  logoutLink.addEventListener('click', (event) => {
+    event.preventDefault()
     localStorage.removeItem('p-id');
-    alert('Logged out successfully')
     window.location.href = '../index.html'
   })
 }

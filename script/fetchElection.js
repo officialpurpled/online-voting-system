@@ -1,11 +1,11 @@
-import { sideFlow} from "./utils/navFlow.js";
+import { toggleNav } from "./utils/navFlow.js";
 import { API_KEY, logout, showToast } from "./utils/library.js";
 
 lucide.createIcons();
 
 const token = JSON.parse(localStorage.getItem('p-id'))
-  
-if(!token || token === null){
+
+if (!token || token === null) {
   alert("User not logged in. kindly login again")
   window.location.href = './login.html'
 }
@@ -13,49 +13,44 @@ if(!token || token === null){
 const department = document.querySelector('.campBody#department')
 const faculty = document.querySelector('.campBody#faculty')
 const general = document.querySelector('.campBody#general')
-const tempBody = document.querySelectorAll('.tempBody')
-
-console.log(department, general, faculty); // Debugging line to check API_KEY value
+const departmentStatus = department.parentElement.querySelector('.tempBody')
+const facultyStatus = faculty.parentElement.querySelector('.tempBody')
+const generalStatus = general.parentElement.querySelector('.tempBody')
 
 export function miniProfile(userInfo) {
-  // Display mini user info
-  userInfo.innerHTML = `<div class=""> fetching data... </div>`
+  userInfo.innerHTML = '<div class="welcome-loading">Loading profile...</div>'
 
   try {
     fetch(`${API_KEY}/user/profile`, {
       method: 'GET',
       headers: { Authorization: `Bearer ${token}` }
     }
-    // const res = await fetch(`../data/users.json`
+      // const res = await fetch(`../data/users.json`
     )
-    .then(res => res.json()) 
-    .then(data => {
-      if (data.redirect === true) {
-        // alert(data.message)
-        window.location.href = "./login.html"
-        return
-      }
-  
-      if (data.success === false) {
-        // alert(data.message)
-        showToast(data.message)
-        return
-      }
-      
-      const user = data.user
-  
-      userInfo.innerHTML = `
-        <div class="avatar"> 
-          <img src="${user.passport.url}" >
-        </div>
-  
-        <div style="display: flex; flex-direction: column;" id="ab-user-info">
-          <p>${user.username.slice(0, 10)}</p>
+      .then(res => res.json())
+      .then(data => {
+        if (data.redirect === true) {
+          window.location.href = "./login.html"
+          return
+        }
+
+        if (data.success === false) {
+          showToast(data.message)
+          return
+        }
+
+        const user = data.user
+        const avatarUrl = user.passport?.url || '../images/avatar.jpg'
+        userInfo.innerHTML = `
+        <img class="welcome-avatar" src="${avatarUrl}" alt="">
+        <div class="welcome-copy">
+          <p class="welcome-kicker">WELCOME BACK</p>
+          <h1 class="welcome-name">${user.username}</h1>
         </div>
       `;
 
-      return user;
-    })
+        return user;
+      })
   } catch (err) {
     userInfo.innerHTML = `<div> Error fetching profile</div>`
     console.error(err);
@@ -63,51 +58,56 @@ export function miniProfile(userInfo) {
   }
 }
 
-//insert result card into its container right
-const getTargetContainer = (election) => {
-  if (election === 'department') return department;
-  if (election === 'faculty') return faculty
-  if (election === 'general') return general
-
-  return null;
-};
-
-//build election card
 const buildCard = (candidate, election) => `
   <div class="election-card" id="${election._id}">
-    <div class="icon">
+    <div class="card-heading">
       <img src="../images/ballot.jpg" alt="">
-    </div>
-    <div class="details">
-      <div class="position"> 
-        <b>POST :</b> ${election.post}
+      <div>
+        <p class="card-post-label">Election post</p>
+        <h3 class="position">${election.post}</h3>
       </div>
-      <select name="candidate" id="candidates-${election._id}" class="candidate-select">
-        <option value="" selected disabled>         
-          Select a candidate
-        </option>
-        ${candidate.map(c => `
-          <option value="${c._id}">
-            ${c.userId.username}
-          </option>`).join('')}
-      </select>
-      <button class="vote" data-election-id="${election._id}"> 
-        VOTE 
-      </button>
     </div>
+    <select name="candidate" id="candidates-${election._id}" class="candidate-select" aria-label="Select a candidate for ${election.post}">
+      <option value="" selected disabled>Select a candidate</option>
+      ${candidate.map(c => `
+        <option value="${c._id}">${c.userId.username}</option>`).join('')}
+    </select>
+    <button type="button" class="vote" data-election-id="${election._id}">
+      <i data-lucide="vote" aria-hidden="true"></i>
+      VOTE NOW
+    </button>
   </div>
 `;
 
+function renderCampaign(elections, container, status) {
+  container.replaceChildren()
+
+  if (!Array.isArray(elections) || elections.length === 0) {
+    container.hidden = true
+    status.hidden = false
+    status.textContent = 'No open elections right now.'
+    return
+  }
+
+  container.hidden = false
+  status.hidden = true
+  elections.forEach(election => {
+    container.insertAdjacentHTML('beforeend', buildCard(election.candidates || [], election))
+  })
+}
+
 // Initial fetch of elections
 function fetchElections() {
-  tempBody.forEach(body => {
-   body.innerHTML = '<div>fetching election data...</div>'
-  }) 
+  const statuses = [departmentStatus, facultyStatus, generalStatus]
+  statuses.forEach(status => {
+    status.hidden = false
+    status.textContent = 'Loading elections...'
+  })
 
   fetch(`${API_KEY}/user/get-election`, {
     method: 'GET',
     headers: {
-      Authorization : `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     }
   })
     .then(res => res.json())
@@ -120,78 +120,30 @@ function fetchElections() {
       }
 
       if (data.success === false) {
-        tempBody.forEach(body => body.innerHTML = `<p class="error-msg">${data.message}</p>`);
-        // alert(data.message)
+        statuses.forEach(status => {
+          status.hidden = false
+          status.textContent = data.message || 'Unable to load elections.'
+        })
         showToast(data.message)
         return
       }
 
-      const deptData = data.department
-      const facData = data.faculty
-      const sugData = data.sug
+      renderCampaign(data.department, department, departmentStatus)
+      renderCampaign(data.faculty, faculty, facultyStatus)
+      renderCampaign(data.sug, general, generalStatus)
+      lucide.createIcons()
 
-      if (deptData) {
-        if (!deptData || deptData.length === 0) {
-          tempBody[0].innerHTML = 'No Available ELection'          
-        }
-
-        department.style.display = 'grid'
-        tempBody[0].style.display = 'none'
-
-        deptData.forEach(election => {
-          const container = getTargetContainer('department');
-          if (!container) return;
-          // election.forEach(candidate => {
-          container.insertAdjacentHTML('beforeend', buildCard(election.candidates, election));
-          // });
-        });
-          // department.innerHTML += electionCard
-      } 
-      if (facData) {
-        if (!facData || facData.length === 0) {
-          tempBody[1].innerHTML = 'No Available ELection'          
-        }
-        faculty.style.display = 'grid'
-        tempBody[1].style.display = 'none'
-
-        facData.forEach(election => {
-          const container = getTargetContainer('faculty');
-          if (!container) return;
-          // election.forEach(candidate => {
-          container.insertAdjacentHTML('beforeend', buildCard(election.candidates, election));
-          // });
-        });
-
-        // faculty.innerHTML += electionCard
-      }
-      if (sugData) {
-        if (!sugData || sugData.length === 0) {
-          tempBody[2].innerHTML = 'No Available ELection'          
-        }
-        general.style.display = 'grid'
-        tempBody[2].style.display = 'none'
-
-        sugData.forEach(election => {
-          const container = getTargetContainer('general');
-          if (!container) return;
-          // election.forEach(candidate => {
-          container.insertAdjacentHTML('beforeend', buildCard(election.candidates, election));
-          // });
-        });
-
-        // general.innerHTML += electionCard
-      }
-  
-      // Add vote event listeners
       document.querySelectorAll('.vote').forEach(button => {
-        button.addEventListener('click',  handleVote);
+        button.addEventListener('click', handleVote)
       });
     })
     .catch(err => {
-      // alert("Network Error. Please check your internet connection and try again") 
       showToast("Network Error. Please try again")
-      
-      tempBody.forEach(body => body.innerHTML = '<p class="error-msg">Unable to load elections at the moment. Please refresh or check back.</p>');
+
+      statuses.forEach(status => {
+        status.hidden = false
+        status.textContent = 'Unable to load elections at the moment. Please refresh or check back.'
+      })
 
       console.log('Error: Unable to display elections', err)
     })
@@ -199,32 +151,27 @@ function fetchElections() {
 
 // Handle vote submission
 function handleVote(event) {
-  event.target.disabled = true;
-  event.target.textContent = 'VOTING..';
+  const voteButton = event.currentTarget
+  voteButton.disabled = true
+  voteButton.textContent = 'SUBMITTING...'
 
-  const electionId = event.target.getAttribute('data-election-id');
-  const candidateSelect = document.querySelector(`#candidates-${electionId}`);
-  const candidateId = candidateSelect.value;
+  const electionId = voteButton.getAttribute('data-election-id')
+  const candidateSelect = document.querySelector(`#candidates-${electionId}`)
+  const candidateId = candidateSelect.value
 
   if (!candidateId) {
-    event.target.disabled = false;
-    event.target.textContent = 'VOTE';
-    // alert('Please select a candidate before voting');
+    restoreVoteButton(voteButton)
     showToast('Please select a candidate before voting')
-    return;
+    return
   }
 
-  if (!token || token === undefined) {
-    // alert('User not logged in');
+  if (!token) {
     showToast('User not logged in')
-    window.location.href = './login.html';
-    return;
+    window.location.href = './login.html'
+    return
   }
 
-  const voteData = {
-    electionId: electionId,
-    candidateId: candidateId
-  };
+  const voteData = { electionId, candidateId }
 
   fetch(`${API_KEY}/user/vote`, {
     method: 'POST',
@@ -234,51 +181,49 @@ function handleVote(event) {
     },
     body: JSON.stringify(voteData)
   })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success === false && data.redirect === true) {
-      event.target.textContent = 'VOTE';
-      // alert(data.message)
-      showToast(data.message)
-      window.location.href = "./login.html"
-      return
-    }
+    .then(res => res.json())
+    .then(data => {
+      if (data.success === false && data.redirect === true) {
+        restoreVoteButton(voteButton)
+        showToast(data.message)
+        window.location.href = './login.html'
+        return
+      }
 
-    if (data.success === false && data.message.includes('voted')) {
-      // alert(data.message)
-      showToast(data.message)
-      event.target.disabled = true;
-      event.target.textContent = 'VOTED';
-      return
-    }
+      if (data.success === false && data.message?.includes('voted')) {
+        showToast(data.message)
+        voteButton.disabled = true
+        voteButton.textContent = 'VOTED'
+        return
+      }
 
-    if (data.success === false) {
-      // alert(data.message)
-      showToast(data.message)
-      event.target.disabled = false;
-      event.target.textContent = 'VOTE';
-      return
-    }
+      if (data.success === false) {
+        restoreVoteButton(voteButton)
+        showToast(data.message)
+        return
+      }
 
-    // if (data.status === 200 || data.message.includes('successfully')) {
-    // alert('Vote submitted successfully!');
-    showToast(data.message)
-    event.target.disabled = true;
-    event.target.textContent = 'VOTED';
-    // } 
-  })
-  .catch(err => {
-    event.target.disabled = false;
-    event.target.textContent = 'VOTE';
-    showToast(`Error submitting vote ${err.message}`);
-    console.error('Vote submission error:', err);
-  });
+      showToast(data.message)
+      voteButton.disabled = true
+      voteButton.textContent = 'VOTED'
+    })
+    .catch(err => {
+      restoreVoteButton(voteButton)
+      showToast(`Error submitting vote ${err.message}`)
+      console.error('Vote submission error:', err)
+    })
+}
+
+function restoreVoteButton(button) {
+  button.disabled = false
+  button.innerHTML = '<i data-lucide="vote" aria-hidden="true"></i> VOTE NOW'
+  lucide.createIcons()
 }
 
 //on load
 miniProfile(document.querySelector('.profile-abstract'))
 fetchElections()
 
-sideFlow(document.querySelector('main'));
+toggleNav()
 
 logout();
