@@ -150,16 +150,33 @@ footer>div {
   flex: 0 0 14px;
 }
 
+.footer-system a {
+  color: #ffffff;
+}
+
+.footer-system span {
+  display: inline-flex;
+  gap: 4px;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.footer-system p,
+.footer-system svg {
+  font-size: 13px;
+  color: rgb(206, 206, 206);
+}
+
 @media (max-width: 600px) {
   footer {
     min-height: 56px;
-    padding: 8px 14px max(8px, env(safe-area-inset-bottom));
+    padding: 8px 10px max(8px, env(safe-area-inset-bottom));
   }
 
   footer>div {
     flex-direction: column;
     gap: 3px;
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .footer-separator {

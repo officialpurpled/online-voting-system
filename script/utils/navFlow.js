@@ -39,18 +39,41 @@ export function toggleNav() {
   let isOpen = false
 
   const navMenu = document.querySelector('.menu-list')
-  const hamburger = document.querySelector('.menu-icon')
+  const menuIcon = document.querySelector('.menu-icon')
 
-  if (!navMenu || !hamburger) return
+  if (!navMenu || !menuIcon) return
 
-  hamburger.parentElement.addEventListener('click', (event) => {
-    const menuIcon = event.target.closest('.menu-icon')
-    if (!menuIcon) return
+  const openMenu = () => {
+    navMenu.classList.add('open')
+    menuIcon.innerHTML = `<i data-lucide="x"></i>`
 
-    isOpen = !isOpen
-
-    navMenu.classList.toggle('open', isOpen)
-    menuIcon.outerHTML = `<i data-lucide="${isOpen ? 'x' : 'menu'}" class="menu-icon${isOpen ? ' active' : ''}"></i>`
     lucide.createIcons()
+    isOpen = true
+  }
+
+  const closeMenu = () => {
+    navMenu.classList.remove('open')
+    menuIcon.innerHTML = `<i data-lucide="menu"></i>`
+
+    lucide.createIcons()
+
+    isOpen = false
+  }
+
+  menuIcon.addEventListener('click', (e) => {
+    e.stopPropagation()
+    isOpen ? closeMenu() : openMenu()
+  })
+
+  document.addEventListener('click', (e) => {
+    if (isOpen && !navMenu.contains(e.target) && !menuIcon.contains(e.target)) {
+      closeMenu()
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      isOpen ? closeMenu() : openMenu()
+    }
   })
 }

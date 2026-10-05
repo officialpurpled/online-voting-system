@@ -113,7 +113,6 @@ function fetchElections() {
     .then(res => res.json())
     .then(data => {
       if (data.success === false && data.redirect === true) {
-        // alert(data.message)
         showToast(data.message)
         window.location.href = "./login.html"
         return

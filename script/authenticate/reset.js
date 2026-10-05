@@ -1,5 +1,8 @@
 import { API_KEY } from "../utils/library.js";
+import { toggleNav } from "../utils/navFlow.js";
 import { showMsg } from "../utils/response.js";
+
+lucide.createIcons()
 
 const resetBtn = document.querySelector('.reset')
 const message = document.querySelector('#feedback')
@@ -60,3 +63,5 @@ resetBtn.addEventListener('click', () => {
       console.log('Error:', err)
     })
 });
+
+toggleNav()

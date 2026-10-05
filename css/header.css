@@ -7,12 +7,13 @@ header {
   right: 0;
   z-index: 999;
   height: 75px;
-  padding: 15px 25px;
+  padding: 10px max(20px, calc((100vw - 1320px) / 2));
 
-  border-radius: 5px;
+  border-end-end-radius: 5px;
+  border-end-start-radius: 5px;
 
-  background-color: var(--color-primary);
-  color: var(--color-surface);
+  background: var(--color-primary);
+  box-shadow: 0 2px 10px rgba(27, 23, 98, 0.12);
 
   display: flex;
   gap: 20px;
@@ -25,64 +26,76 @@ header {
 }
 
 .left-section {
-  flex: 1;
-  padding-left: 5px;
-  display: flex;
+  flex: 0 0 auto;
+  padding: 0;
 }
 
-.left-section img {
-  flex: 1;
-  min-width: 150px;
-  max-width: 200px;
+.brand-box,
+.brand-box img {
+  display: block;
+  width: 156px;
+  max-width: 100%;
 }
 
 .right-section {
+  position: relative;
+  flex: 1;
   display: flex;
-  padding-right: 10px;
-  padding-left: 10px;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0;
+  justify-content: flex-end;
   cursor: pointer;
-}
-
-.profile-abstract {
-  font-size: medium;
 }
 
 .menu-list {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 22px;
+  gap: 28px;
 }
 
+.h-icon {
+  display: none;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+#logout .h-icon {
+  display: block;
+}
 
 .menu-item a {
+  display: inline-flex;
   font-family: inherit;
   font-weight: 700;
   position: relative;
-  color: var(--color-surface);
-  font-size: 0.9rem;
+
+  min-height: 42px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 13px;
   font-weight: 600;
-  text-decoration: none;
-  transition: color 0.25s ease;
+  transition: color 0.5s ease;
 }
 
 .menu-item a::after {
   position: absolute;
   right: 0;
-  bottom: -0.35rem;
   left: 0;
+  content: '';
+  bottom: 2px;
   height: 2px;
   background: var(--color-accent);
-  content: '';
   transform: scaleX(0);
   transition: transform 0.25s ease;
 }
 
 .menu-item a:hover,
 .menu-item a.active {
-  color: var(--color-surface);
-  border: none;
+  border: 0;
+  /* background: transparent; */
+  color: var(--white);
 }
 
 .menu-item a:hover::after,
@@ -90,11 +103,135 @@ header {
   transform: scaleX(1);
 }
 
-.menu-icon {
-  display: none;
-  cursor: pointer;
+#logout {
+  display: inline-flex;
+  top: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0;
+  padding: 0 6px;
+  border: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-family: inherit;
+  font-weight: 600;
+  text-transform: none;
 }
 
-.menu-icon i {
-  font-size: 28px;
+#logout:hover,
+#logout:focus-visible {
+  border: 0;
+  background: transparent;
+  color: var(--white);
+}
+
+#logout:active {
+  border: 0;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.menu-icon {
+  display: none;
+  color: var(--white);
+}
+
+@media (max-width: 650px) {
+  .right-section {
+    position: static;
+  }
+
+  header {
+    height: 66px;
+    padding: 9px 16px;
+  }
+
+  .brand-box,
+  .brand-box img {
+    width: 138px;
+  }
+
+  .menu-list {
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 10px;
+    left: auto;
+    width: min(280px, calc(100vw - 32px));
+    align-items: stretch;
+    gap: 4px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 8px 20px rgba(23, 26, 41, 0.18);
+    display: none;
+  }
+
+  .menu-list.open {
+    display: flex;
+  }
+
+  .menu-item {
+    width: 100%;
+  }
+
+  .menu-item a {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    justify-content: flex-start;
+    gap: 11px;
+    padding: 0 12px;
+    border-radius: 5px;
+    color: var(--color-text);
+    text-align: left;
+  }
+
+  .menu-item a:hover,
+  .menu-item a.active {
+    border: 0;
+    background: var(--color-primary);
+    color: var(--color-surface);
+  }
+
+  .menu-item a:hover::after,
+  .menu-item a.active::after {
+    transform: scaleX(0);
+  }
+
+  .h-icon {
+    display: block;
+    color: currentColor;
+  }
+
+  #logout {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    justify-content: flex-start;
+    padding: 0 12px;
+    color: var(--color-text);
+  }
+
+  #logout:hover {
+    background: rgba(27, 23, 98, 0.08);
+    color: var(--color-primary);
+  }
+
+  #logout:focus-visible {
+    background: rgba(27, 23, 98, 0.08);
+    color: var(--color-primary);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+  }
+
+  .menu-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 4px;
+  }
 }

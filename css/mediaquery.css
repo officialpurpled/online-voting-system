@@ -39,53 +39,7 @@
 /* for mobile device */
 @media (max-width: 600px) {
 
-  /* ===The Header Section=== */
-  .menu-list {
-    position: absolute;
-    top: 80%;
-    right: 0;
-    left: 0;
-    display: none;
-    flex-direction: column;
-    gap: 1.2rem;
-    padding: 1.5rem;
-    border-bottom: 1px solid rgba(169, 169, 169, 0.2);
-    background: var(--color-primary);
-  }
-
-  .menu-list.open {
-    display: flex;
-  }
-
-  .menu-icon {
-    display: block;
-    width: 30px;
-    height: 30px;
-  }
-
-
   /*==== Dashboard sect ==== */
-  #dashboard {
-    padding-left: 0;
-    padding-right: 5px;
-  }
-
-  .uuname {
-    display: none;
-  }
-
-  .avatar {
-    /* margin-right: 10px; */
-    display: none;
-  }
-
-  /* .avatar > img{
-    width: 30px;
-    position: relative;
-    left: 2px;
-    bottom: 1px;
-  } */
-
   .campBody {
     margin: 20px 0 20px 20px;
     padding: 0;
@@ -140,45 +94,5 @@
   #results {
     margin-left: 5px;
     margin-right: 5px;
-  }
-}
-
-@media (max-width: 650px) {
-  .menu-list {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 8px 16px 16px;
-    border-bottom: 1px solid rgba(169, 169, 169, 0.2);
-    background: var(--color-primary);
-  }
-
-  .menu-list.open {
-    display: flex;
-  }
-
-  .menu-item {
-    width: 100%;
-    text-align: center;
-  }
-
-  .menu-item a {
-    display: block;
-    width: 100%;
-    padding: 11px 8px;
-    text-align: center;
-  }
-
-  .menu-icon {
-    display: block;
-    flex: 0 0 30px;
-    width: 30px;
-    height: 30px;
-    color: var(--color-surface);
   }
 }

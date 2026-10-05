@@ -14,32 +14,40 @@
 <body>
   <header>
     <div class="left-section">
-      <img src="../images/logo.png" alt="Logo" width="50%">
+      <a class="brand-box" href="dashboard.html">
+        <img src="../images/logo.png" alt="Secure Campus Voting">
+      </a>
     </div>
     <div class="right-section">
       <div class="menu-list">
         <span class="menu-item">
           <a href="../index.html">
+            <i data-lucide="home" class="h-icon"></i>
             Home
           </a>
         </span>
         <span class="menu-item">
-          <a href="./about.html" class="active">
+          <a class="active">
+            <i data-lucide="circle-help" class="h-icon"></i>
             About
           </a>
         </span>
         <span class="menu-item">
-          <a href="./login.html">
-            Log In
+          <a href="signup.html">
+            <i data-lucide="user-plus" class="h-icon"></i>
+            Sign Up
           </a>
         </span>
         <span class="menu-item">
-          <a href="./signup.html">
-            Register
+          <a href="login.html">
+            <i data-lucide="log-in" class="h-icon"></i>
+            Log In
           </a>
         </span>
       </div>
-      <i data-lucide="menu" class="menu-icon" aria-label="Toggle navigation"></i>
+      <div class="menu-icon">
+        <i data-lucide="menu"></i>
+      </div>
     </div>
   </header>
 
@@ -102,14 +110,28 @@
 
   <footer>
     <div>
-      <span>&copy; Purple Dragon Cares 2026</span>
-      <span class="footer-separator" aria-hidden="true"></span>
-      <span class="footer-system"><i data-lucide="lock-keyhole" aria-hidden="true"></i> OOU Secure Voting System</span>
+      <span> Copyright &copy;2026 OOU Secure Voting System</span>
+      <span class="footer-separator"></span>
+      <span class="footer-system">
+        <i data-lucide="terminal"></i>
+        <span>
+          <p> Developed by </p>
+          <a href="http://github.com/officialpurpled/profile/" target="_blank" title="github">
+            Purple Dragon
+          </a>
+        </span>
+      </span>
     </div>
   </footer>
 
+
   <script src="../lib/lucide.js"></script>
-  <script src="../script/script.js" type="module"></script>
+  <script type="module">
+    lucide.createIcons();
+    import { toggleNav } from '../script/utils/navFlow.js';
+    toggleNav();
+  </script>
+  <!-- <script src="../script/script.js" type="module"></script> -->
 </body>
 
 </html>

@@ -15,21 +15,39 @@
 <body>
   <header>
     <div class="left-section">
-      <img src="../images/logo.png" alt="Logo" width="80%">
+      <a class="brand-box" href="../index.html">
+        <img src="../images/logo.png" alt="Secure Campus Voting">
+      </a>
     </div>
     <div class="right-section">
-      <a href="dashboard.html">
-        Dashboard
-      </a>
-      <a href="#">
-        View Result
-      </a>
-      <a href="../index.html">
-        Logout
-      </a>
-
-      <div class="display menu-icon">
-        <i data-lucide="menu" id="openNav"></i>
+      <div class="menu-list">
+        <span class="menu-item">
+          <a href="dashboard.html">
+            <i data-lucide="layout-dashboard" class="h-icon"></i>
+            Dashboard
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="result.html">
+            <i data-lucide="chart-no-axes-column-increasing" class="h-icon"></i>
+            Results
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="profile.html" class="active">
+            <i data-lucide="user-round" class="h-icon"></i>
+            My Profile
+          </a>
+        </span>
+        <span class="menu-item">
+          <a id="logout">
+            <i data-lucide="log-out" class="h-icon"></i>
+            Log Out
+          </a>
+        </span>
+      </div>
+      <div class="menu-icon">
+        <i data-lucide="menu"></i>
       </div>
     </div>
   </header>

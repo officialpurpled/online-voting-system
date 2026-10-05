@@ -35,7 +35,7 @@
   width: 42px;
   height: 42px;
   position: relative;
-  top: 8px;
+  top: 18px;
   color: var(--color-primary);
 }
 
@@ -186,7 +186,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 3px;
 }
 
 button i {

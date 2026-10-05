@@ -9,36 +9,54 @@
   </title>
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/nav.css">
+  <!-- <link rel="stylesheet" href="../css/nav.css"> -->
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
 
 <body class="dashboard-page">
-  <header class="dashboard-header">
+  <header>
     <div class="left-section">
-      <a class="dashboard-brand" href="dashboard.html" aria-label="Secure Campus Voting dashboard">
+      <a class="brand-box" href="dashboard.html">
         <img src="../images/logo.png" alt="Secure Campus Voting">
       </a>
     </div>
     <div class="right-section">
       <div class="menu-list">
-        <span class="menu-item"><a href="dashboard.html" class="active"><i data-lucide="layout-dashboard"
-              class="dashboard-nav-icon" aria-hidden="true"></i>Dashboard</a></span>
-        <span class="menu-item"><a href="result.html"><i data-lucide="chart-no-axes-column-increasing"
-              class="dashboard-nav-icon" aria-hidden="true"></i>Results</a></span>
-        <span class="menu-item"><a href="profile.html"><i data-lucide="user-round" class="dashboard-nav-icon"
-              aria-hidden="true"></i>My Profile</a></span>
-        <span class="menu-item"><a id="logout" href="../index.html"><i data-lucide="log-out" class="dashboard-nav-icon"
-              aria-hidden="true"></i>Log Out</a></span>
+        <span class="menu-item">
+          <a href="dashboard.html" class="active">
+            <i data-lucide="layout-dashboard" class="h-icon"></i>
+            Dashboard
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="result.html">
+            <i data-lucide="chart-no-axes-column-increasing" class="h-icon"></i>
+            Results
+          </a>
+        </span>
+        <span class="menu-item">
+          <a href="profile.html">
+            <i data-lucide="user-round" class="h-icon"></i>
+            My Profile
+          </a>
+        </span>
+        <span class="menu-item">
+          <a id="logout">
+            <i data-lucide="log-out" class="h-icon"></i>
+            Log Out
+          </a>
+        </span>
       </div>
-      <i data-lucide="menu" class="menu-icon" aria-label="Toggle navigation"></i>
+      <div class="menu-icon">
+        <i data-lucide="menu"></i>
+      </div>
     </div>
   </header>
 
   <main id="dashboard">
-    <div id="notisModal" class="notisModal" role="status" aria-live="polite" aria-atomic="true"></div>
-    <section class="welcome-panel" aria-label="Student profile">
+    <div id="notisModal" class="notisModal" role="status"></div>
+    <section class="welcome-panel">
       <div class="profile-abstract">
         <img class="welcome-avatar" src="../images/avatar.jpg" alt="">
         <div class="welcome-copy">
@@ -50,7 +68,7 @@
 
     <div class="campSection">
       <div class="campHead">
-        <i data-lucide="building-2" aria-hidden="true"></i>
+        <i data-lucide="building-2"></i>
         <div>
           <h2>Departmental election</h2>
           <p>Choose a candidate for each available post.</p>
@@ -178,7 +196,7 @@
 
     <div class="campSection">
       <div class="campHead">
-        <i data-lucide="landmark" aria-hidden="true"></i>
+        <i data-lucide="landmark"></i>
         <div>
           <h2>Faculty election</h2>
           <p>Choose a candidate for each available post.</p>
@@ -219,7 +237,7 @@
 
     <div class="campSection">
       <div class="campHead">
-        <i data-lucide="vote" aria-hidden="true"></i>
+        <i data-lucide="vote"></i>
         <div>
           <h2>Student union election</h2>
           <p>Choose a candidate for each available post.</p>
@@ -261,9 +279,17 @@
 
   <footer>
     <div>
-      <span>&copy; 2026 Purple Dragon Cares</span>
-      <span class="footer-separator" aria-hidden="true"></span>
-      <span class="footer-system"><i data-lucide="lock-keyhole" aria-hidden="true"></i> Secure Campus Voting</span>
+      <span> Copyright &copy;2026 OOU Secure Voting System</span>
+      <span class="footer-separator"></span>
+      <span class="footer-system">
+        <i data-lucide="terminal"></i>
+        <span>
+          <p> Developed by </p>
+          <a href="http://github.com/officialpurpled/profile/" target="_blank" title="github">
+            Purple Dragon
+          </a>
+        </span>
+      </span>
     </div>
   </footer>
 
