@@ -5,6 +5,14 @@ export function userIdGen() {
   return 'VOTER-' + Math.floor(Math.random() * 1000) + '-' + Math.floor(Math.random() * 1000);
 }
 
+export function isOnline() {
+  const navigator = window.navigator;
+  if (!navigator.onLine) {
+    return false;
+  }
+  return true;
+}
+
 export function showToast(message) {
   const t = document.getElementById('notisModal');
   if (!t) return;

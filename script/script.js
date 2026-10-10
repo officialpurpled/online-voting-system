@@ -12,7 +12,7 @@ setInterval(() => {
 
   let hours = today.getHours()
   const minutes = today.getMinutes().toString().padStart(2, '0')
-  const seconds = today.getSeconds().toString().padStart(2, '0')
+  // const seconds = today.getSeconds().toString().padStart(2, '0')
   // const time = [today.getHours(), today.getMinutes(), today.getSeconds()]
 
   let ampm = hours >= 12 ? 'PM' : 'AM'
@@ -20,7 +20,7 @@ setInterval(() => {
   hours = hours % 12
   hours = hours ? hours : 12
 
-  timeElem.innerText = `${hours.toString().padStart(2, '0')} : ${minutes} : ${seconds} ${ampm} `
+  timeElem.innerText = `${hours.toString().padStart(2, '0')} : ${minutes} ${ampm}`
 
   // timeElem.join(':')
   // console.log(time)

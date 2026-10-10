@@ -1,4 +1,4 @@
-import { API_KEY, userIdGen } from '../utils/library.js'
+import { API_KEY, userIdGen, isOnline } from '../utils/library.js'
 import { validateInput } from '../utils/regex.js';
 import { toggleNav } from '../utils/navFlow.js';
 
@@ -21,6 +21,9 @@ const receiptZone = document.querySelector('#receipt')
 const selfieZone = document.querySelector('#selfie')
 const receiptInput = document.querySelector('#receipt-file')
 const selfieInput = document.querySelector('#selfie-file')
+const passwordToggle = document.querySelector('.password-toggle')
+const btnLoader = document.querySelector('.fa-spin')
+const btnIcon = document.querySelector('.signUp-icon')
 
 let passportFile = null
 let documentFile = null
@@ -102,6 +105,12 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
+  if (!isOnline()) {
+    console.log(isOnline());
+    setFeedback('no', "You are offline. Please check your internet connection.")
+    return;
+  }
+
   const formData = new FormData();
 
   formData.append('username', username)
@@ -117,6 +126,8 @@ form.addEventListener('submit', async (e) => {
 
   signupButton.disabled = true
   signupButtonText.textContent = 'CREATING ACCOUNT...'
+  btnIcon.style.display = 'none'
+  btnLoader.style.display = 'block'
   setFeedback('', '')
 
   try {
@@ -124,10 +135,16 @@ form.addEventListener('submit', async (e) => {
       method: 'POST',
       body: formData
     })
+
+    if (!response.ok) {
+      console.log(response)
+      throw new Error(`Sign up failed (${response.status}).`)
+    }
+
     const data = await response.json()
 
-    if (!response.ok || data.success === false) {
-      throw new Error(data.message || `Sign up failed (${response.status}).`)
+    if (data.success === false) {
+      throw new Error(data.message)
     }
 
     setFeedback('yes', `${data.message || 'Account created successfully.'} Redirecting...`)
@@ -136,6 +153,8 @@ form.addEventListener('submit', async (e) => {
     setFeedback('no', error.message || 'Please check your connection and try again.')
     signupButton.disabled = false
     signupButtonText.textContent = 'SIGN UP'
+    btnIcon.style.display = 'block'
+    btnLoader.style.display = 'none'
   }
 })
 
@@ -196,6 +215,15 @@ function formatFileSize(size) {
     ? `${Math.max(1, Math.round(size / 1024))} KB`
     : `${(size / (1024 * 1024)).toFixed(1)} MB`
 }
+
+passwordToggle.addEventListener('click', () => {
+  const isPassword = passwordInput.type === 'password'
+
+  passwordInput.type = isPassword ? 'text' : 'password'
+  passwordToggle.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password')
+  passwordToggle.innerHTML = `<i data-lucide="${isPassword ? 'eye-off' : 'eye'}" aria-hidden="true"></i>`
+  lucide.createIcons()
+})
 
 function setFeedback(status, text) {
   feedback.textContent = text
