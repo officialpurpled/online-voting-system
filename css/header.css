@@ -7,7 +7,7 @@ header {
   right: 0;
   z-index: 999;
   height: 75px;
-  padding: 10px max(20px, calc((100vw - 1320px) / 2));
+  padding: 10px max(10px, calc((100vw - 1420px) / 2));
 
   border-end-end-radius: 5px;
   border-end-start-radius: 5px;

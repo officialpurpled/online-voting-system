@@ -1,0 +1,19 @@
+hello world
+
+check ping
+ try {
+        // Try fetching a small resource from your own server
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 3000); // 3s timeout
+
+        const response = await fetch("/ping.txt", {
+            method: "GET",
+            cache: "no-store",
+            signal: controller.signal
+        });
+
+        clearTimeout(timeout);
+        return response.ok; // true if HTTP status is 200-299
+    } catch (err) {
+        return false; // Network error, timeout, or no data
+    }

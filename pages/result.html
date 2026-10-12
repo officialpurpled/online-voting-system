@@ -7,7 +7,7 @@
   <title>Election Results</title>
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/nav.css">
+  <!-- <link rel="stylesheet" href="../css/nav.css"> -->
   <link rel="stylesheet" href="../css/result.css">
   <link rel="stylesheet" href="../css/mediaquery.css">
   <link rel="stylesheet" href="../fonts/poppins/stylesheet.css">
@@ -16,7 +16,7 @@
 <body>
   <header>
     <div class="left-section">
-      <a class="brand-box" href="dashboard.html">
+      <a class="brand-box" href="./dashboard.html">
         <img src="../images/logo.png" alt="Secure Campus Voting">
       </a>
     </div>
@@ -53,7 +53,7 @@
     </div>
   </header>
 
-  <nav>
+  <!-- <nav>
     <a href="dashboard.html">
       <img src="../images/icons/home.svg" alt="Dashboard">
       Dashboard
@@ -73,32 +73,53 @@
       Log Out
       <img src="../images/icons/download.svg" alt="Log out">
     </a>
-  </nav>
+  </nav> -->
 
   <main id="results">
-    <div id="notisModal" class="notisModal" role="status" aria-live="polite" aria-atomic="true"></div>
-    <div class="departmental resultTab">
-      DEPARTMENTAL RESULT TAB
-    </div>
-    <section id="dept-modal">
-      <!-- Dynamic post sections will be inserted here -->
-    </section>
+    <div id="notisModal" class="notisModal"></div>
 
-    <div class="faculty resultTab">
-      FACULTY RESULT TAB
-    </div>
-    <section id="faculty-modal">
-      <!-- Dynamic post sections will be inserted here -->
-    </section>
+    <div class="results-shell">
 
-    <div class="sug resultTab">
-      SUG RESULT TAB
-    </div>
-    <section id="sug-modal">
-      <!-- Dynamic post sections will be inserted here -->
-    </section>
+      <div class="results-summary">
+        Results are published for faculty, departmental, and student union elections.
+      </div>
 
+      <div class="results-filters">
+        <button type="button" class="result-filter-btn active" data-filter="all">All</button>
+        <button type="button" class="result-filter-btn" data-filter="department">Departmental</button>
+        <button type="button" class="result-filter-btn" data-filter="faculty">Faculty</button>
+        <button type="button" class="result-filter-btn" data-filter="sug">SUG</button>
+      </div>
+
+      <section id="dept-modal" class="result-collection" data-mode="department">
+        <!-- Dynamic post sections will be inserted here -->
+      </section>
+
+      <section id="faculty-modal" class="result-collection" data-mode="faculty">
+        <!-- Dynamic post sections will be inserted here -->
+      </section>
+
+      <section id="sug-modal" class="result-collection" data-mode="sug">
+        <!-- Dynamic post sections will be inserted here -->
+      </section>
+    </div>
   </main>
+
+  <footer>
+    <div>
+      <span>Copyright &copy;2026 OOU Secure Voting System</span>
+      <span class="footer-separator"></span>
+      <span class="footer-system">
+        <i data-lucide="terminal"></i>
+        <span>
+          <p>Developed by</p>
+          <a href="https://github.com/officialpurpled/" target="_blank" title="github">
+            Purple Dragon
+          </a>
+        </span>
+      </span>
+    </div>
+  </footer>
 
   <script src="../lib/lucide.js"></script>
   <script type="module" src="../script/fetchResult.js"></script>
