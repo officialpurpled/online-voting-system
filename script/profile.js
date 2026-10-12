@@ -16,7 +16,7 @@ const matricEl = document.querySelector('.matric-value');
 const facultyEl = document.querySelector('.faculty-value');
 const departmentEl = document.querySelector('.department-value');
 const levelEl = document.querySelector('.level-value');
-const statusEl = document.querySelector('.status-value-text');
+// const statusEl = document.querySelector('.status-value-text');
 const voteCountEl = document.querySelector('.vote-count');
 const voteTextEl = document.querySelector('.vote-count-text');
 const verificationPillEl = document.querySelector('.verification-pill');
@@ -40,7 +40,7 @@ function renderProfile(user) {
   if (facultyEl) facultyEl.textContent = user?.faculty || 'Loading...';
   if (departmentEl) departmentEl.textContent = user?.department || 'Loading...';
   if (levelEl) levelEl.textContent = user?.level || 'Loading...';
-  if (statusEl) statusEl.textContent = user?.status || 'Pending';
+  // if (statusEl) statusEl.textContent = user?.status || 'Pending';
   if (voteCountEl) voteCountEl.textContent = user?.votedElections ?? 0;
   if (voteTextEl) voteTextEl.textContent = user?.votedElections ?? 0;
 
