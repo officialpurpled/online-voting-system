@@ -199,9 +199,9 @@ body {
 }
 
 .secondary-btn {
-  border: 1px solid rgba(27, 23, 98, 0.18);
-  background: transparent;
-  color: var(--color-primary);
+  border: 1px solid rgba(98, 23, 23, 0.18);
+  background: #d80000;
+  color: var(--white);
 }
 
 .primary-btn:hover,
@@ -359,6 +359,12 @@ body {
   .profile-sidebar {
     border-right: 0;
     border-bottom: 1px solid rgba(27, 23, 98, 0.08);
+  }
+}
+
+@media (max-width: 650px) {
+  footer {
+    display: none;
   }
 }
 

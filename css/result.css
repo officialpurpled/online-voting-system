@@ -359,6 +359,12 @@ main {
   text-align: center;
 }
 
+@media (max-width: 650px) {
+  footer {
+    display: none;
+  }
+}
+
 @media (max-width: 760px) {
   main {
     padding-top: 96px;

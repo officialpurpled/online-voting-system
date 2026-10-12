@@ -333,98 +333,10 @@ body.dashboard-page {
 }
 
 @media (max-width: 650px) {
-
-  /* 
-  .dashboard-header .right-section {
-    position: static;
+  footer {
+    display: none;
   }
 
-  .dashboard-header {
-    height: 66px;
-    padding: 9px 16px;
-  }
-
-  .dashboard-brand,
-  .dashboard-brand img {
-    width: 138px;
-  }
-
-  .dashboard-header .menu-list {
-    top: calc(100% + 8px);
-    right: 16px;
-    left: auto;
-    width: min(280px, calc(100vw - 32px));
-    align-items: stretch;
-    gap: 4px;
-    padding: 8px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    background: var(--color-surface);
-    box-shadow: 0 8px 20px rgba(23, 26, 41, 0.18);
-  }
-
-  .dashboard-header .menu-list.open {
-    display: flex;
-  }
-
-  .dashboard-header .menu-item {
-    width: 100%;
-  }
-
-  .dashboard-header .menu-item a {
-    display: flex;
-    width: 100%;
-    min-height: 44px;
-    justify-content: flex-start;
-    gap: 11px;
-    padding: 0 12px;
-    border-radius: 5px;
-    color: var(--color-text);
-    text-align: left;
-  }
-
-  .dashboard-header .menu-item a:hover,
-  .dashboard-header .menu-item a.active {
-    border: 0;
-    background: var(--color-primary);
-    color: var(--color-surface);
-  }
-
-  .dashboard-nav-icon {
-    display: block;
-    color: currentColor;
-  }
-
-  .dashboard-header #logout {
-    display: flex;
-    width: 100%;
-    min-height: 44px;
-    justify-content: flex-start;
-    padding: 0 12px;
-    color: var(--color-text);
-  }
-
-  .dashboard-header #logout:hover {
-    background: rgba(27, 23, 98, 0.08);
-    color: var(--color-primary);
-  }
-
-  .dashboard-header #logout:focus-visible {
-    background: rgba(27, 23, 98, 0.08);
-    color: var(--color-primary);
-    outline: 2px solid var(--color-accent);
-    outline-offset: 1px;
-  }
-
-  .dashboard-header .menu-icon {
-    display: block;
-    width: 30px;
-    height: 30px;
-    padding: 3px;
-    border: 1px solid rgba(255, 255, 255, 0.38);
-    border-radius: 4px;
-  }
- */
   body.dashboard-page #dashboard {
     padding: 84px 16px calc(76px + env(safe-area-inset-bottom));
   }

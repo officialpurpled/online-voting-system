@@ -7,7 +7,7 @@
   <title>Profile</title>
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
-  <!-- <link rel="stylesheet" href="../css/nav.css"> -->
+  <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/profile.css">
   <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
@@ -89,7 +89,7 @@
         </div> -->
 
         <button type="button" class="primary-btn profile-action">Edit Profile</button>
-        <button type="button" class="secondary-btn back-action">Back to Dashboard</button>
+        <button type="button" class="secondary-btn exit-action">Log Out</button>
       </aside>
 
       <section class="profile-panel">
@@ -157,6 +157,35 @@
       </section>
     </div>
   </main>
+
+  <div class="bottom-nav-container">
+    <div class="bottom-nav-content">
+      <div class="nav-box">
+        <a href="./dashboard.html">
+          <i data-lucide="layout-dashboard" class="bn-icon"></i>
+          <div class="nav-text">
+            Dashboard
+          </div>
+        </a>
+      </div>
+      <div class="nav-box">
+        <a href="./result.html">
+          <i data-lucide="chart-no-axes-column-increasing" class="bn-icon"></i>
+          <div class="nav-text">
+            Result
+          </div>
+        </a>
+      </div>
+      <div class="nav-box active">
+        <a>
+          <i data-lucide="user-round" class="bn-icon"></i>
+          <div class="nav-text">
+            Me
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div>

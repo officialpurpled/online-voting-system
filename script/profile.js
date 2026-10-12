@@ -117,10 +117,10 @@ function loadData() {
 }
 
 document.addEventListener('click', (event) => {
-  const backButton = event.target.closest('.back-action');
-  if (backButton) {
-    window.location.href = './dashboard.html';
-    return;
+  const exitButton = event.target.closest('.exit-action');
+  if (exitButton) {
+    localStorage.removeItem('p-id');
+    window.location.href = '../index.html'
   }
 
   const editButton = event.target.closest('.profile-action');
@@ -135,4 +135,4 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleNav();
 });
 
-logout();
+
