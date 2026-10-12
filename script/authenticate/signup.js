@@ -125,7 +125,7 @@ form.addEventListener('submit', async (e) => {
   formData.append('document', documentFile)
 
   signupButton.disabled = true
-  signupButtonText.textContent = 'CREATING ACCOUNT...'
+  signupButtonText.textContent = 'CREATING ACCOUNT..'
   btnIcon.style.display = 'none'
   btnLoader.style.display = 'block'
   setFeedback('', '')

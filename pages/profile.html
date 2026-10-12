@@ -7,7 +7,7 @@
   <title>Profile</title>
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/nav.css">
+  <!-- <link rel="stylesheet" href="../css/nav.css"> -->
   <link rel="stylesheet" href="../css/profile.css">
   <link rel="stylesheet" href="../css/mediaquery.css">
 </head>
@@ -15,7 +15,7 @@
 <body>
   <header>
     <div class="left-section">
-      <a class="brand-box" href="../index.html">
+      <a class="brand-box" href="./dashboard.html">
         <img src="../images/logo.png" alt="Secure Campus Voting">
       </a>
     </div>
@@ -52,94 +52,128 @@
     </div>
   </header>
 
-  <nav>
-    <a href="dashboard.html">
-      <img src="../images/icons/home.svg" alt="Dashboard">
-      Dashboard
-    </a>
+  <main id="profile-page">
+    <div id="notisModal" class="notisModal"></div>
 
-    <a href="result.html">
-      <img src="../images/icons/history.svg" alt="View results">
-      View Results
-    </a>
-
-    <a href="#" class="active">
-      <img src="../images/icons/user.svg" alt="">
-      My Profile
-    </a>
-
-    <a id="logout">
-      <img src="../images/icons/download.svg" alt="">
-      Log Out
-    </a>
-  </nav>
-
-  <main id="profile">
-    <div id="notisModal" class="notisModal" role="status" aria-live="polite" aria-atomic="true"></div>
-    <div class="container">
-      <div class="container-wrapper">
-        <div class="userimg">
-          <img src="../images/avatar.jpg" alt="avatar">
+    <div class="profile-shell">
+      <aside class="profile-sidebar">
+        <div class="profile-avatar-wrap">
+          <img class="profile-avatar" src="../images/avatar.jpg" alt="User avatar">
+          <span class="avatar-check">
+            <i data-lucide="check"></i>
+          </span>
         </div>
-        <div class="userinfor">
-          <!-- <div class="biodata">
-            <span class="label">BIO DATA</span>
-            <div>
-              Name: <p> username</p>
+
+        <h1 class="profile-name">Loading profile...</h1>
+
+        <div class="verification-pill">
+          <i data-lucide="shield-check"></i>
+          Verified Voter
+        </div>
+
+        <div class="status-block">
+          <div class="status-row">
+            <i data-lucide="check-circle"></i>
+            <span>Verified</span>
+          </div>
+          <small>Your account is verified and you can participate in campus elections.</small>
+        </div>
+
+        <!-- <div class="status-block compact">
+          <div class="status-row">
+            <i data-lucide="vote"></i>
+            <span>Vote count</span>
+          </div>
+          <strong class="vote-count">0</strong>
+          <small>Votes cast so far</small>
+        </div> -->
+
+        <button type="button" class="primary-btn profile-action">Edit Profile</button>
+        <button type="button" class="secondary-btn back-action">Back to Dashboard</button>
+      </aside>
+
+      <section class="profile-panel">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <h2>My Profile</h2>
+          </div>
+          <p>Manage your voter information and stay updated with your account details.</p>
+        </div>
+
+        <div class="profile-content">
+          <div class="section-title">
+            <i data-lucide="user-round"></i>
+            <span>Personal Information</span>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <label>Full Name</label>
+              <div class="info-value"><i data-lucide="user"></i><span class="full-name">Loading...</span></div>
             </div>
-            <div>
-              Email: <p> email</p>
+            <div class="info-box">
+              <label>Email</label>
+              <div class="info-value"><i data-lucide="mail"></i><span class="email-value">Loading...</span></div>
             </div>
-            <div>
-              Reg/Matric: <p> matric no</p>
+            <div class="info-box">
+              <label>Status</label>
+              <div class="info-value status-value"><i data-lucide="clock-3"></i><span
+                  class="status-value-text">Pending</span></div>
             </div>
-            <div>
-              User ID:<p>  userId</p>
-            </div>
-            <div>
-              Vote count:<p>  vote count</p>
+            <div class="info-box">
+              <label>Vote Count</label>
+              <div class="info-value"><i data-lucide="vote"></i><span class="vote-count-text">0</span></div>
             </div>
           </div>
-  
-          <div class="stddata">
-            <div class="mdata">
-              <span class="label">STUDENTSHIP DATA</span>
-              <div>
-                Faculty: <p>faculty</p>
-              </div>
-              <div>
-                Department: <p>department</p>
-              </div>
-              <div>
-                Current Level: <p>level</p>
+
+          <div class="section-title student-block">
+            <i data-lucide="badge-check"></i>
+            <span>Studentship Information</span>
+          </div>
+
+          <div class="info-grid compact-grid">
+            <div class="info-box">
+              <label>Matriculation Number</label>
+              <div class="info-value"><i data-lucide="id-card"></i><span class="matric-value">Loading...</span></div>
+            </div>
+            <div class="info-box">
+              <label>Faculty</label>
+              <div class="info-value"><i data-lucide="building-2"></i><span class="faculty-value">Loading...</span>
               </div>
             </div>
-            <div class="buttons">
-              <button class="backBtn" href="dashboard.html"> 
-                Back to dashboard 
-              </button>
-  
-              <button class="editBtn" href="edit.html">
-                Edit Profile
-              </button>
+            <div class="info-box">
+              <label>Department</label>
+              <div class="info-value"><i data-lucide="landmark"></i><span class="department-value">Loading...</span>
+              </div>
             </div>
-  
-          </div> -->
+            <div class="info-box">
+              <label>Current Level</label>
+              <div class="info-value"><i data-lucide="graduation-cap"></i><span class="level-value">Loading...</span>
+              </div>
+            </div>
+
+          </div>
         </div>
-      </div>
-      <div class="no-access">
-        <div>
-          <p>Please Login</p>
-          <button>
-            <a href="login.html">
-              Login
-            </a>
-          </button>
-        </div>
-      </div>
+      </section>
     </div>
   </main>
-  <!-- <script src="https://unpkg.com/dayjs@1.11.19/dayjs.min.js"></script> -->
+
+  <footer>
+    <div>
+      <span>Copyright &copy;2026 OOU Secure Voting System</span>
+      <span class="footer-separator"></span>
+      <span class="footer-system">
+        <i data-lucide="terminal"></i>
+        <span>
+          <p>Developed by</p>
+          <a href="https://github.com/officialpurpled/" target="_blank" title="github">
+            Purple Dragon
+          </a>
+        </span>
+      </span>
+    </div>
+  </footer>
+
   <script src="../lib/lucide.js"></script>
   <script src="../script/profile.js" type="module"></script>
 </body>
